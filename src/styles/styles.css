@@ -303,6 +303,13 @@ nav {
     50% { transform: translateX(40px) translateY(10px); }
 }
 
+.fas.fa-music {
+    color: green; /* Change color */
+    font-size: 1.2em; /* Adjust size */
+    margin-left: 5px; /* Add some space between the text and the icon */
+}
+
+
 
 
 /* Apply the animation to the bug icon */
