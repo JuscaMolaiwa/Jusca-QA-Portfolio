@@ -45,22 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateNavBackground('home'); // Apply specific color for 'Home'
             }
         }
-        // Special case for 'Contact' link
-        const contactSection = document.querySelector('#contact');
-        const contactSectionOffset = contactSection.offsetTop;
-        if (
-            fromTop >= contactSectionOffset &&
-            fromTop < contactSectionOffset + contactSection.offsetHeight
-        ) {
-            navLinks.forEach(function (link) {
-                link.classList.remove("active");
-            });
-            const contactLink = document.querySelector('.nav-list a[href="#Contact"]');
-            if (contactLink) {
-                contactLink.classList.add("active");
-                updateNavBackground('contact'); // Apply specific color for 'Contact'
-            }
-        }
     }
     
     // Initial update of active nav link and nav background color
