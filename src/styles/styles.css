@@ -116,7 +116,6 @@ nav {
 
 #contact {
     text-align: center; 
-    justify-content: flex-end;
     margin: 40px 0; 
 }
 .contact-icons {
@@ -133,7 +132,7 @@ nav {
 
 .contact-icons img {
     display: block;
-    width: 150px;
+    width: 130px;
     height: 45px;
     border: 2px solid #ddd; 
     border-radius: 15px; 
