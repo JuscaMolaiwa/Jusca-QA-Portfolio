@@ -1,3 +1,11 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -26,12 +34,6 @@ header {
     color: white;
     text-align: center;
     padding: 50px 0;
-}
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
 }
 
 .profile-photo {
@@ -115,17 +117,18 @@ nav {
 /* CONTACT ICONS */
 
 #contact {
-    text-align: center; 
-    margin: 40px 0; 
+    text-align: center;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .contact-icons {
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
-    margin-top: 20px; 
+    margin-top: 20px;
 }
 
 
@@ -137,9 +140,9 @@ nav {
     display: block;
     width: 130px;
     height: 45px;
-    border: 2px solid #ddd; 
-    border-radius: 15px; 
-    padding: 5px; 
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    padding: 5px;
 }
 
 
@@ -159,7 +162,9 @@ footer {
     padding-bottom: 1px;
 }
 
+
+
 main {
-    padding-bottom: 30px;
+    padding-bottom: 65px;
     /* Adjust based on footer height */
 }
