@@ -160,9 +160,12 @@ a {
 .nav-list .nav-link {
     color: white;
     text-decoration: none;
-    padding: 10px 20px; /* Adjusting padding for better spacing */
-    border: 1px solid transparent; /* Adding transparent border initially */
-    border-radius: 5px; /* Adding border radius for rounded corners */
+    padding: 10px 20px;
+    /* Adjusting padding for better spacing */
+    border: 1px solid transparent;
+    /* Adding transparent border initially */
+    border-radius: 5px;
+    /* Adding border radius for rounded corners */
 }
 
 .sticky-nav {
@@ -179,7 +182,8 @@ a {
 }
 
 .sticky-nav.scrolled {
-    background-color: #333; /* Color change when scrolled */
+    background-color: #333;
+    /* Color change when scrolled */
 }
 
 nav {
@@ -285,10 +289,11 @@ nav {
 
 /* Styles for the bug icon */
 .bug-icon {
-    width: 25px;  
+    width: 25px;
     height: 25px;
-    margin-right: 8px;  /* Space between the icon and text */
-    vertical-align: middle;  
+    margin-right: 8px;
+    /* Space between the icon and text */
+    vertical-align: middle;
 }
 
 
@@ -335,7 +340,8 @@ footer {
     color: #fff;
     cursor: pointer;
     border-radius: 50%;
-    display: none; /* Initially hidden */
+    display: none;
+    /* Initially hidden */
     z-index: 1001;
     transition: background-color 0.3s;
 }
@@ -343,8 +349,10 @@ footer {
 .sh-back-to-top:hover {
     background-color: #555;
 }
+
 body {
-    padding-top: 0px; /* Adjust this value based on your nav bar height */
+    padding-top: 0px;
+    /* Adjust this value based on your nav bar height */
 }
 
 main {

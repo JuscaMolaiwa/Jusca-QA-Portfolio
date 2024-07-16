@@ -3,14 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const burgerMenu = document.querySelector('.burger-menu');
     const nav = document.querySelector('.sticky-nav');
     const sections = document.querySelectorAll("section");
-
-    // Define the offset positions for each section
-    const sectionOffsets = Array.from(sections).map(section => ({
-        id: section.id,
-        offsetTop: section.offsetTop,
-    }));
+    const aboutSection = document.querySelector('#about');
+    const aboutSectionOffset = aboutSection.offsetTop;
 
     // Function to update active navigation link based on scroll position
+    // sourcery skip: avoid-function-declarations-in-blocks
     function updateActiveNavLink() {
         let fromTop = window.scrollY + nav.offsetHeight + 10; // Adjusted for nav bar height
 
@@ -31,11 +28,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (targetLink) {
                     targetLink.classList.add("active");
                 }
-
+                
                 // Update nav background color based on section
                 updateNavBackground(section.id);
             }
         });
+        if (fromTop < aboutSectionOffset) {
+            navLinks.forEach(function (link) {
+                link.classList.remove("active");
+            });
+            const homeLink = document.querySelector('.nav-list a[href="#Home"]');
+            if (homeLink) {
+                homeLink.classList.add("active");
+                updateNavBackground('home'); // Apply specific color for 'Home'
+            }
+        }
     }
 
     // Initial update of active nav link and nav background color
@@ -93,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Function to update nav background color based on section
-// sourcery skip: avoid-function-declarations-in-blocks
     function updateNavBackground(sectionId) {
         // Example logic for changing nav background color based on section
         switch (sectionId) {
@@ -101,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 nav.style.backgroundColor = '#7878'; // Color for 'Home' section
                 break;
             case 'about':
-                nav.style.backgroundColor = '#7878'; // Color for 'About Me' section
+                nav.style.backgroundColor = '#333'; // Color for 'About Me' section
                 break;
             case 'resume':
                 nav.style.backgroundColor = '#7777'; // Color for 'Resume' section
@@ -112,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
             case 'skills':
                 nav.style.backgroundColor = '#BBB'; // Color for 'Skills' section
                 break;
-            case 'certifications':
+            case 'education':
                 nav.style.backgroundColor = '#DDD'; // Color for 'Certifications' section
                 break;
             case 'contact':
