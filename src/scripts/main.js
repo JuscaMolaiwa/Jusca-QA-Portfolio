@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 nav.style.backgroundColor = '#ABB'; // Color for 'Resume' section
                 break;
             case 'projects':
-                nav.style.backgroundColor = '#999909'; // Color for 'Projects' section
+                nav.style.backgroundColor = 'cream-white'; // Color for 'Projects' section
                 break;
             case 'skills':
                 nav.style.backgroundColor = '#BBB'; // Color for 'Skills' section
