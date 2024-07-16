@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateNavBackground(section.id);
             }
         });
+
+        // Special case for 'Home' link
         if (fromTop < aboutSectionOffset) {
             navLinks.forEach(function (link) {
                 link.classList.remove("active");
@@ -43,8 +45,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateNavBackground('home'); // Apply specific color for 'Home'
             }
         }
+        // Special case for 'Contact' link
+        const contactSection = document.querySelector('#contact');
+        const contactSectionOffset = contactSection.offsetTop;
+        if (
+            fromTop >= contactSectionOffset &&
+            fromTop < contactSectionOffset + contactSection.offsetHeight
+        ) {
+            navLinks.forEach(function (link) {
+                link.classList.remove("active");
+            });
+            const contactLink = document.querySelector('.nav-list a[href="#Contact"]');
+            if (contactLink) {
+                contactLink.classList.add("active");
+                updateNavBackground('contact'); // Apply specific color for 'Contact'
+            }
+        }
     }
-
+    
     // Initial update of active nav link and nav background color
     updateActiveNavLink();
 
@@ -65,7 +83,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.scrollTo({
                     top: targetSection.offsetTop - nav.offsetHeight,
                     behavior: "smooth",
+                });// Remove 'active' class from all links
+                navLinks.forEach(function (link) {
+                    link.classList.remove("active");
                 });
+
+                // Add 'active' class to clicked link
+                this.classList.add("active");
+
+                // Update nav background color based on clicked link
+                updateNavBackground(targetId);
             }
         });
     });
