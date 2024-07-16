@@ -296,6 +296,25 @@ nav {
     /* Space between the icon and text */
     vertical-align: middle;
 }
+/* Define the animation */
+@keyframes bugRun {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    25%, 75% { transform: translateX(20px) translateY(-10px); }
+    50% { transform: translateX(40px) translateY(10px); }
+}
+
+
+
+/* Apply the animation to the bug icon */
+.bug-icon {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Add a class to trigger the animation */
+.bug-icon.running {
+    animation: bugRun 5s ease-in-out 1;
+}
+
 
 
 .contact-icons p {

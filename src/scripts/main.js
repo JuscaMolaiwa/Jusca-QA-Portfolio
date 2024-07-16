@@ -4,10 +4,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const nav = document.querySelector('.sticky-nav');
     const sections = document.querySelectorAll("section");
     const aboutSection = document.querySelector('#about');
+    const bugIcon = document.querySelector('.bug-icon');
     const aboutSectionOffset = aboutSection.offsetTop;
 
+    
+// sourcery skip: avoid-function-declarations-in-blocks
+    function animateBugIcon() {
+        bugIcon.classList.add('running');
+        
+        // Remove 'running' class after animation completes (optional)
+        setTimeout(function () {
+            bugIcon.classList.remove('running');
+        }, 5000); // Adjust timing to match animation duration
+    }
+    
     // Function to update active navigation link based on scroll position
-    // sourcery skip: avoid-function-declarations-in-blocks
     function updateActiveNavLink() {
         let fromTop = window.scrollY + nav.offsetHeight + 10; // Adjusted for nav bar height
 
@@ -67,7 +78,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.scrollTo({
                     top: targetSection.offsetTop - nav.offsetHeight,
                     behavior: "smooth",
-                });// Remove 'active' class from all links
+                });
+
+                // Remove 'active' class from all links
                 navLinks.forEach(function (link) {
                     link.classList.remove("active");
                 });
@@ -77,6 +90,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Update nav background color based on clicked link
                 updateNavBackground(targetId);
+                if (targetId === 'Home' || targetId === 'Skills') {
+                    animateBugIcon();
+                }
+
             }
         });
     });
