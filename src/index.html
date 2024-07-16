@@ -4,14 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jusca- Quality Assurance Engineer</title>
+    <title>Jusca- Quality Assurance Engineer Portfolio</title>
     <link rel="icon" href="images/robot.ico" type="image/x-icon">
     <link rel="shortcut icon" href="images/robot.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <header>
+    <!-- Burger menu -->
+    <div class="burger-menu">
+        <div class="burger-icon"></div>
+    </div>
+
+    <!-- Navigation -->
+
+    <nav class="sticky-nav">
+        <ul class="nav-list">
+            <li>
+                <a href="#BugHunter" class="nav-link">
+                    <img src="images/bug.svg" alt="Bug Icon" class="bug-icon"> BugHunter
+                </a>
+            </li>
+            <div class="nav-center">
+                <li><a href="#Home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About Me</a></li>
+                <li><a href="#resume" class="nav-link">Resume</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </div>
+        </ul>
+    </nav>
+
+    <header id="Home">
         <div class="container">
             <img src="images/profile-photo.jpg" alt="Jusca" class="profile-photo">
             <h1>Ensuring Software Quality with Precision and Expertise</h1>
@@ -26,17 +53,6 @@
         </div>
     </header>
 
-    <nav>
-        <ul class="nav-list">
-            <li><a href="#Home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About Me</a></li>
-            <li><a href="#resume" class="nav-link">Resume</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#certifications" class="nav-link">Certifications</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-    </nav>
 
     <main>
         <section id="about" class="container">
@@ -172,9 +188,8 @@
             </ul>
         </section>
 
-
         <section id="contact" class="container">
-            <h2>Please feel free to Contact me</h2>
+            <h2>CONNECT WITH ME</h2>
             <div class="contact-icons">
                 <p><a href="mailto:jusca.mol@gmail.com"><img src="images/gmail.svg" alt="Email"></a></p>
                 <p><a href="https://www.linkedin.com/in/jusca-molaiwa-7483a378/"><img src="images/linkedin.svg"
@@ -184,14 +199,13 @@
                 <p><a href="https://github.com/JuscaMolaiwa"><img src="images/github.svg" alt="GitHub"></a>
                 </p>
             </div>
-
         </section>
-
-
     </main>
-
+    <div class="sh-back-to-top sh-back-to-top1">
+        <i class="fa fa-angle-up"></i>
+    </div>
     <footer>
-        <p>&copy; Copyright 2024 Jusca Molaiwa's QA Portfolio. All rights reserved.</p>
+        <p>Copyright &copy; 2024. Jusca Molaiwa's QA Portfolio. All Rights Reserved.</p>
     </footer>
     <script src="scripts/main.js"></script>
 </body>

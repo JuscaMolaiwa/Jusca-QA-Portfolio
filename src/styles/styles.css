@@ -52,14 +52,14 @@ header {
 h1 {
     font-size: 2em;
     margin: 20px 0 10px;
-    margin-top: 10px!important;
-    margin-left: 0!important;
-    margin-bottom: 20px!important
+    margin-top: 10px !important;
+    margin-left: 0 !important;
+    margin-bottom: 20px !important
 }
 
 h2 {
     font-size: 1.5em;
-    margin: 10px 0 20px;
+    margin: 40px 0 20px;
 }
 
 p {
@@ -74,16 +74,128 @@ a {
 }
 
 
+
+
+.burger-menu {
+    display: none;
+}
+
+.burger-icon {
+    background-color: #fff;
+    cursor: pointer;
+    display: block;
+    height: 2px;
+    margin-top: 8px;
+    position: absolute;
+    right: 20px;
+    width: 25px;
+}
+
+.burger-icon:before,
+.burger-icon:after {
+    background-color: #fff;
+    content: '';
+    display: block;
+    height: 2px;
+    transition: transform 0.2s;
+    width: 100%;
+}
+
+.burger-icon:before {
+    transform-origin: left center;
+}
+
+.burger-icon:after {
+    bottom: 0;
+    transform-origin: left center;
+    top: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        top: 56px;
+        width: 100%;
+        background-color: #333;
+        padding: 10px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+    }
+
+    .nav-list.open {
+        display: flex;
+    }
+
+    .nav-list li {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 10px 16px;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .burger-menu.open .burger-icon {
+        background-color: transparent;
+    }
+
+    .burger-menu.open .burger-icon:before {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .burger-menu.open .burger-icon:after {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
 /* Navigation Links */
+
+.nav-list .nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px; /* Adjusting padding for better spacing */
+    border: 1px solid transparent; /* Adding transparent border initially */
+    border-radius: 5px; /* Adding border radius for rounded corners */
+}
+
+.sticky-nav {
+    background-color: #7878;
+    padding: 10px 0;
+    position: fixed;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s;
+    border-bottom: 2px solid #666;
+}
+
+.sticky-nav.scrolled {
+    background-color: #333; /* Color change when scrolled */
+}
+
 nav {
     background-color: #7878;
     padding: 10px 0;
+    position: sticky;
+    width: 100%;
+    transition: background-color 0.3s ease-in-out;
 }
 
 
 .nav-link {
     color: #0c5985 !important;
     padding: .5rem !important;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
 .nav-list {
@@ -91,8 +203,7 @@ nav {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: flex-end;
-    max-width: 1000px;
+    justify-content: center;
 }
 
 .nav-list li {
@@ -100,6 +211,12 @@ nav {
     visibility: visible;
     line-height: 1.4rem;
 }
+
+/* Aligning the BugSlayer link to the left */
+.nav-list li:first-child {
+    margin-right: auto;
+}
+
 
 .nav-list a {
     color: #583b66;
@@ -114,7 +231,8 @@ nav {
 .nav-list a.active {
     background: linear-gradient(to right, #AACCFF 10%, #eee 100%);
     font-weight: bold;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px;
+    /* Rounded corners */
 }
 
 /* Style for active and hover states for RESUME */
@@ -164,6 +282,14 @@ nav {
     padding-right: 5px;
 }
 
+/* Styles for the bug icon */
+.bug-icon {
+    width: 25px;  
+    height: 25px;
+    margin-right: 8px;  /* Space between the icon and text */
+    vertical-align: middle;  
+}
+
 
 .contact-icons p {
     margin: 10px;
@@ -196,6 +322,29 @@ footer {
 }
 
 
+.sh-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: #7878;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    display: none; /* Initially hidden */
+    z-index: 1001;
+    transition: background-color 0.3s;
+}
+
+.sh-back-to-top:hover {
+    background-color: #555;
+}
+body {
+    padding-top: 0px; /* Adjust this value based on your nav bar height */
+}
 
 main {
     padding-bottom: 65px;
