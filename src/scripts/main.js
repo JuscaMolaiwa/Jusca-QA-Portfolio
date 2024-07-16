@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 nav.style.backgroundColor = '#787'; // Color for 'Certifications' section
                 break;
             case 'contact':
-                nav.style.backgroundColor = '#7878'; // Color for 'Contact' section
+                nav.style.backgroundColor = '#788'; // Color for 'Contact' section
                 break;
             default:
                 nav.style.backgroundColor = '#7878'; // Default color
