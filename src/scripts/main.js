@@ -117,11 +117,11 @@ document.addEventListener("DOMContentLoaded", function () {
             case 'home':
                 nav.style.backgroundColor = '#7878'; // Color for 'Home' section
                 break;
-            case 'about':
-                nav.style.backgroundColor = '#333'; // Color for 'About Me' section
+            case 'about me':
+                nav.style.backgroundColor = '#BBB23'; // Color for 'About Me' section
                 break;
             case 'resume':
-                nav.style.backgroundColor = '#7777'; // Color for 'Resume' section
+                nav.style.backgroundColor = '#ABB'; // Color for 'Resume' section
                 break;
             case 'projects':
                 nav.style.backgroundColor = '#999909'; // Color for 'Projects' section
@@ -130,10 +130,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 nav.style.backgroundColor = '#BBB'; // Color for 'Skills' section
                 break;
             case 'education':
-                nav.style.backgroundColor = '#DDD'; // Color for 'Certifications' section
+                nav.style.backgroundColor = '#787'; // Color for 'Certifications' section
                 break;
             case 'contact':
-                nav.style.backgroundColor = '#EEE'; // Color for 'Contact' section
+                nav.style.backgroundColor = '#7878'; // Color for 'Contact' section
                 break;
             default:
                 nav.style.backgroundColor = '#7878'; // Default color
