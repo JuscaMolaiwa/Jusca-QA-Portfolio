@@ -7,10 +7,15 @@
 
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 8px;
+    word-wrap: break-word;
     background-color: #f4f4f4;
+    box-sizing: border-box;
+    padding-left: 5px;
+    padding-right: 5px;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Project Section Styles */
@@ -47,6 +52,9 @@ header {
 h1 {
     font-size: 2em;
     margin: 20px 0 10px;
+    margin-top: 10px!important;
+    margin-left: 0!important;
+    margin-bottom: 20px!important
 }
 
 h2 {
@@ -60,11 +68,22 @@ p {
     margin: 20px 0;
 }
 
+a {
+    font-weight: 500;
+    text-decoration: none;
+}
+
 
 /* Navigation Links */
 nav {
     background-color: #7878;
     padding: 10px 0;
+}
+
+
+.nav-link {
+    color: #0c5985 !important;
+    padding: .5rem !important;
 }
 
 .nav-list {
@@ -74,23 +93,28 @@ nav {
     display: flex;
     justify-content: flex-end;
     max-width: 1000px;
-
 }
 
 .nav-list li {
     display: inline-block;
-    margin-right: 20px;
+    visibility: visible;
+    line-height: 1.4rem;
 }
 
 .nav-list a {
     color: #583b66;
     text-transform: uppercase;
     text-decoration: none;
+    vertical-align: middle;
+    display: inline-block;
 }
 
+/* Style for active and hover states */
+.nav-list a:hover,
 .nav-list a.active {
     background: linear-gradient(to right, #AACCFF 10%, #eee 100%);
     font-weight: bold;
+    border-radius: 5px; /* Rounded corners */
 }
 
 /* Call to Action Button Styles */
@@ -128,7 +152,10 @@ nav {
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 0;
+    -webkit-box-pack: center;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 
