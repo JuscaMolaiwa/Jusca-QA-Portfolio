@@ -32,3 +32,20 @@
     border-radius: 15px;
     padding: 5px;
 }
+
+
+/* Resume Section Styles - Mobile (target screens less than 768px wide) */
+@media screen and (max-width: 768px) {
+    #contact {
+        padding: 20px;
+    }
+
+    .contact-icons  {
+        padding: 10px 15px;
+        /* Adjust padding for smaller screens */
+        margin-bottom: 5px;
+        /* Reduce space between buttons */
+        font-size: 14px;
+        /* Optionally reduce font size for smaller screens */
+    }
+}
