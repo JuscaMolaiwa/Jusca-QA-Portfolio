@@ -1,7 +1,6 @@
 /* Specific style for education details */
 .education {
-    margin-bottom: 20px;
-    
+    margin-bottom: 20px;   
 }
 
 /* Education Section Styles */
@@ -33,12 +32,6 @@
     /* Ensure no top margin for the first heading */
 }
 
-.education h3 {
-    color: #007acc;
-    /* Primary color for section titles */
-    margin-top: 0;
-    /* Ensure no top margin for the first heading */
-}
 
 /* List Styles */
 #education ul {
@@ -66,7 +59,7 @@
     /* Underline on hover for links */
 }
 
-ul {
+.education ul {
     list-style-type: disc; /* Use bullets */
     margin-left: 20px; /* Adjust left margin for indentation */
     padding-left: 0; /* Remove default padding */
