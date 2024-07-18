@@ -50,7 +50,7 @@
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    z-index: 1001; /* Ensure it's above .burger-menu */
+    z-index: 1001; /* Ensure it's above burger-menu */
     width: 200px;
     /* Adjust width as needed */
 
@@ -111,8 +111,10 @@
 
 /* Sticky Burger menu styles */
 .burger-menu {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0; /* Adjust if necessary */
+    right: 0;  
     background-color: #fff;
     /* background color as needed */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
