@@ -1,0 +1,5 @@
+/* Style for active and hover states for RESUME */
+.resume-links a:hover {
+    background: linear-gradient(to right, #AACCFF 10%, #eee 100%);
+    font-weight: bold;
+}
