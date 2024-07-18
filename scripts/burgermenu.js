@@ -29,8 +29,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Close the menu if the window is resized to a width greater than 768px
     window.addEventListener('resize', function () {
         if (window.innerWidth > 768) {
-            navMenu.classList.remove('active');
-            burgerMenu.style.display = 'block';
+            if (!navMenu.classList.contains('active')) {
+                burgerMenu.style.display = 'none';
+            }
+        } else {
+            burgerMenu.style.display = 'block'; // Show burger menu on smaller screens
         }
     });
 });
@@ -41,3 +44,7 @@ function toggleNavMenu() {
     const burgerMenu = document.querySelector('.burger-menu');
     burgerMenu.style.display = navMenu.classList.contains('active') ? 'none' : 'block';
 }
+
+
+
+

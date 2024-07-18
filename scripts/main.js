@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const navLinks = document.querySelectorAll(".nav-list a");
     const burgerMenu = document.querySelector('.burger-menu');
+        const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll(".nav-list a");
     const nav = document.querySelector('.sticky-nav');
     const sections = document.querySelectorAll("section");
     const aboutSection = document.querySelector('#about');
-    const bugIcon = document.querySelector('.bug-icon');
+    const bugIcon = document.querySelector('.sticky-nav .bug-icon'); 
+    const bugHunterLink = document.querySelector('.nav-link[href="#BugHunter"]');
     const aboutSectionOffset = aboutSection.offsetTop;
 
 
@@ -90,7 +92,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Update nav background color based on clicked link
                 updateNavBackground(targetId);
-                if (targetId === 'Home' || targetId === 'Skills') {
+
+                if (targetId === 'Home' || targetId === 'BugHunter') {
                     animateBugIcon();
                 }
 
@@ -159,9 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        const burgerMenu = document.querySelector('.burger-menu');
-        const navMenu = document.querySelector('.nav-menu');
-
         burgerMenu.addEventListener('click', function () {
             navMenu.classList.toggle('active');
         });

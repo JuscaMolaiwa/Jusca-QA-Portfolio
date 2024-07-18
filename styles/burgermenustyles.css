@@ -3,7 +3,8 @@
     display: none;
     position: fixed;
     top: 20px;
-    left: 20px; /* Position on the left side */
+    left: 20px;
+    /* Position on the left side */
     z-index: 1000;
     cursor: pointer;
 }
@@ -14,7 +15,9 @@
     background-color: #333;
     position: relative;
     transition: all 0.3s ease-in-out;
+
 }
+
 
 .burger-icon::before,
 .burger-icon::after {
@@ -28,7 +31,10 @@
 
 .burger-icon::before {
     top: -10px;
+    
 }
+
+
 
 .burger-icon::after {
     bottom: -10px;
@@ -38,7 +44,7 @@
 .nav-menu {
     display: none;
     position: fixed;
-    top: 60px;
+    top: 0px;
     /* Adjust to your preference */
     right: 20px;
     background-color: #fff;
@@ -47,7 +53,13 @@
     z-index: 999;
     width: 200px;
     /* Adjust width as needed */
-    padding: 10px;
+
+    padding: 40px; /* Adjust window pane as needed */
+    transition: transform 0.3s ease-in-out;
+    height: 100%;
+    /* Take full height of the viewport */
+    overflow-y: auto;
+    
 }
 
 .nav-menu ul {
@@ -62,7 +74,7 @@
 }
 
 .nav-menu li:last-child {
-    border-bottom: none;
+    border-bottom: 1px solid #ddd;
 }
 
 .nav-menu a {
@@ -90,19 +102,9 @@
 
 .nav-menu.active {
     left: 0;
+    display: block;
     /* Slide menu into view when active */
 }
-.nav-menu {
-    display: none; /* Initially hide the navigation menu */
-    /* Other styles */
-}
-
-.nav-menu.active {
-    display: block; /* Show the navigation menu when active */
-    /* Additional styles for animation or positioning */
-}
-
-
 
 .close-button {
     position: absolute;
@@ -118,4 +120,16 @@
 
 .close-button:hover {
     color: #333;
+}
+
+/* Sticky Burger menu styles */
+.burger-menu {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    /* background color as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* Ensure it's above other content */
+    padding: 17px;
 }
