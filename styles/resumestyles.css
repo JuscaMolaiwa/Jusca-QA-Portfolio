@@ -1,5 +1,56 @@
-/* Style for active and hover states for RESUME */
+/* Resume Section Styles */
+#resume {
+    background-color: #f9f9f9;
+    /* Light background color */
+    color: #333;
+    /* Dark text color */
+    padding: 40px;
+    /* Padding around content */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    margin-top: 20px;
+    /* Top margin to separate from previous section */
+}
+
+#resume h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    /* Dark color for heading */
+}
+
+.resume-links {
+    margin-top: 20px;
+    /* Top margin for spacing */
+}
+
+.resume-links a {
+    display: inline-block;
+    /* Display links in a row */
+    text-decoration: none;
+    /* Remove underline */
+    background-color: #007acc;
+    /* Background color */
+    color: #fff;
+    /* Text color */
+    padding: 10px 20px;
+    /* Padding around text */
+    margin-right: 10px;
+    /* Right margin between links */
+    border-radius: 5px;
+    /* Rounded corners */
+    transition: background-color 0.3s ease;
+    /* Smooth background transition */
+}
+
 .resume-links a:hover {
-    background: linear-gradient(to right, #AACCFF 10%, #eee 100%);
-    font-weight: bold;
+    background-color: #005fa3;
+    /* Darker background color on hover */
+}
+
+.resume-links a:last-child {
+    margin-right: 0;
+    /* Remove right margin from last link */
 }

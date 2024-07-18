@@ -24,3 +24,12 @@
 .nav-list li:first-child {
     margin-right: auto;
 }
+
+.fas.fa-bug {
+    color: darkred;
+    /* Change color */
+    font-size: 1.2em;
+    /* Adjust size */
+    margin-left: 5px;
+    /* Add some space between the text and the icon */
+}
