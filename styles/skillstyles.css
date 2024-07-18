@@ -1,0 +1,51 @@
+#skills {
+    background-color: #f9f9f9;
+    /* Light background color */
+    color: #333;
+    /* Dark text color for readability */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-top: 20px;
+    /* Add spacing between sections */
+}
+
+.skills {
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+    /* Dark text for readability */
+}
+
+.skills h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.skills ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills li strong {
+    display: block;
+    margin-bottom: 10px;
+    /* Adjust spacing as needed */
+    border-bottom: 1px solid #ddd;
+    /* Thin separator line */
+    padding-bottom: 5px;
+    /* Adjust padding as needed */
+}
+
+.skills li {
+    margin-bottom: 15px;
+    /* Spacing between skill items */
+}
+
+.skills li ul li {
+    color: #555;
+    /* Medium gray color for skill text */
+}
