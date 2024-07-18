@@ -1,46 +1,103 @@
+/* Burger menu styles */
 .burger-menu {
     display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px; /* Position on the left side */
+    z-index: 1000;
+    cursor: pointer;
 }
 
 .burger-icon {
-    background-color: #fff;
-    cursor: pointer;
-    display: block;
-    height: 2px;
-    margin-top: 8px;
-    position: absolute;
-    right: 20px;
-    width: 25px;
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    position: relative;
+    transition: all 0.3s ease-in-out;
 }
 
-.burger-icon:before,
-.burger-icon:after {
-    background-color: #fff;
+.burger-icon::before,
+.burger-icon::after {
     content: '';
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+}
+
+.burger-icon::before {
+    top: -10px;
+}
+
+.burger-icon::after {
+    bottom: -10px;
+}
+
+/* Hidden navigation menu styles */
+.nav-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    /* Adjust to your preference */
+    right: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 999;
+    width: 200px;
+    /* Adjust width as needed */
+    padding: 10px;
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-menu li:last-child {
+    border-bottom: none;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
     display: block;
-    height: 2px;
-    transition: transform 0.2s;
-    width: 100%;
+    padding: 8px 16px;
 }
 
-.burger-icon:before {
-    transform-origin: left center;
+/* Show burger menu on mobile */
+@media screen and (max-width: 768px) {
+    .burger-menu {
+        display: block;
+    }
+
+    .sticky-nav {
+        display: none;
+        /* Hide regular navigation on small screens */
+    }
+
+    .nav-menu {
+        display: none;
+    }
 }
 
-.burger-icon:after {
-    bottom: 0;
-    transform-origin: left center;
-    top: 0;
+.nav-menu.active {
+    left: 0;
+    /* Slide menu into view when active */
+}
+.nav-menu {
+    display: none; /* Initially hide the navigation menu */
+    /* Other styles */
 }
 
-.burger-menu.open .burger-icon {
-    background-color: transparent;
-}
-
-.burger-menu.open .burger-icon:before {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.burger-menu.open .burger-icon:after {
-    transform: rotate(45deg) translate(-5px, -6px);
+.nav-menu.active {
+    display: block; /* Show the navigation menu when active */
+    /* Additional styles for animation or positioning */
 }

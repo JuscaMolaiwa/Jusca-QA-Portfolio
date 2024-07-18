@@ -7,17 +7,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const bugIcon = document.querySelector('.bug-icon');
     const aboutSectionOffset = aboutSection.offsetTop;
 
-    
-// sourcery skip: avoid-function-declarations-in-blocks
+
+    // sourcery skip: avoid-function-declarations-in-blocks
     function animateBugIcon() {
         bugIcon.classList.add('running');
-        
+
         // Remove 'running' class after animation completes (optional)
         setTimeout(function () {
             bugIcon.classList.remove('running');
         }, 5000); // Adjust timing to match animation duration
     }
-    
+
     // Function to update active navigation link based on scroll position
     function updateActiveNavLink() {
         let fromTop = window.scrollY + nav.offsetHeight + 10; // Adjusted for nav bar height
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (targetLink) {
                     targetLink.classList.add("active");
                 }
-                
+
                 // Update nav background color based on section
                 updateNavBackground(section.id);
             }
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
-    
+
     // Initial update of active nav link and nav background color
     updateActiveNavLink();
 
@@ -157,4 +157,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 break;
         }
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const burgerMenu = document.querySelector('.burger-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        burgerMenu.addEventListener('click', function () {
+            navMenu.classList.toggle('active');
+        });
+    });
+
 });
