@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', function () {
         if (window.innerWidth > 768) {
             navMenu.classList.remove('active');
-            burgerMenu.style.display = 'block';
         }
     });
 });
@@ -41,3 +40,5 @@ function toggleNavMenu() {
     const burgerMenu = document.querySelector('.burger-menu');
     burgerMenu.style.display = navMenu.classList.contains('active') ? 'none' : 'block';
 }
+
+

@@ -51,8 +51,6 @@
     width: 200px;
     /* Adjust width as needed */
 
-
-
     padding: 10px;
     transition: transform 0.3s ease-in-out;
     height: 100%;
@@ -100,6 +98,7 @@
 
 .nav-menu.active {
     left: 0;
+    display: block;
     /* Slide menu into view when active */
 }
 
@@ -108,13 +107,6 @@
     /* Initially hide the navigation menu */
     /* Other styles */
 }
-
-.nav-menu.active {
-    display: block;
-    /* Show the navigation menu when active */
-    /* Additional styles for animation or positioning */
-}
-
 
 
 .close-button {
@@ -137,10 +129,10 @@
 .burger-menu {
     position: sticky;
     top: 0;
-    background-color: #fff; /* background color as needed */
+    background-color: #fff;
+    /* background color as needed */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Ensure it's above other content */
-    padding: 17px; 
+    z-index: 1000;
+    /* Ensure it's above other content */
+    padding: 17px;
 }
-
-
