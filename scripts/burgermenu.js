@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const burgerMenu = document.querySelector('.burger-menu');
     const navMenu = document.querySelector('.nav-menu');
+    const mainContent = document.querySelector('main');
     const navLinks = navMenu.querySelectorAll('a');
 
     // Toggle navigation menu visibility on burger menu click
@@ -44,7 +45,4 @@ function toggleNavMenu() {
     const burgerMenu = document.querySelector('.burger-menu');
     burgerMenu.style.display = navMenu.classList.contains('active') ? 'none' : 'block';
 }
-
-
-
 
