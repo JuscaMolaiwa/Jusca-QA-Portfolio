@@ -1,0 +1,26 @@
+/* Styles for the bug icon */
+.bug-icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+    /* Space between the icon and text */
+    vertical-align: middle;
+    transition: transform 0.3s ease-in-out;
+}
+/* Define the animation */
+@keyframes bugRun {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    25%, 75% { transform: translateX(20px) translateY(-10px); }
+    50% { transform: translateX(40px) translateY(10px); }
+}
+
+/* Add a class to trigger the animation */
+.bug-icon.running {
+    animation: bugRun 5s ease-in-out 1;
+}
+
+
+/* Aligning the BugSlayer link to the left */
+.nav-list li:first-child {
+    margin-right: auto;
+}
