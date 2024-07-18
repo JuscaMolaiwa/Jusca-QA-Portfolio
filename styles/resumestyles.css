@@ -35,8 +35,10 @@
     /* Background color */
     color: #fff;
     /* Text color */
-    padding: 10px 20px;
-    /* Padding around text */
+    padding: 8.5px;
+    /* Adjust padding for mobile layout */
+    margin-bottom: 10px;
+    /* Add space between the buttons */
     margin-right: 10px;
     /* Right margin between links */
     border-radius: 5px;
@@ -53,4 +55,20 @@
 .resume-links a:last-child {
     margin-right: 0;
     /* Remove right margin from last link */
+}
+
+/* Resume Section Styles - Mobile (target screens less than 768px wide) */
+@media screen and (max-width: 768px) {
+    #resume {
+        padding: 20px;
+    }
+
+    .resume-links a {
+        padding: 10px 15px;
+        /* Adjust padding for smaller screens */
+        margin-bottom: 5px;
+        /* Reduce space between buttons */
+        font-size: 14px;
+        /* Optionally reduce font size for smaller screens */
+    }
 }

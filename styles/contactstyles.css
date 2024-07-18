@@ -6,22 +6,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 40px;
+    /* Add padding for spacing */
 }
-
 
 .contact-icons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    /* Center align icons */
     flex-wrap: wrap;
-    margin-top: 0;
-    -webkit-box-pack: center;
-    padding-left: 5px;
-    padding-right: 5px;
+    margin-top: 20px;
+    /* Adjust margin as needed */
 }
 
-
+/* Contact icons styling */
 .contact-icons p {
     margin: 10px;
+    padding: 5px;
+    border-radius: 15px;
+    width: 130px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-icons img {
@@ -31,4 +39,67 @@
     border: 2px solid #ddd;
     border-radius: 15px;
     padding: 5px;
+    margin: 10px;
+    /* Add margin for spacing between icons */
+}
+
+/* Hover effect on contact icons */
+.contact-icons p:hover {
+    background-color: #007acc;
+    /* Change background color to blue on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add a shadow effect on hover */
+}
+
+.contact-icons p:hover img {
+    filter: none;
+    /* Reset any image filter to keep the image unchanged */
+}
+
+
+
+
+/* Contact Icons Section Styles - Mobile (target screens less than 768px wide) */
+@media screen and (max-width: 768px) {
+    #contact {
+        padding: 20px;
+        /* Reduce padding for smaller screens */
+    }
+
+    .contact-icons {
+        padding: 10px;
+        /* Adjust padding for smaller screens */
+        margin-top: 10px;
+        /* Reduce margin for smaller screens */
+    }
+
+    .contact-icons img {
+        width: 100px;
+        /* Adjust image size for smaller screens */
+        height: 35px;
+        margin: 5px;
+        /* Adjust margin for smaller screens */
+    }
+}
+
+/* Styling for "Connect with Me" */
+#contact h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+    /* Additional styles for the h2 heading */
+}
+
+#contact h2 {
+    font-style: italic;
+    /* Make the heading italic */
+    color: #007acc;
+    /* Link color */
+    transition: color 0.3s ease;
+    /* Smooth color transition */
+}
+
+#contact h2:hover {
+    color: #005fa3;
+    /* Darker color on hover */
 }
