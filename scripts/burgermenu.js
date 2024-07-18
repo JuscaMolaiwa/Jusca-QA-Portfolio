@@ -6,34 +6,38 @@ document.addEventListener('DOMContentLoaded', function () {
     // Toggle navigation menu visibility on burger menu click
     burgerMenu.addEventListener('click', function () {
         navMenu.classList.toggle('active');
-        burgerMenu.style.display = 'none'; // Hide burger menu when navigation menu is active
+        burgerMenu.style.display = navMenu.classList.contains('active') ? 'none' : 'block';
     });
 
     // Close navigation menu when clicking on a link (excluding BugHunter)
     navLinks.forEach(link => {
         link.addEventListener('click', function (event) {
-            // Check if the link is not BugHunter
             if (link.getAttribute('href') !== '#BugHunter') {
-                event.preventDefault(); // Prevent default link behavior (e.g., page scroll)
-
-                // Close navigation menu
+                event.preventDefault();
                 navMenu.classList.remove('active');
-                burgerMenu.style.display = 'block'; // Show burger menu when navigation menu is closed
+                burgerMenu.style.display = 'block';
 
-                // Scroll to the section
-                const targetId = link.getAttribute('href').substring(1); // Get target section ID
-                const targetSection = document.getElementById(targetId); // Find target section element
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
                 if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' }); // Scroll to the target section
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
                 }
             }
         });
+    });
+
+    // Close the menu if the window is resized to a width greater than 768px
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 768) {
+            navMenu.classList.remove('active');
+            burgerMenu.style.display = 'block';
+        }
     });
 });
 
 function toggleNavMenu() {
     const navMenu = document.getElementById("navMenu");
-    navMenu.classList.remove("active");
+    navMenu.classList.toggle("active");
     const burgerMenu = document.querySelector('.burger-menu');
-    burgerMenu.style.display = 'block'; // Show burger menu when navigation menu is closed
+    burgerMenu.style.display = navMenu.classList.contains('active') ? 'none' : 'block';
 }
