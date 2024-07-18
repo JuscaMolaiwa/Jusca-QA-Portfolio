@@ -15,7 +15,9 @@
     background-color: #333;
     position: relative;
     transition: all 0.3s ease-in-out;
+
 }
+
 
 .burger-icon::before,
 .burger-icon::after {
@@ -29,6 +31,7 @@
 
 .burger-icon::before {
     top: -10px;
+    
 }
 
 
@@ -51,11 +54,12 @@
     width: 200px;
     /* Adjust width as needed */
 
-    padding: 10px;
+    padding: 40px; /* Adjust window pane as needed */
     transition: transform 0.3s ease-in-out;
     height: 100%;
     /* Take full height of the viewport */
     overflow-y: auto;
+    
 }
 
 .nav-menu ul {
@@ -70,7 +74,7 @@
 }
 
 .nav-menu li:last-child {
-    border-bottom: none;
+    border-bottom: 1px solid #ddd;
 }
 
 .nav-menu a {

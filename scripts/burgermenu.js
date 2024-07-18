@@ -3,12 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = navMenu.querySelectorAll('a');
 
-    function toggleNavMenu() {
-        const navMenu = document.getElementById("navMenu");
-        navMenu.classList.toggle("active");
-        const burgerMenu = document.querySelector('.burger-menu');
-        burgerMenu.style.display = navMenu.classList.contains('active') ? 'none' : 'block';
-    }
     // Toggle navigation menu visibility on burger menu click
     burgerMenu.addEventListener('click', function () {
         navMenu.classList.toggle('active');
@@ -50,7 +44,6 @@ function toggleNavMenu() {
     const burgerMenu = document.querySelector('.burger-menu');
     burgerMenu.style.display = navMenu.classList.contains('active') ? 'none' : 'block';
 }
-
 
 
 
