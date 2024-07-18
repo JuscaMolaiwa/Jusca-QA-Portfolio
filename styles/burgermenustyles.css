@@ -102,13 +102,6 @@
     /* Slide menu into view when active */
 }
 
-.nav-menu {
-    display: none;
-    /* Initially hide the navigation menu */
-    /* Other styles */
-}
-
-
 .close-button {
     position: absolute;
     top: 10px;
