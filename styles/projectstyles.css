@@ -1,3 +1,38 @@
+/* Project Section Styles */
+.project {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+/* Specific styles for Sasol project */
+.project.sasol {
+    background-color: #e6f7ff;
+    border-left: 4px solid #007acc;
+}
+
+/* Specific styles for Zulzi project */
+.project.zulzi {
+    background-color: #fff5e6;
+    border-left: 4px solid #ffa500;
+}
+
+/* Specific styles for Checkers project */
+.project.checkers {
+    background-color: #f9e6ff;
+    border-left: 4px solid #800080;
+}
+
+.project h3 {
+    margin-top: 0;
+}
+
+.project p {
+    margin-bottom: 5px;
+}
+
+
 /* Projects section styling */
 #projects {
     
