@@ -101,3 +101,21 @@
     display: block; /* Show the navigation menu when active */
     /* Additional styles for animation or positioning */
 }
+
+
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #888;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    line-height: 1;
+}
+
+.close-button:hover {
+    color: #333;
+}
