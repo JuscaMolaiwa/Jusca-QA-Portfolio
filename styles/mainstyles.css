@@ -4,6 +4,14 @@
     padding: 20px;
 }
 
+.profile-photo {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-top: 20px;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     margin: 0;
@@ -17,22 +25,11 @@ body {
     padding-top: 0px;
 }
 
-
-/* Container styling */
-
 header {
     background-color: #4CAF50;
     color: white;
     text-align: center;
     padding: 50px 0;
-}
-
-.profile-photo {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    margin-top: 20px;
 }
 
 h1 {
@@ -58,11 +55,6 @@ a {
     font-weight: 500;
     text-decoration: none;
 }
-
-
-
-
-
 
 /* Call to Action Button Styles */
 .cta-button {
@@ -93,7 +85,6 @@ a {
     /* Add some space between the text and the icon */
 }
 
-
 /* FOOTER */
 footer {
     text-align: center;
@@ -108,7 +99,6 @@ footer {
     font-size: 0.8em;
     padding-bottom: 1px;
 }
-
 
 .sh-back-to-top {
     position: fixed;
@@ -131,7 +121,6 @@ footer {
 .sh-back-to-top:hover {
     background-color: #555;
 }
-
 
 main {
     padding-bottom: 455px;
