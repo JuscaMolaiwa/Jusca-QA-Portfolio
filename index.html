@@ -184,6 +184,14 @@
             </ul>
         </section>
 
+        <section id="automation-demo">
+            <h2>Real-Time Automation Test Demo</h2>
+            <p>Click the button below to run an automated login test on OrangeHRM:</p>
+            <button id="runTestButton">Run OrangeHRM Login Test</button>
+            <p id="result"></p>
+        </section>
+        
+
         <section id="education" class="container">
             <h2>Higher Qualification</h2>
             <div class="education">
@@ -267,6 +275,22 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/bug.js"></script>
     <script src="scripts/burgermenu.js"></script>
+    <script>src="scripts/automation-demos.js"</script>
+    <script>
+        document.getElementById('runTestButton').addEventListener('click', function() {
+            fetch('http://127.0.0.1:5000/run-test', {  
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = data.result;
+            })
+            .catch(error => {
+                document.getElementById('result').innerText = 'Error executing test: ' + error;
+            });
+        });
+    </script>
+    
 </body>
 
 </html>
