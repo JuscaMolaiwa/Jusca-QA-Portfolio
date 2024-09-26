@@ -1,6 +1,16 @@
 document.getElementById('runTestButton').addEventListener('click', function() {
     const statusMessage = document.getElementById("statusMessage");
     const result = document.getElementById("result");
+    const screenshotLink = document.getElementById("screenshotLink");
+    const videoLink = document.getElementById("videoLink");
+    const reportLink = document.getElementById("reportLink");
+
+    // Reset previous result and hide the links
+    result.textContent = "";
+    screenshotLink.style.display = 'none';  
+    videoLink.style.display = 'none';      
+    reportLink.style.display = 'none';   
+ 
 
     // Update the status message
     statusMessage.textContent = "Running test... Please wait...";
@@ -18,17 +28,33 @@ document.getElementById('runTestButton').addEventListener('click', function() {
     .then(data => {
         // Clear the status message
         statusMessage.textContent = "";
+
         // Update the result with the response from the server
         result.innerText = data.result;
 
-        // Optionally, handle screenshots and videos here
-        // You can append links to the result or manage them separately
+
+        // Check if screenshot URL is available, then update the link and show it
+        if (data.screenshot) {
+            screenshotLink.href = `http://127.0.0.1:5000${data.screenshot}`; ;
+            screenshotLink.style.display = 'block';
+        }
+        alert(data.result);  // Display the test result
+
+        // Check if video URL is available, then update the link and show it
+        if (data.video) {
+            videoLink.href = `http://127.0.0.1:5000${data.video}`;
+            videoLink.style.display = 'block';
+        }
+
+        // Check if report URL is available, then update the link and show it
+        if (data.report) {
+            reportLink.href = `http://127.0.0.1:5000${data.report}`;
+            reportLink.style.display = 'block';
+        }
     })
     .catch(error => {
         // Clear the status message and show error
         statusMessage.textContent = "";
-        result.innerText = 'Error executing test: ' + error;
+        result.innerText = 'An error occurred while running the test: ' + error;
     });
 });
-
-

@@ -82,3 +82,7 @@
 2024-09-26 14:47:09,519:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
 2024-09-26 14:47:17,202:INFO:127.0.0.1 - - [26/Sep/2024 14:47:17] "POST /run-test HTTP/1.1" 200 -
 2024-09-26 14:47:29,957:INFO: * Detected change in '/Users/jusca.molaiwa/Desktop/Jusca-QA-Portfolio/automation-demos/web-automation-app.py', reloading
+2024-09-27 00:31:12,894:INFO:====== WebDriver manager ======
+2024-09-27 00:31:13,136:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 00:31:13,581:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 00:31:13,619:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache

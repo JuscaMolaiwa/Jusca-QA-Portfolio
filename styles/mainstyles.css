@@ -126,3 +126,10 @@ main {
     padding-bottom: 455px;
     /* Adjust based on footer height */
 }
+
+
+@media (max-width: 767px) {
+    body {
+        font-size: 14px;
+    }
+}

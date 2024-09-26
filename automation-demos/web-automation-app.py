@@ -1,9 +1,11 @@
 from asyncio import sleep
 import os
+import time
 from flask import Flask, jsonify  # type: ignore
 from selenium import webdriver  # type: ignore
 from selenium.webdriver.common.by import By  # type: ignore
 from flask_cors import CORS  # type: ignore
+from flask import send_from_directory # type: ignore
 from selenium.webdriver.chrome.service import Service  # type: ignore
 from webdriver_manager.chrome import ChromeDriverManager  # type: ignore
 from webdriver_manager.firefox import GeckoDriverManager # type: ignore
@@ -20,12 +22,23 @@ from utilities.video_util import start_video_recording, stop_video_recording
 
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app,resources={r"/run-test": {"origins": "*"}})  # Enable CORS for all routes
+
+# Route to serve screenshots
+@app.route('/screenshots/<path:filename>')
+def serve_screenshot(filename):
+    return send_from_directory(os.path.join(app.root_path, 'screenshots'), filename)
+
+@app.route('/<path:filename>')
+def serve_log(filename):
+    return send_from_directory(os.path.abspath(os.path.dirname(__file__)), filename)
+
 
 @app.route('/run-test', methods=['POST'])
 def run_test():
     driver = None
     result = "Test did not run" 
+    log_file_path = setup_logging()  
   
     try:
         # Set up WebDriver (you can choose between Chrome and Firefox)
@@ -50,20 +63,27 @@ def run_test():
         # Create screenshots directory if it doesn't exist
         if not os.path.exists('screenshots'):
             os.makedirs('screenshots')
+
+        screenshot_path = ""
+
         # Check if login was successful
         if login_page.is_login_successful():
-            result = "Login successful✅🎉!"
+            result = "Login successful ✅ 🎉🎉!"
             print("Taking screenshot for successful login...")
             try:
-                sleep(7)
-                driver.save_screenshot("screenshots/login_test.png")
+                time.sleep(10)
+                screenshot_path = "login_test.png"
+                driver.save_screenshot(os.path.join('screenshots', screenshot_path))
+                print(f"Screenshot saved at: {os.path.join('screenshots', screenshot_path)}")
+
             except Exception as e:
                     print(f"Failed to save screenshot: {e}")
         else:
-            result = "Login failed❌"
+            result = "Login failed ❌"
             print("Taking screenshot for failed login...")
             try:
-                driver.save_screenshot("screenshots/login_failed.png")
+                screenshot_path = "login_failed.png"
+                driver.save_screenshot(os.path.join('screenshots',screenshot_path))
             except Exception as e:
                 print(f"Failed to save screenshot: {e}")
 
@@ -76,10 +96,17 @@ def run_test():
         if driver:
             driver.quit()  
 
-    # Return JSON response with result, screenshot, and video paths
+    # Return JSON response with result and screenshot paths
+    screenshot_url = f'/screenshots/{screenshot_path}'
+    video_url = "/path/to/video"  # Update this to your actual video path
+
     return jsonify({
-        'result': result
-        })
+    'result': result,
+    'screenshot': screenshot_url,
+    'video': video_url,
+    'report': log_file_path,
+    })
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
