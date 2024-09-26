@@ -1,6 +1,7 @@
-from asyncio import sleep
+
 import os
 import time
+
 from flask import Flask, jsonify  # type: ignore
 from selenium import webdriver  # type: ignore
 from selenium.webdriver.common.by import By  # type: ignore
@@ -15,8 +16,10 @@ from selenium.webdriver.firefox.options import Options # type: ignore
 from selenium.webdriver import FirefoxOptions # type: ignore
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities # type: ignore
 
+
 from page_objects.login_page import LoginPage
-from utilities.report_util import setup_logging
+from utilities.logs_util import setup_logging
+from utilities.allure_util import generate_allure_report
 from utilities.video_util import start_video_recording, stop_video_recording
 
 
@@ -29,16 +32,30 @@ CORS(app,resources={r"/run-test": {"origins": "*"}})  # Enable CORS for all rout
 def serve_screenshot(filename):
     return send_from_directory(os.path.join(app.root_path, 'screenshots'), filename)
 
-@app.route('/<path:filename>')
+@app.route('/logs/<path:filename>')
 def serve_log(filename):
-    return send_from_directory(os.path.abspath(os.path.dirname(__file__)), filename)
+    return send_from_directory('automation-logs', filename)
+
+#@app.route('/allure-report')
+#def serve_allure_report():
+   # allure_report_dir = "allure-report"  # Directory to serve the Allure report
+    #if os.path.exists(allure_report_dir):
+        #return send_from_directory(allure_report_dir, 'index.html')
+    #else:
+        #return "Report not generated yet."
+
 
 
 @app.route('/run-test', methods=['POST'])
+#@allure.feature("Login Feature")
+#@allure.story("Successful Valid User Login")
+
 def run_test():
     driver = None
     result = "Test did not run" 
     log_file_path = setup_logging()  
+    #allure_results_dir = "allure-results"  # Directory to store Allure results
+
   
     try:
         # Set up WebDriver (you can choose between Chrome and Firefox)
@@ -94,17 +111,24 @@ def run_test():
     finally:
         # Ensure driver quits if it was created
         if driver:
-            driver.quit()  
+            driver.quit() 
+
+        # Generate Allure report    
+        try:
+            generate_allure_report()
+        except Exception as e:
+            print(f"Failed to generate Allure report: {e}")
 
     # Return JSON response with result and screenshot paths
     screenshot_url = f'/screenshots/{screenshot_path}'
-    video_url = "/path/to/video"  # Update this to your actual video path
+    logs_url = f'/logs/{os.path.basename(log_file_path)}' 
+    #report_url = '/allure-report'
 
     return jsonify({
     'result': result,
     'screenshot': screenshot_url,
-    'video': video_url,
-    'report': log_file_path,
+    'logs': logs_url
+    #'report': report_url
     })
 
 

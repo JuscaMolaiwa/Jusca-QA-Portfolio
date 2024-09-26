@@ -9,7 +9,9 @@ document.getElementById('runTestButton').addEventListener('click', function() {
     result.textContent = "";
     screenshotLink.style.display = 'none';  
     videoLink.style.display = 'none';      
-    reportLink.style.display = 'none';   
+    reportLink.style.display = 'none';
+    logsLink.style.display = 'none';
+
  
 
     // Update the status message
@@ -50,6 +52,12 @@ document.getElementById('runTestButton').addEventListener('click', function() {
         if (data.report) {
             reportLink.href = `http://127.0.0.1:5000${data.report}`;
             reportLink.style.display = 'block';
+        }
+
+        // Check if logs URL is available, then update the link and show it
+        if (data.logs) {
+            logsLink.href = `http://127.0.0.1:5000${data.logs}`;
+            logsLink.style.display = 'block';
         }
     })
     .catch(error => {

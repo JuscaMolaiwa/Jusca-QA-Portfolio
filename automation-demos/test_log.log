@@ -86,3 +86,18 @@
 2024-09-27 00:31:13,136:INFO:Get LATEST geckodriver version for 130.0 firefox
 2024-09-27 00:31:13,581:INFO:Get LATEST geckodriver version for 130.0 firefox
 2024-09-27 00:31:13,619:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 00:31:30,734:INFO:127.0.0.1 - - [27/Sep/2024 00:31:30] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 00:31:34,908:INFO:127.0.0.1 - - [27/Sep/2024 00:31:34] "[33mGET /Users/jusca.molaiwa/Desktop/Jusca-QA-Portfolio/automation-demos/test_log.log HTTP/1.1[0m" 404 -
+2024-09-27 00:32:49,360:INFO: * Detected change in '/Users/jusca.molaiwa/Desktop/Jusca-QA-Portfolio/automation-demos/web-automation-app.py', reloading
+2024-09-27 00:33:15,552:INFO:====== WebDriver manager ======
+2024-09-27 00:33:15,852:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 00:33:16,265:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 00:33:16,300:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 00:33:33,344:INFO:127.0.0.1 - - [27/Sep/2024 00:33:33] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 00:33:49,748:INFO:====== WebDriver manager ======
+2024-09-27 00:33:49,968:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 00:33:50,356:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 00:33:50,391:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 00:34:07,777:INFO:127.0.0.1 - - [27/Sep/2024 00:34:07] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 00:34:11,611:INFO:127.0.0.1 - - [27/Sep/2024 00:34:11] "[33mGET /Users/jusca.molaiwa/Desktop/Jusca-QA-Portfolio/automation-demos/test_log.log HTTP/1.1[0m" 404 -
+2024-09-27 00:35:15,634:INFO: * Detected change in '/Users/jusca.molaiwa/Desktop/Jusca-QA-Portfolio/automation-demos/utilities/report_util.py', reloading
