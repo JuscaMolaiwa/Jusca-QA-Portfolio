@@ -188,7 +188,12 @@
             <h2>Real-Time Automation Test Demo</h2>
             <p>Click the button below to run an automated login test on OrangeHRM:</p>
             <button id="runTestButton">Run OrangeHRM Login Test</button>
+            <p id="statusMessage"></p> <!-- For displaying the running status -->
             <p id="result"></p>
+            <h3>Real-Time Automation Test Report</h3>
+            <a id="screenshotLink" href="#" style="display: none;">View Screenshot</a> <!-- Initially hidden -->
+            <a id="videoLink" href="#" style="display: none;">Watch Video</a> <!-- Initially hidden -->
+            <a id="reportLink" href="#" style="display: none;">View Detailed Report</a> <!-- Initially hidden -->
         </section>
         
 
@@ -275,21 +280,7 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/bug.js"></script>
     <script src="scripts/burgermenu.js"></script>
-    <script>src="scripts/automation-demos.js"</script>
-    <script>
-        document.getElementById('runTestButton').addEventListener('click', function() {
-            fetch('http://127.0.0.1:5000/run-test', {  
-                method: 'POST'
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('result').innerText = data.result;
-            })
-            .catch(error => {
-                document.getElementById('result').innerText = 'Error executing test: ' + error;
-            });
-        });
-    </script>
+    <script src="scripts/automation-demos.js"></script>
     
 </body>
 

@@ -1,20 +1,31 @@
 # Use the official Python image
-FROM python:3.9-slim
+FROM python:3.12-slim
 
-# Update package lists
-RUN apt-get update && apt-get upgrade -y
+# Update package list and install Firefox and required utilities
+RUN apt-get update                             \
+ && apt-get install -y --no-install-recommends \
+    ca-certificates curl firefox-esr           \
+ && rm -fr /var/lib/apt/lists/*                \
+ && curl -L https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux64.tar.gz | tar xz -C /usr/local/bin \
+ && apt-get purge -y ca-certificates curl
 
-# Install dependencies for Firefox (explicitly include libgtk-3-dev)
-RUN apt-get install -y firefox-esr libgtk-3-dev curl
+ RUN apt-get update && apt-get install -y \
+ firefox-esr \
+ libgtk-3-0 \
+ libdbus-glib-1-2 \
+ libxt6 \
+ libxrender1 \
+ libasound2
 
-# Download and install Geckodriver (consider version compatibility)
-RUN curl -L https://github.com/mozilla/geckodriver/releases/download/v0.35.0/geckodriver-v0.35.0-linux64.tar.gz -o geckodriver.tar.gz && \
-    tar -xzf geckodriver.tar.gz && \
-    mv geckodriver /usr/local/bin/ && \
-    chmod +x /usr/local/bin/geckodriver && \
-    rm geckodriver.tar.gz
+ # Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-RUN geckodriver --version
+# Install ffmpeg and other required packages
+RUN apt-get update && \
+    apt-get install -y ffmpeg && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Set the working directory
 WORKDIR /app
@@ -30,6 +41,7 @@ COPY . .
 
 # Expose the port the app runs on
 EXPOSE 5000
+EXPOSE 4444
 
 # Command to run the application
 CMD ["gunicorn", "-b", "0.0.0.0:5000", "web-automation-app:app"]

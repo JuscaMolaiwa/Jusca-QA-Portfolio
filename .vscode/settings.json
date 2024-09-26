@@ -1,23 +1,24 @@
 {
-    "cSpell.words": [
-        "Appium",
-        "Coursera",
-        "CSTE",
-        "Entelect",
-        "FIFA",
-        "ISTQB",
-        "jusca",
-        "Jusca",
-        "Jusca's",
-        "Jusca’s",
-        "MOLAIWA",
-        "Molaiwa's",
-        "navi",
-        "Pluralsight",
-        "Sasol",
-        "sourcery",
-        "strategizing",
-        "Udemy",
-        "Zulzi"
-    ]
+  "cSpell.words": [
+    "Appium",
+    "Coursera",
+    "CSTE",
+    "Entelect",
+    "FIFA",
+    "ISTQB",
+    "jusca",
+    "Jusca",
+    "Jusca's",
+    "Jusca’s",
+    "MOLAIWA",
+    "Molaiwa's",
+    "navi",
+    "Pluralsight",
+    "Sasol",
+    "sourcery",
+    "strategizing",
+    "Udemy",
+    "Zulzi"
+  ],
+  "python.analysis.extraPaths": ["./automation-demos/page_objects"]
 }
