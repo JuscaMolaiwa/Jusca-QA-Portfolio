@@ -11,6 +11,7 @@ document.getElementById('runTestButton').addEventListener('click', function() {
     videoLink.style.display = 'none';      
     reportLink.style.display = 'none';
     logsLink.style.display = 'none';
+    result.classList.remove('success', 'failure'); 
 
  
 
@@ -33,7 +34,16 @@ document.getElementById('runTestButton').addEventListener('click', function() {
 
         // Update the result with the response from the server
         result.innerText = data.result;
+        result.style.display = 'block'; // Show the result message
+         // Clear any previous success or failure classes
+        result.classList.remove('success', 'failure');
 
+         // Apply success or failure class based on the result text
+         if (data.result.includes("successful")) {
+            result.classList.add("success"); // Add success class
+        } else {
+            result.classList.add("failure"); // Add failure class
+        }
 
         // Check if screenshot URL is available, then update the link and show it
         if (data.screenshot) {
@@ -70,5 +80,7 @@ document.getElementById('runTestButton').addEventListener('click', function() {
         // Clear the status message and show error
         statusMessage.textContent = "";
         result.innerText = 'An error occurred while running the test: ' + error;
+        result.classList.add("failure"); // Show as failure
+        result.style.display = 'inline-block'; // Show the error message
     });
 });
