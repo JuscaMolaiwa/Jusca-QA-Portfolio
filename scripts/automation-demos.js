@@ -34,7 +34,7 @@ document.getElementById('runTestButton').addEventListener('click', function() {
 
         // Update the result with the response from the server
         result.innerText = data.result;
-        result.style.display = 'block'; // Show the result message
+        result.style.display = 'inline-block'; // Show the result message
          // Clear any previous success or failure classes
         result.classList.remove('success', 'failure');
 

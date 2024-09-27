@@ -85,7 +85,7 @@ def run_test():
 
         # Check if login was successful
         if login_page.is_login_successful():
-            result = "Login successful ✅ 🎉🎉!"
+            result = "Login successful 🎉🎉!"
             print("Taking screenshot for successful login...")
             try:
                 time.sleep(10)
