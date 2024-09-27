@@ -37,9 +37,15 @@ document.getElementById('runTestButton').addEventListener('click', function() {
 
         // Check if screenshot URL is available, then update the link and show it
         if (data.screenshot) {
-            screenshotLink.href = `http://127.0.0.1:5000${data.screenshot}`; ;
+            // Assume the environment variable DOCKER_ENV is set in Docker but not locally
+            const isDocker = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+
+            const baseUrl = isDocker ? 'http://host.docker.internal:5000' : 'http://127.0.0.1:5000';
+            
+            screenshotLink.href = `${baseUrl}${data.screenshot}`;
             screenshotLink.style.display = 'block';
         }
+
         alert(data.result);  // Display the test result
 
         // Check if video URL is available, then update the link and show it

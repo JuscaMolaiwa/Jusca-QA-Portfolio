@@ -1,3 +1,6 @@
+# Ignore VSCode settings folder
+.vscode/
+
 # Ignore all .log files
 *.log
 automation-demos/test_log.log
