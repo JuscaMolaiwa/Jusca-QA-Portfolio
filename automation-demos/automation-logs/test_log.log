@@ -86,3 +86,39 @@
 2024-09-27 14:31:39,638:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
 2024-09-27 14:31:59,130:INFO:127.0.0.1 - - [27/Sep/2024 14:31:59] "POST /run-test HTTP/1.1" 200 -
 2024-09-27 14:32:02,460:INFO:127.0.0.1 - - [27/Sep/2024 14:32:02] "GET /screenshots/login_test.png HTTP/1.1" 200 -
+2024-09-27 14:35:14,875:INFO:127.0.0.1 - - [27/Sep/2024 14:35:14] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 14:35:14,879:INFO:====== WebDriver manager ======
+2024-09-27 14:35:15,117:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:35:15,446:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:35:15,489:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 14:35:34,697:INFO:127.0.0.1 - - [27/Sep/2024 14:35:34] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 14:35:40,434:INFO:127.0.0.1 - - [27/Sep/2024 14:35:40] "GET /screenshots/login_test.png HTTP/1.1" 200 -
+2024-09-27 14:35:43,671:INFO:127.0.0.1 - - [27/Sep/2024 14:35:43] "GET /logs/test_log.log HTTP/1.1" 200 -
+2024-09-27 14:35:47,729:INFO:127.0.0.1 - - [27/Sep/2024 14:35:47] "GET /logs/test_log.log HTTP/1.1" 200 -
+2024-09-27 14:35:56,634:INFO:127.0.0.1 - - [27/Sep/2024 14:35:56] "[36mGET /screenshots/login_test.png HTTP/1.1[0m" 304 -
+2024-09-27 14:35:59,678:INFO:127.0.0.1 - - [27/Sep/2024 14:35:59] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 14:35:59,679:INFO:====== WebDriver manager ======
+2024-09-27 14:35:59,861:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:36:01,206:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:36:01,240:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 14:36:18,818:INFO:127.0.0.1 - - [27/Sep/2024 14:36:18] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 14:36:27,113:INFO:127.0.0.1 - - [27/Sep/2024 14:36:27] "GET /screenshots/login_test.png HTTP/1.1" 200 -
+2024-09-27 14:36:43,452:INFO:127.0.0.1 - - [27/Sep/2024 14:36:43] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 14:36:43,457:INFO:====== WebDriver manager ======
+2024-09-27 14:36:43,699:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:36:43,728:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:36:43,753:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 14:37:01,112:INFO:127.0.0.1 - - [27/Sep/2024 14:37:01] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 14:37:04,643:INFO:127.0.0.1 - - [27/Sep/2024 14:37:04] "GET /screenshots/login_test.png HTTP/1.1" 200 -
+2024-09-27 14:41:17,108:INFO:====== WebDriver manager ======
+2024-09-27 14:41:17,358:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:41:17,723:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:41:17,754:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 14:41:35,430:INFO:127.0.0.1 - - [27/Sep/2024 14:41:35] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 14:41:59,161:INFO:127.0.0.1 - - [27/Sep/2024 14:41:59] "GET /logs/test_log.log HTTP/1.1" 200 -
+2024-09-27 14:41:59,370:INFO:127.0.0.1 - - [27/Sep/2024 14:41:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-09-27 14:43:55,960:INFO:127.0.0.1 - - [27/Sep/2024 14:43:55] "GET /logs/test_log.log HTTP/1.1" 200 -
+2024-09-27 14:50:33,904:INFO:====== WebDriver manager ======
+2024-09-27 14:50:34,265:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:50:34,713:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:50:34,751:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
