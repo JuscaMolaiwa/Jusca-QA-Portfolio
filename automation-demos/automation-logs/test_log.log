@@ -67,3 +67,22 @@
 2024-09-27 14:07:52,710:INFO:Get LATEST geckodriver version for 130.0 firefox
 2024-09-27 14:07:52,835:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
 2024-09-27 14:08:15,295:INFO:127.0.0.1 - - [27/Sep/2024 14:08:15] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 14:26:09,976:INFO:127.0.0.1 - - [27/Sep/2024 14:26:09] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 14:26:09,978:INFO:====== WebDriver manager ======
+2024-09-27 14:26:10,203:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:26:10,527:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:26:10,563:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 14:26:29,194:INFO:127.0.0.1 - - [27/Sep/2024 14:26:29] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 14:28:24,984:INFO:====== WebDriver manager ======
+2024-09-27 14:28:25,366:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:28:25,803:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:28:25,830:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 14:28:43,923:INFO:127.0.0.1 - - [27/Sep/2024 14:28:43] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 14:29:01,251:INFO:127.0.0.1 - - [27/Sep/2024 14:29:01] "GET /screenshots/login_test.png HTTP/1.1" 200 -
+2024-09-27 14:31:38,974:INFO:127.0.0.1 - - [27/Sep/2024 14:31:38] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 14:31:38,976:INFO:====== WebDriver manager ======
+2024-09-27 14:31:39,171:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:31:39,524:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 14:31:39,638:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 14:31:59,130:INFO:127.0.0.1 - - [27/Sep/2024 14:31:59] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 14:32:02,460:INFO:127.0.0.1 - - [27/Sep/2024 14:32:02] "GET /screenshots/login_test.png HTTP/1.1" 200 -
