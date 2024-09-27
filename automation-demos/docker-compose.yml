@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "5000"
+      - "80:80"    # Expose ports 5000 and 80 (port 80 inside the container maps to port 80 outside)
+  
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"  # Expose port 8080 on the host, which forwards to port 80 in the nginx container
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro  # Mount local nginx.conf to the container
+    depends_on:
+      - app  # Ensure app service starts before nginx

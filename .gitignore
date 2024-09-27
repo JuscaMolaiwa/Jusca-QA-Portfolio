@@ -1,0 +1,23 @@
+# Ignore all .log files
+*.log
+automation-demos/test_log.log
+
+# Ignore build directories
+/build/
+/dist/
+/node_modules/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore Allure results and reports
+allure-results/
+allure-report/
+automation-demos/allure-report
+automation-demos/allure-results
+
+# Ignore Python virtual environment
+.env
+.venv/
+
