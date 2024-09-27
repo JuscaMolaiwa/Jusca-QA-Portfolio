@@ -11,6 +11,7 @@ document.getElementById('runTestButton').addEventListener('click', function() {
     videoLink.style.display = 'none';      
     reportLink.style.display = 'none';
     logsLink.style.display = 'none';
+    result.classList.remove('success', 'failure'); 
 
  
 
@@ -34,6 +35,8 @@ document.getElementById('runTestButton').addEventListener('click', function() {
         // Update the result with the response from the server
         result.innerText = data.result;
         result.style.display = 'block'; // Show the result message
+         // Clear any previous success or failure classes
+        result.classList.remove('success', 'failure');
 
          // Apply success or failure class based on the result text
          if (data.result.includes("successful")) {

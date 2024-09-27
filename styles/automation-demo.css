@@ -81,6 +81,7 @@
     margin-top: 10px; /* Space above the result message */
     display: inline-block; /* Ensures the background only covers the text */
     text-decoration: none; /* No underline */
+    white-space: nowrap; /* Prevents text wrapping */
 }
 
 @media (max-width: 600px) {
