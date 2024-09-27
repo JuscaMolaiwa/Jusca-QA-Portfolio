@@ -345,3 +345,49 @@
 2024-09-27 15:53:36,267:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
 2024-09-27 15:53:53,558:INFO:127.0.0.1 - - [27/Sep/2024 15:53:53] "POST /run-test HTTP/1.1" 200 -
 2024-09-27 15:54:13,500:INFO: * Detected change in '/Users/jusca.molaiwa/Desktop/Jusca-QA-Portfolio/automation-demos/web-automation-app.py', reloading
+2024-09-27 15:55:09,727:INFO:====== WebDriver manager ======
+2024-09-27 15:55:10,001:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:55:10,331:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:55:10,374:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:55:28,127:INFO:127.0.0.1 - - [27/Sep/2024 15:55:28] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:55:56,275:INFO:127.0.0.1 - - [27/Sep/2024 15:55:56] "GET /logs/test_log.log HTTP/1.1" 200 -
+2024-09-27 15:55:56,490:INFO:127.0.0.1 - - [27/Sep/2024 15:55:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-09-27 15:56:04,529:INFO:127.0.0.1 - - [27/Sep/2024 15:56:04] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 15:56:04,532:INFO:====== WebDriver manager ======
+2024-09-27 15:56:04,784:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:56:05,130:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:56:05,176:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:56:22,760:INFO:127.0.0.1 - - [27/Sep/2024 15:56:22] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:57:20,270:INFO:127.0.0.1 - - [27/Sep/2024 15:57:20] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 15:57:20,275:INFO:====== WebDriver manager ======
+2024-09-27 15:57:20,598:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:57:21,001:INFO:127.0.0.1 - - [27/Sep/2024 15:57:21] "[35m[1mPOST /run-test HTTP/1.1[0m" 500 -
+2024-09-27 15:57:27,727:INFO:127.0.0.1 - - [27/Sep/2024 15:57:27] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 15:57:27,732:INFO:====== WebDriver manager ======
+2024-09-27 15:57:27,945:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:57:28,338:INFO:127.0.0.1 - - [27/Sep/2024 15:57:28] "[35m[1mPOST /run-test HTTP/1.1[0m" 500 -
+2024-09-27 15:57:36,896:INFO:127.0.0.1 - - [27/Sep/2024 15:57:36] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 15:57:36,900:INFO:====== WebDriver manager ======
+2024-09-27 15:57:37,135:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:57:37,530:INFO:127.0.0.1 - - [27/Sep/2024 15:57:37] "[35m[1mPOST /run-test HTTP/1.1[0m" 500 -
+2024-09-27 15:57:49,660:INFO:127.0.0.1 - - [27/Sep/2024 15:57:49] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 15:57:49,663:INFO:====== WebDriver manager ======
+2024-09-27 15:57:49,857:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:57:50,215:INFO:127.0.0.1 - - [27/Sep/2024 15:57:50] "[35m[1mPOST /run-test HTTP/1.1[0m" 500 -
+2024-09-27 15:57:51,207:INFO:====== WebDriver manager ======
+2024-09-27 15:57:51,432:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:57:51,793:INFO:127.0.0.1 - - [27/Sep/2024 15:57:51] "[35m[1mPOST /run-test HTTP/1.1[0m" 500 -
+2024-09-27 15:58:01,067:INFO:127.0.0.1 - - [27/Sep/2024 15:58:01] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 15:58:01,069:INFO:====== WebDriver manager ======
+2024-09-27 15:58:01,284:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:58:01,671:INFO:127.0.0.1 - - [27/Sep/2024 15:58:01] "[35m[1mPOST /run-test HTTP/1.1[0m" 500 -
+2024-09-27 15:58:29,018:INFO:127.0.0.1 - - [27/Sep/2024 15:58:29] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 15:58:29,023:INFO:====== WebDriver manager ======
+2024-09-27 15:58:29,271:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:58:29,788:INFO:127.0.0.1 - - [27/Sep/2024 15:58:29] "[35m[1mPOST /run-test HTTP/1.1[0m" 500 -
+2024-09-27 15:58:31,204:INFO:====== WebDriver manager ======
+2024-09-27 15:58:31,416:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:58:31,796:INFO:127.0.0.1 - - [27/Sep/2024 15:58:31] "[35m[1mPOST /run-test HTTP/1.1[0m" 500 -
+2024-09-27 15:58:32,777:INFO:====== WebDriver manager ======
+2024-09-27 15:58:32,985:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:58:33,358:INFO:127.0.0.1 - - [27/Sep/2024 15:58:33] "[35m[1mPOST /run-test HTTP/1.1[0m" 500 -
