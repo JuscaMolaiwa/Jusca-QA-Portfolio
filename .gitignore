@@ -1,5 +1,6 @@
 # Ignore all .log files
 *.log
+automation-demos/test_log.log
 
 # Ignore build directories
 /build/
@@ -16,8 +17,7 @@ allure-report/
 automation-demos/allure-report
 automation-demos/allure-results
 
-# Ignore environment variables
-.env
 # Ignore Python virtual environment
+.env
 .venv/
 
