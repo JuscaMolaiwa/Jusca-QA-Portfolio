@@ -10,5 +10,11 @@
 .DS_Store
 Thumbs.db
 
+# Ignore Allure results and reports
+allure-results/
+allure-report/
+automation-demos/allure-report
+automation-demos/allure-results
+
 # Ignore environment variables
 .env
