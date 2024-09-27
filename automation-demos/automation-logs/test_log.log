@@ -254,3 +254,94 @@
 2024-09-27 15:34:09,311:INFO:Get LATEST geckodriver version for 130.0 firefox
 2024-09-27 15:34:09,713:INFO:Get LATEST geckodriver version for 130.0 firefox
 2024-09-27 15:34:09,742:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:34:27,337:INFO:127.0.0.1 - - [27/Sep/2024 15:34:27] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:35:00,951:INFO:127.0.0.1 - - [27/Sep/2024 15:35:00] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 15:35:00,955:INFO:====== WebDriver manager ======
+2024-09-27 15:35:01,194:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:35:01,503:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:35:01,528:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:35:22,847:INFO:127.0.0.1 - - [27/Sep/2024 15:35:22] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:36:05,847:INFO:====== WebDriver manager ======
+2024-09-27 15:36:06,051:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:36:06,383:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:36:06,418:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:36:24,293:INFO:127.0.0.1 - - [27/Sep/2024 15:36:24] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:36:45,733:INFO:====== WebDriver manager ======
+2024-09-27 15:36:45,972:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:36:46,288:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:36:46,330:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:36:46,847:INFO:====== WebDriver manager ======
+2024-09-27 15:36:47,042:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:36:47,088:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:36:47,111:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:37:03,907:INFO:127.0.0.1 - - [27/Sep/2024 15:37:03] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:37:04,883:INFO:127.0.0.1 - - [27/Sep/2024 15:37:04] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:38:24,082:INFO:====== WebDriver manager ======
+2024-09-27 15:38:24,349:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:38:24,685:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:38:24,712:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:38:42,532:INFO:127.0.0.1 - - [27/Sep/2024 15:38:42] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:38:52,411:INFO:====== WebDriver manager ======
+2024-09-27 15:38:52,656:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:38:52,964:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:38:52,996:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:38:55,667:INFO:127.0.0.1 - - [27/Sep/2024 15:38:55] "OPTIONS /run-test HTTP/1.1" 200 -
+2024-09-27 15:38:55,669:INFO:====== WebDriver manager ======
+2024-09-27 15:38:55,857:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:38:55,919:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:38:55,941:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:39:11,049:INFO:127.0.0.1 - - [27/Sep/2024 15:39:11] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:39:13,739:INFO:127.0.0.1 - - [27/Sep/2024 15:39:13] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:41:07,182:INFO:====== WebDriver manager ======
+2024-09-27 15:41:07,423:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:41:07,741:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:41:07,783:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:41:25,205:INFO:127.0.0.1 - - [27/Sep/2024 15:41:25] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:41:29,301:INFO:127.0.0.1 - - [27/Sep/2024 15:41:29] "GET /logs/test_log.log HTTP/1.1" 200 -
+2024-09-27 15:41:29,520:INFO:127.0.0.1 - - [27/Sep/2024 15:41:29] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-09-27 15:44:17,822:INFO:====== WebDriver manager ======
+2024-09-27 15:44:18,097:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:44:18,414:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:44:18,447:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:44:36,501:INFO:127.0.0.1 - - [27/Sep/2024 15:44:36] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:45:01,033:INFO:====== WebDriver manager ======
+2024-09-27 15:45:01,302:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:45:01,620:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:45:01,648:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:45:20,234:INFO:127.0.0.1 - - [27/Sep/2024 15:45:20] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:46:12,652:INFO:====== WebDriver manager ======
+2024-09-27 15:46:12,936:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:46:13,273:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:46:13,315:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:46:31,137:INFO:127.0.0.1 - - [27/Sep/2024 15:46:31] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:48:01,373:INFO:====== WebDriver manager ======
+2024-09-27 15:48:01,619:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:48:01,958:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:48:01,995:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:48:19,932:INFO:127.0.0.1 - - [27/Sep/2024 15:48:19] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:49:45,058:INFO:====== WebDriver manager ======
+2024-09-27 15:49:45,325:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:49:45,747:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:49:45,780:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:50:03,226:INFO:127.0.0.1 - - [27/Sep/2024 15:50:03] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:50:42,368:INFO:====== WebDriver manager ======
+2024-09-27 15:50:42,598:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:50:42,907:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:50:42,937:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:51:00,768:INFO:127.0.0.1 - - [27/Sep/2024 15:51:00] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:51:29,787:INFO:====== WebDriver manager ======
+2024-09-27 15:51:30,020:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:51:30,361:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:51:30,409:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:51:48,399:INFO:127.0.0.1 - - [27/Sep/2024 15:51:48] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:52:51,487:INFO:====== WebDriver manager ======
+2024-09-27 15:52:51,752:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:52:52,068:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:52:52,112:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:53:10,430:INFO:127.0.0.1 - - [27/Sep/2024 15:53:10] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:53:35,678:INFO:====== WebDriver manager ======
+2024-09-27 15:53:35,910:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:53:36,237:INFO:Get LATEST geckodriver version for 130.0 firefox
+2024-09-27 15:53:36,267:INFO:Driver [/Users/jusca.molaiwa/.wdm/drivers/geckodriver/mac64/v0.35.0/geckodriver] found in cache
+2024-09-27 15:53:53,558:INFO:127.0.0.1 - - [27/Sep/2024 15:53:53] "POST /run-test HTTP/1.1" 200 -
+2024-09-27 15:54:13,500:INFO: * Detected change in '/Users/jusca.molaiwa/Desktop/Jusca-QA-Portfolio/automation-demos/web-automation-app.py', reloading
