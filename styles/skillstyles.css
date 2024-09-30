@@ -50,6 +50,14 @@
     /* Medium gray color for skill text */
 }
 
+#skills:hover {
+    transform: translateY(-2px); /* Slight lift on hover for modern feel */
+}
+
+#skills {
+    transition: transform 0.5s ease; 
+}
+
 @media (max-width: 767px) {
     body {
         font-size: 14px;

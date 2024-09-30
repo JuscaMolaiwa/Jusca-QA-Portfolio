@@ -17,6 +17,15 @@
     /* Add spacing between sections */
 }
 
+#education:hover {
+    transform: translateY(-2px); /* Slight lift on hover for modern feel */
+}
+
+#education {
+    transition: transform 0.5s ease; 
+}
+
+
 #education h2 {
     font-size: 2.5em;
     margin-bottom: 20px;

@@ -13,16 +13,40 @@
     border-left: 4px solid #007acc;
 }
 
+.project.sasol:hover {
+    transform: translateY(-2px); /* Slight lift on hover for modern feel */
+}
+
+.project.sasol {
+    transition: transform 0.5s ease; 
+}
+
 /* Specific styles for Zulzi project */
 .project.zulzi {
     background-color: #fff5e6;
     border-left: 4px solid #ffa500;
 }
 
+.project.zulzi {
+    transition: transform 0.5s ease; 
+}
+
+.project.zulzi:hover {
+    transform: translateY(-2px); /* Slight lift on hover for modern feel */
+}
+
 /* Specific styles for Checkers project */
 .project.checkers {
     background-color: #f9e6ff;
     border-left: 4px solid #800080;
+}
+
+.project.checkers {
+    transition: transform 0.5s ease; 
+}
+
+.project.checkers:hover {
+    transform: translateY(-2px); /* Slight lift on hover for modern feel */
 }
 
 .project h3 {
@@ -36,7 +60,6 @@
 
 /* Projects section styling */
 #projects {
-    
     color: #fff; /* White text for readability */
     padding: 40px;
     border-radius: 8px;
