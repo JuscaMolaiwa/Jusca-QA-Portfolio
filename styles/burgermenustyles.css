@@ -55,7 +55,7 @@
     /* Adjust width as needed */
 
     padding: 40px; /* Adjust window pane as needed */
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; 
     height: 100%;
     /* Take full height of the viewport */
     overflow-y: auto;

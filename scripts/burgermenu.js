@@ -46,3 +46,4 @@ function toggleNavMenu() {
     burgerMenu.style.display = navMenu.classList.contains('active') ? 'none' : 'block';
 }
 
+
