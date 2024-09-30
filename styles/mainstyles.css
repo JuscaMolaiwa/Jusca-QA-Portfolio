@@ -139,10 +139,9 @@ footer {
 }
 
 main {
-    padding-bottom: 455px;
+    padding-bottom: 100px;
     /* Adjust based on footer height */
 }
-
 
 @media (max-width: 767px) {
     body {

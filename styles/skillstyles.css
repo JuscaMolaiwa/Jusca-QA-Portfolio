@@ -50,7 +50,7 @@
     /* Medium gray color for skill text */
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
     body {
         font-size: 14px;
     }
