@@ -25,7 +25,11 @@ from utilities.video_util import start_video_recording, stop_video_recording
 
 
 app = Flask(__name__)
-CORS(app,resources={r"/run-test": {"origins": "*"}})  # Enable CORS for all routes
+# Enable CORS for specific routes and origins
+CORS(app, resources={
+    r"/run-test": {"origins": "*"},  # Wildcard origin for /run-test
+    r"/*": {"origins": "https://juscaqaportfolio.netlify.app/"}  # Specific origin for all other routes
+})
 
 # Route to serve screenshots
 @app.route('/screenshots/<path:filename>')
