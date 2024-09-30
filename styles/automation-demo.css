@@ -83,10 +83,10 @@
     display: inline-block; /* Ensures the background only covers the text */
     text-decoration: none; /* No underline */
     padding: 5px; /* Adjust padding for better spacing */
-    white-space: nowrap; /* Prevents text wrapping */
+    word-wrap: break-word; /* Prevent long URLs from overflowing */
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
     body {
         font-size: 14px;
     }
