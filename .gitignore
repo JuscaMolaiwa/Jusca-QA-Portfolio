@@ -11,7 +11,12 @@ __pycache__/
 
 # Ignore all .log files
 *.log
-automation-demos/test_log.log
+automation-demos/automation-logs/*
+automation-demos/automation-logs/
+
+automation-demos/screenshots/*
+automation-demos/screenshots/
+
 
 # Ignore build directories
 /build/
