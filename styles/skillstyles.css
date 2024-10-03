@@ -37,9 +37,15 @@
     margin-bottom: 5px; /* Spacing between items */
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .skills {
         flex-direction: column; /* Stack categories on mobile */
-        align-items: center; /* Center items */
+        align-items: stretch; /* Make items stretch to the full width */
+    }
+
+    .skills-category {
+        flex: 1 1 100%; /* Make each category take full width */
+        margin: 10px 0; /* Add vertical margin between categories */
     }
 }
+
