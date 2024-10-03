@@ -1,30 +1,33 @@
-document.getElementById('runTestButton').addEventListener('click', function() {
-    const statusMessage = document.getElementById("statusMessage");
-    const result = document.getElementById("result");
-    const screenshotLink = document.getElementById("screenshotLink");
-    const videoLink = document.getElementById("videoLink");
-    const reportLink = document.getElementById("reportLink");
+document.getElementById('runLoginTestButton').addEventListener('click', function() {
+    const statusMessage = document.getElementById("loginStatusMessage");
+    const result = document.getElementById("loginResult");
+    const screenshotLink = document.getElementById("loginScreenshotLink");
+    const videoLink = document.getElementById("loginVideoLink");
+    const reportLink = document.getElementById("loginReportLink");
+    const logsLink = document.getElementById("loginLogsLink");
+    const reportSection = document.getElementById("loginReportSection");
 
     // Reset previous result and hide the links
     result.textContent = "";
-    screenshotLink.style.display = 'none';  
-    videoLink.style.display = 'none';      
+    screenshotLink.style.display = 'none';
+    videoLink.style.display = 'none';
     reportLink.style.display = 'none';
     logsLink.style.display = 'none';
-    result.classList.remove('success', 'failure'); 
+    result.classList.remove('success', 'failure');
 
- 
+    // Check if the button is already disabled
+    this.disabled = true;
 
     // Update the status message
     statusMessage.textContent = "Running test... Please wait...";
 
     // Make the fetch request to run the test
-    fetch('http://127.0.0.1:5000/run-test', {  
+    fetch('https://jusca.pythonanywhere.com/run-login-test', {
         method: 'POST'
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error("Network response was not ok");
+            throw new Error(response.statusText);
         }
         return response.json();
     })
@@ -45,31 +48,44 @@ document.getElementById('runTestButton').addEventListener('click', function() {
             result.classList.add("failure"); // Add failure class
         }
 
+        // Initialize a flag to track if any links are shown
+        let hasLinks = false;
+
         // Check if screenshot URL is available, then update the link and show it
         if (data.screenshot) {
-            screenshotLink.href = `http://127.0.0.1:5000${data.screenshot}`;
+            screenshotLink.href = `https://jusca.pythonanywhere.com${data.screenshot}`;
             screenshotLink.style.display = 'block';
+            hasLinks = true; // Set the flag to true
         }
-
-        alert(data.result);  // Display the test result
 
         // Check if video URL is available, then update the link and show it
         if (data.video) {
-            videoLink.href = `http://127.0.0.1:5000${data.video}`;
+            videoLink.href = `https://jusca.pythonanywhere.com${data.video}`;
             videoLink.style.display = 'block';
+            hasLinks = true; // Set the flag to true
         }
 
         // Check if report URL is available, then update the link and show it
         if (data.report) {
-            reportLink.href = `http://127.0.0.1:5000${data.report}`;
+            reportLink.href = `https://jusca.pythonanywhere.com${data.report}`;
             reportLink.style.display = 'block';
+            hasLinks = true; // Set the flag to true
         }
 
         // Check if logs URL is available, then update the link and show it
         if (data.logs) {
-            logsLink.href = `http://127.0.0.1:5000${data.logs}`;
+            logsLink.href = `https://jusca.pythonanywhere.com${data.logs}`;
             logsLink.style.display = 'block';
+            hasLinks = true; // Set the flag to true
         }
+
+        // Show the report section if any link is available
+        reportSection.style.display = hasLinks ? 'block' : 'none';
+
+        alert(data.result);  // Display the test result
+
+        // Re-enable the button after result is shown
+        this.disabled = false;
     })
     .catch(error => {
         // Clear the status message and show error
@@ -77,5 +93,7 @@ document.getElementById('runTestButton').addEventListener('click', function() {
         result.innerText = 'An error occurred while running the test: ' + error;
         result.classList.add("failure"); // Show as failure
         result.style.display = 'inline-block'; // Show the error message
+        // Re-enable the button after result is shown
+        this.disabled = false;
     });
 });

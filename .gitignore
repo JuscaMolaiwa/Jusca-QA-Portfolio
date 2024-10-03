@@ -1,6 +1,14 @@
 # Ignore VSCode settings folder
 .vscode/
 
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+.DS_Store
+.pytest_cache/
+
 # Ignore all .log files
 *.log
 automation-demos/test_log.log
