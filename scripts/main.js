@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
             case 'projects':
                 nav.style.backgroundColor = 'cream-white'; // Color for 'Projects' section
                 break;
-            case 'skills':
+            case 'automation-demo':
                 nav.style.backgroundColor = '#BBB'; // Color for 'Skills' section
                 break;
             case 'education':
