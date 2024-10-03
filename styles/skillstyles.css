@@ -1,65 +1,45 @@
 #skills {
-    background-color: #f9f9f9;
-    /* Light background color */
-    color: #333;
-    /* Dark text color for readability */
+    background-color: #f9f9f9; /* Light background color */
+    color: #333; /* Dark text color for readability */
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    margin-top: 20px;
-    /* Add spacing between sections */
+    margin-top: 20px; /* Spacing between sections */
 }
 
 .skills {
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: #333;
-    /* Dark text for readability */
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: space-between; /* Space between columns */
 }
 
-.skills h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+.skills-category {
+    flex: 1; /* Allow each category to take equal space */
+    min-width: 220px; /* Minimum width for responsive design */
+    margin: 10px; /* Add margin between categories */
+    padding: 20px; /* Padding inside each category */
+    border-radius: 8px; /* Round corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
 }
 
-.skills ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.skills-category strong {
+    display: block; /* Make strong text block-level */
+    margin-bottom: 10px; /* Spacing below */
 }
 
-.skills li strong {
-    display: block;
-    margin-bottom: 10px;
-    /* Adjust spacing as needed */
-    border-bottom: 1px solid #ddd;
-    /* Thin separator line */
-    padding-bottom: 5px;
-    /* Adjust padding as needed */
+.skills-category ul {
+    list-style: none; /* Remove bullets */
+    padding: 0; /* No padding */
+    margin: 0; /* No margin */
 }
 
-.skills li {
-    margin-bottom: 15px;
-    /* Spacing between skill items */
-}
-
-.skills li ul li {
-    color: #555;
-    /* Medium gray color for skill text */
-}
-
-#skills:hover {
-    transform: translateY(-2px); /* Slight lift on hover for modern feel */
-}
-
-#skills {
-    transition: transform 0.5s ease; 
+.skills-category li {
+    margin-bottom: 5px; /* Spacing between items */
 }
 
 @media (max-width: 767px) {
-    body {
-        font-size: 14px;
+    .skills {
+        flex-direction: column; /* Stack categories on mobile */
+        align-items: center; /* Center items */
     }
 }
