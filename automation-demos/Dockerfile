@@ -44,4 +44,4 @@ EXPOSE 5000
 EXPOSE 4444
 
 # Command to run the application
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "web-automation-app:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "web_automation_app:app"]

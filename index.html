@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="styles/skillstyles.css">
     <link rel="stylesheet" href="styles/educationstyles.css">
     <link rel="stylesheet" href="styles/automation-demo.css">
+    <link rel="stylesheet" href="styles/feedbackform.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
@@ -110,9 +111,9 @@
         <section id="resume" class="container">
             <h2>Resume</h2>
             <div class="resume-links">
-                <a href="projects/assets/Copy of JUSCA MOLAIWA UPDATED LATEST CV.docx.pdf" target="_blank">View My
+                <a href="projects/assets/Copy of JUSCA MOLAIWA UPDATED LATEST CV.pdf" target="_blank">View My
                     Resume</a>
-                <a href="projects/assets/Copy of JUSCA MOLAIWA UPDATED LATEST CV.docx.pdf" download>Download
+                <a href="projects/assets/Copy of JUSCA MOLAIWA UPDATED LATEST CV.pdf" download>Download
                     My Resume</a>
             </div>
         </section>
@@ -159,8 +160,8 @@
                         complemented by API automation for integration testing.</li>
                 </ul>
             </div>
-        </section>
 
+        </section>
         <section id="skills" class="container">
             <h2>Skills</h2>
             <ul>
@@ -187,18 +188,59 @@
 
         <section id="automation-demo">
             <h2>Real-Time Automation Test Demo</h2>
-            <p>Click the button below to run an automated login test on OrangeHRM:</p>
-            <button id="runTestButton">Run OrangeHRM Login Test</button>
-            <p id="statusMessage"></p> <!-- For displaying the running status -->
-            <p id="result"></p>
-            
-            <h3>Real-Time Automation Test Report</h3>
-            <a id="screenshotLink" href="#" style="display:none;" target="_blank">View Screenshot</a>
-            <a id="videoLink" href="#" style="display: none;"  target="_blank">Watch Video</a> <!-- Initially hidden -->
-            <a id="logsLink" href="#" style="display: none;"  target="_blank">View Execution Logs</a> <!-- Initially hidden -->
-            <a id="reportLink" href="#" style="display: none;"  target="_blank">View Detailed Report</a> <!-- Initially hidden -->
+
+            <p>Click the button below to run an automated login test on saucedemo</p>
+            <button id="runLoginTestButton">Run Saucedemo Login Test</button>
+            <p id="loginStatusMessage"></p> <!-- For displaying the running status -->
+            <p id="loginResult"></p>
+
+            <h3 id="loginReportSection" style="display: none;">Real-Time Automation Login Test Report</h3>
+            <a id="loginScreenshotLink" href="#" style="display:none;" target="_blank">View Screenshot</a>
+            <a id="loginVideoLink" href="#" style="display: none;" target="_blank">Watch Video</a> <!-- Initially hidden -->
+            <a id="loginLogsLink" href="#" style="display: none;" target="_blank">View Execution Logs</a> <!-- Initially hidden -->
+            <a id="loginReportLink" href="#" style="display: none;" target="_blank">View Detailed Report</a> <!-- Initially hidden -->
+
+            <!-- Add spacing here -->
+            <hr class="divider">
+
+            <p>Click the button below to run an automated place order test on saucedemo</p>
+            <button id="placeOrderButton">Run Saucedemo Place Order Test</button>
+            <p id="orderStatusMessage"></p> <!-- For displaying the running status -->
+            <p id="orderResult"></p>
+
+            <h3 id="orderReportSection" style="display: none;">Real-Time Automation Place Order Test Report</h3>
+            <a id="orderScreenshotLink" href="#" style="display:none;" target="_blank">View Screenshot</a>
+            <a id="orderVideoLink" href="#" style="display: none;" target="_blank">Watch Video</a> <!-- Initially hidden -->
+            <a id="orderLogsLink" href="#" style="display: none;" target="_blank">View Execution Logs</a> <!-- Initially hidden -->
+            <a id="orderReportLink" href="#" style="display: none;" target="_blank">View Detailed Report</a> <!-- Initially hidden -->
+
+            <!-- Add spacing here -->
+            <hr class="divider">
+
+            <!-- Feedback prompt section -->
+            <div id="feedbackPrompt">
+                <h4>Feedback Form</h4>
+                <p>Click the button below to give feedback regarding the automated login test on Saucedemo</p>
+                <button id="feedbackButton">Give feedback</button>
+            </div>
+
+            <!-- Feedback form initially hidden -->
+            <form id="feedbackForm" method="POST" action="/submit-feedback" style="display: none;">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter Name" required minlength="3" maxlength="30">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter email" required>
+
+                <label for="message">Feedback:</label>
+                <textarea id="message" name="message" placeholder="Enter message" required minlength="10"></textarea>
+
+                <button type="submit">Submit Feedback</button>
+                <button type="button" id="closeFeedbackForm">Close</button> <!-- Close button -->
+            </form>
+
+            <p id="feedbackStatusMessage" style="display: none;"></p> <!-- Element to display feedback status -->
         </section>
-        
 
         <section id="education" class="container">
             <h2>Higher Qualification</h2>
@@ -215,48 +257,48 @@
                     <li>
                         Software Engineering Program | ALX | In Progress
                         <a href="projects/assets/Transcript - 459629 - Jusca Molaiwa.pdf" target="_blank">View PDF Certificate</a>
-                    </li> 
+                    </li>
 
                     <li>
                         ISTQB Foundation Level (CTFL) V4.0 updated 2024 | ASTQB | August 2024
                         <a href="projects/assets/2024-08-15_CTFL_Jusca Molaiwa_Pass.pdf" target="_blank">View PDF Certificate</a>
                     </li>
-                    
+
                     <li>
                         ISTQB Foundation Level (CTFL) V4.0 updated 2024 | Udemy Alumni | July 2024
                         <a href="https://www.udemy.com/certificate/UC-fd0eae3e-8a00-42ae-abea-1c1c054092b1/" target="_blank">View Certificate</a>
                     </li>
-                    
+
                     <li>
                         DevOps, CI/CD(Continuous Integration/Delivery for Beginners) | Udemy Alumni | February 2023
                         <a href="https://www.udemy.com/certificate/UC-00a397aa-5db4-4db3-abc2-bf358210eefd/" target="_blank">View Certificate</a>
                     </li>
-                    
+
                     <li>
                         Continuous Integration and Continuous Delivery (CI/CD) | Udemy Alumni | February 2023
                         <a href="https://www.coursera.org/account/accomplishments/certificate/N2ZUTBVSCUYY" target="_blank">View Certificate</a>
                     </li>
-                    
+
                     <li>
                         Core Python 3 | Pluralsight | October 2022
                         <a href="https://app.pluralsight.com/learner/user/courses/v2/34f42219-eafe-438a-832b-2d8ff8875a15/certificate" target="_blank">View Certificate</a>
                     </li>
-                    
+
                     <li>
                         Google IT Automation with Python Specialization | Coursera | October 2022
                         <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/XQXN8XLMGEZ7" target="_blank">View Certificate</a>
                     </li>
-                    
+
                     <li>
                         Appium - Mobile Testing (Android/IOS) | Udemy Alumni | July 2021
                         <a href="https://www.udemy.com/certificate/UC-95b96c62-45be-455e-accd-5817777dadf9/" target="_blank">View Certificate</a>
                     </li>
-                    
+
                     <li>
                         Python Programming | Udemy Alumni | June 2021
                         <a href="https://www.udemy.com/certificate/UC-cbf64105-ea51-496a-92ee-1a524bd3b909/" target="_blank">View Certificate</a>
                     </li>
-                     
+
                 </ul>
             </div>
         </section>
@@ -284,7 +326,9 @@
     <script src="scripts/bug.js"></script>
     <script src="scripts/burgermenu.js"></script>
     <script src="scripts/automation-demos.js"></script>
-    
+    <script src="scripts/form.js"></script>
+    <script src="scripts/automation-demo-place-order.js"></script>
+
 </body>
 
 </html>
