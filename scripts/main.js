@@ -57,6 +57,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const bugHunterLink = document.querySelector('.nav-link[href="#BugHunter"]');
     const aboutSectionOffset = aboutSection.offsetTop;
 
+    // Keep URL hash in sync during manual scroll without polluting history
+    function setHashOnScroll(targetId) {
+        const newHash = `#${targetId}`;
+        if (location.hash !== newHash) {
+            if (history && history.replaceState) {
+                history.replaceState(null, '', newHash);
+            } else {
+                location.hash = targetId;
+            }
+        }
+    }
+
 
     // sourcery skip: avoid-function-declarations-in-blocks
     function animateBugIcon() {
@@ -92,6 +104,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Update nav background color based on section
                 updateNavBackground(section.id);
+
+                // Reflect active section in URL during scroll
+                setHashOnScroll(section.id);
             }
         });
 
@@ -104,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (homeLink) {
                 homeLink.classList.add("active");
                 updateNavBackground('home'); // Apply specific color for 'Home'
+                setHashOnScroll('Home');
             }
         }
     }
@@ -116,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateActiveNavLink();
     });
 
-    // Smooth scroll to section on nav link click
+    // Smooth scroll to section on nav link click and update URL hash
     navLinks.forEach(function (navLink) {
         navLink.addEventListener("click", function (event) {
             event.preventDefault();
@@ -144,7 +160,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (targetId === 'Home' || targetId === 'BugHunter') {
                     animateBugIcon();
                 }
-
+                // Update the URL hash without triggering default jump
+                if (history && history.pushState) {
+                    history.pushState(null, '', `#${targetId}`);
+                } else {
+                    // Fallback for very old browsers
+                    location.hash = targetId;
+                }
             }
         });
     });
