@@ -1,3 +1,51 @@
+(function() {
+    // Professional Development: show only first 3, add View more/less toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        try {
+            const eduContainer = document.querySelector('#education .education');
+            if (!eduContainer) return;
+            const h3s = eduContainer.querySelectorAll('h3');
+            if (h3s.length < 2) return;
+            const proDevHeading = h3s[1]; // second h3 is 'Professional Development'
+            let list = proDevHeading.nextElementSibling;
+            if (!list || list.tagName.toLowerCase() !== 'ul') return;
+
+            const items = list.querySelectorAll('li');
+            if (items.length <= 3) return;
+
+            // Ensure list has an id for aria-controls
+            if (!list.id) {
+                list.id = 'professional-development-list';
+            }
+
+            // Collapse extra items by default
+            list.classList.add('collapsed');
+
+            // Create toggle button
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'view-more-toggle';
+            btn.setAttribute('aria-controls', list.id);
+            btn.setAttribute('aria-expanded', 'false');
+            btn.textContent = 'View more';
+
+            btn.addEventListener('click', function() {
+                const isCollapsed = list.classList.toggle('collapsed');
+                const expanded = !isCollapsed;
+                btn.setAttribute('aria-expanded', String(expanded));
+                btn.textContent = expanded ? 'View less' : 'View more';
+            });
+
+            // Insert after the list
+            if (list.parentNode) {
+                list.parentNode.insertBefore(btn, list.nextSibling);
+            }
+        } catch (e) {
+            // Fail silently to avoid breaking other scripts
+            console && console.debug && console.debug('Education toggle init skipped:', e);
+        }
+    });
+})();
 document.addEventListener("DOMContentLoaded", function () {
     const burgerMenu = document.querySelector('.burger-menu');
     const navMenu = document.querySelector('.nav-menu');

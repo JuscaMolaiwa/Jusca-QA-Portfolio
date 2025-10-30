@@ -70,6 +70,7 @@
 
 /* Professional Development list as cards with CTA links */
 .education h3:nth-of-type(2) + ul { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px; }
+.education h3:nth-of-type(2) + ul.collapsed li:nth-child(n+4) { display: none; }
 .education h3:nth-of-type(2) + ul li {
     display: flex;
     align-items: center;
@@ -127,6 +128,21 @@
     background: rgba(0, 122, 204, 0.18);
     color: #0f172a;
 }
+
+/* View more/less toggle button */
+#education .view-more-toggle {
+    display: block;
+    margin: 8px auto 0;
+    padding: 8px 14px;
+    border: 1px solid #007acc;
+    color: #007acc;
+    background: transparent;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+#education .view-more-toggle:hover { background: rgba(0, 122, 204, 0.10); }
+#education .view-more-toggle:focus-visible { outline: 3px solid #007acc; outline-offset: 2px; }
 
 /* Responsive */
 @media (max-width: 560px) {
