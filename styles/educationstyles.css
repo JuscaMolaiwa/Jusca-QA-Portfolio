@@ -1,20 +1,18 @@
 /* Specific style for education details */
 .education {
-    margin-bottom: 20px;   
+    margin-bottom: 20px;
 }
 
 /* Education Section Styles */
 #education {
-    background-color: #f9f9f9;
-    /* Light background color */
-    color: #333;
-    /* Dark text color for readability */
+    background-color: #f9f9f9; /* original light background */
+    color: #333; /* original dark text */
     padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     position: relative;
-    margin-top: 20px;
-    /* Add spacing between sections */
+    margin-top: 20px; /* spacing between sections */
 }
 
 #education:hover {
@@ -26,63 +24,113 @@
 }
 
 #education h2 {
-    font-size: 2.5em;
+    font-size: 2.2em;
     margin-bottom: 20px;
-    color: #333;
-    /* Dark color for the heading */
+    color: #333; /* original heading color */
 }
 
 .education h3 {
-    color: #007acc;
-    /* Primary color for section titles */
     margin-top: 0;
-    /* Ensure no top margin for the first heading */
+    color: #007acc; /* original section title color */
 }
 
-/* List Styles */
-#education ul {
-    list-style-type: none;
-    /* Remove default list styling */
-    padding: 0;
-    list-style-type: disc;   
-}
+/* List Styles (reset + modern layout) */
+#education ul { list-style: none; padding-left: 0; margin: 0; }
+#education li { margin: 0; font-size: 1rem; color: #555; line-height: 1.5; }
 
-#education li {
-    margin-bottom: 10px;
-    font-size: 1.1em;
-    color: #555;
-    /* Medium gray color for text */
-}
+/* Keep original link colors by default */
+#education a { color: #007acc; text-decoration: none; }
+#education a:hover { text-decoration: underline; }
 
-#education li a {
+/* Degree details (first h3 + ul) as table-like rows */
+.education h3:first-of-type + ul { display: grid; gap: 12px; margin: 12px 0 24px; }
+.education h3:first-of-type + ul li {
+    display: grid;
+    grid-template-columns: 160px 1fr; /* label | value */
+    gap: 12px;
+    align-items: start;
+    padding: 12px 14px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.education h3:first-of-type + ul li:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+.education h3:first-of-type + ul li strong { color: #0f172a; }
+
+/* Professional Development list as cards with CTA links */
+.education h3:nth-of-type(2) + ul { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px; }
+.education h3:nth-of-type(2) + ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.education h3:nth-of-type(2) + ul li:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+.education h3:nth-of-type(2) + ul li a {
+    /* Equal width CTA with original color scheme */
+    flex: 0 0 220px; /* fixed width across all rows */
+    width: 220px;
+    text-align: center;
+    border: 1px solid #007acc;
     color: #007acc;
-    /* Link color */
+    background: transparent;
+    padding: 8px 12px;
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent; /* avoid iOS blue tap fill */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+.education h3:nth-of-type(2) + ul li a:hover {
+    /* Light tint on hover for a beautiful, subtle effect */
+    background: rgba(0, 122, 204, 0.10);
+    color: #007acc;
+    text-decoration: none;
+    box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.10) inset;
+}
+.education h3:nth-of-type(2) + ul li a:active {
+    /* Slightly stronger tint on press */
+    background: rgba(0, 122, 204, 0.14);
+    color: #007acc;
+}
+.education h3:nth-of-type(2) + ul li a:focus-visible {
+    /* Accessible keyboard focus without changing fill */
+    outline: 3px solid #007acc;
+    outline-offset: 2px;
+    background: transparent;
+    color: #007acc;
     text-decoration: none;
 }
 
-#education li a:hover {
-    text-decoration: underline;
-    /* Underline on hover for links */
+/* Optional: softer selection color that won't look like a solid fill */
+#education ::selection {
+    background: rgba(0, 122, 204, 0.18);
+    color: #0f172a;
 }
 
-.education ul {
-    list-style-type: disc; /* Use bullets */
-    margin-left: 20px; /* Adjust left margin for indentation */
-    padding-left: 0; /* Remove default padding */
-}
-
-ul li {
-    margin-bottom: 10px; /* Add spacing between each list item */
-    line-height: 1.5; /* Adjust line height for readability */
-}
-
-ul li a {
-    text-decoration: none; /* Remove underline from links */
-    color: #007acc; /* Link color */
-}
-
-ul li a:hover {
-    text-decoration: underline; /* Underline links on hover */
+/* Responsive */
+@media (max-width: 560px) {
+  .education h3:first-of-type + ul li { grid-template-columns: 1fr; }
+    .education h3:nth-of-type(2) + ul li { align-items: flex-start; flex-wrap: wrap; }
+    .education h3:nth-of-type(2) + ul li a {
+            flex: 1 1 100%;
+            width: 100%;
+            margin-top: 8px;
+    }
 }
 
 
