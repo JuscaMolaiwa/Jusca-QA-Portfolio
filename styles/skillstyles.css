@@ -1,51 +1,39 @@
 #skills {
-    background-color: #f9f9f9; /* Light background color */
-    color: #333; /* Dark text color for readability */
+    background-color: #f8fafc; /* Light card for strong contrast */
+    color: #0f172a;
     padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius);
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow: var(--shadow);
     margin-top: 20px; /* Spacing between sections */
 }
 
-.skills {
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow items to wrap */
-    justify-content: space-between; /* Space between columns */
+.skills { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+    gap: 18px; 
 }
 
 .skills-category {
-    flex: 1; /* Allow each category to take equal space */
-    min-width: 220px; /* Minimum width for responsive design */
-    margin: 10px; /* Add margin between categories */
-    padding: 20px; /* Padding inside each category */
-    border-radius: 8px; /* Round corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    padding: 18px; 
+    border-radius: 12px; 
+    background: #ffffff; 
+    border: 1px solid rgba(0,0,0,.06); 
+    box-shadow: 0 6px 14px rgba(0,0,0,.06);
+    transition: transform .15s ease, box-shadow .2s ease; 
 }
+.skills-category:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,.10); }
 
-.skills-category strong {
-    display: block; /* Make strong text block-level */
-    margin-bottom: 10px; /* Spacing below */
-}
+.skills-category strong { display: block; margin-bottom: 10px; font-weight: 700; color: #0f172a; }
 
-.skills-category ul {
-    list-style: none; /* Remove bullets */
-    padding: 0; /* No padding */
-    margin: 0; /* No margin */
-}
+.skills-category ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 10px; }
 
-.skills-category li {
-    margin-bottom: 5px; /* Spacing between items */
-}
+.skills-category li { margin: 0; background: #e2e8f0; color: #0f172a; padding: 6px 10px; border-radius: 999px; font-size: .95rem; }
+
+/* Paragraph support for categories that use <p> instead of <ul> */
+.skills-category p { color: #334155; margin: 6px 0 0; }
 
 @media (max-width: 768px) {
-    .skills {
-        flex-direction: column; /* Stack categories on mobile */
-        align-items: stretch; /* Make items stretch to the full width */
-    }
-
-    .skills-category {
-        flex: 1 1 100%; /* Make each category take full width */
-        margin: 10px 0; /* Add vertical margin between categories */
-    }
+    #skills { padding: 28px; }
 }
 
