@@ -9,6 +9,15 @@
     padding: 40px;
     /* Add padding for spacing */
     background-color: #f8fafc; /* light background for better contrast */
+    border-radius: 12px; /* match other sections' curved corners */
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-top: 20px; /* consistent vertical spacing like others */
+    transition: transform 0.5s ease; /* smooth hover lift */
+}
+
+#contact:hover {
+    transform: translateY(-2px);
 }
 
 .contact-icons {
