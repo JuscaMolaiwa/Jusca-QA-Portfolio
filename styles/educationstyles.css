@@ -40,7 +40,13 @@
 
 /* Keep original link colors by default */
 #education a { color: #007acc; text-decoration: none; }
-#education a:hover { text-decoration: underline; }
+#education a:hover { text-decoration: none; }
+/* Maintain accessible keyboard focus without forcing underlines */
+#education a:focus-visible {
+    outline: 3px solid #007acc;
+    outline-offset: 2px;
+    text-decoration: none;
+}
 
 /* Degree details (first h3 + ul) as table-like rows */
 .education h3:first-of-type + ul { display: grid; gap: 12px; margin: 12px 0 24px; }
