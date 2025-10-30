@@ -3,7 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Jusca Molaiwa — Software Quality Assurance Engineer portfolio featuring automation demos, projects, resume, and contact details.">
+    <meta name="author" content="Jusca Molaiwa">
+    <meta name="theme-color" content="#0a0a0a">
 
     <title>Jusca - Quality Assurance Engineer Portfolio</title>
     <link rel="icon" href="images/robot.ico" type="image/x-icon">
@@ -20,21 +24,46 @@
     <link rel="stylesheet" href="styles/educationstyles.css">
     <link rel="stylesheet" href="styles/automation-demo.css">
     <link rel="stylesheet" href="styles/feedbackform.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Open Graph / Twitter Cards -->
+    <meta property="og:title" content="Jusca Molaiwa — QA Engineer Portfolio">
+    <meta property="og:description" content="Automation, manual testing, frameworks, and real-time demos.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/profile-photo.jpg">
+    <meta property="og:image:alt" content="Profile photo of Jusca Molaiwa">
+    <meta property="og:locale" content="en_ZA">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jusca Molaiwa — QA Engineer Portfolio">
+    <meta name="twitter:description" content="Automation, manual testing, frameworks, and real-time demos.">
+    <meta name="twitter:image" content="images/profile-photo.jpg">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jusca Molaiwa",
+      "jobTitle": "Software Quality Assurance Engineer",
+      "url": "https://github.com/JuscaMolaiwa"
+    }
+    </script>
 </head>
 
 <body>
+    <a class="skip-link" href="#Home">Skip to main content</a>
     <!-- Burger menu -->
-    <div class="burger-menu">
+    <div class="burger-menu" role="button" aria-label="Open navigation menu" aria-controls="navMenu"
+        aria-expanded="false" tabindex="0">
         <div class="burger-icon"></div>
     </div>
 
     <!-- Hidden navigation menu -->
-    <div id="navMenu" class="nav-menu">
-        <button class="close-button" onclick="toggleNavMenu()">✕</button>
+    <div id="navMenu" class="nav-menu" aria-hidden="true" aria-label="Mobile navigation menu">
+        <button class="close-button" aria-label="Close navigation" onclick="toggleNavMenu()">✕</button>
         <ul>
-            <li><a href="#BugHunter" class="nav-link"><img src="images/bug.svg" alt="Bug Icon" class="bug-icon">
+            <li><a href="#BugHunter" class="nav-link"><img src="images/bug.svg" alt="Bug Icon" class="bug-icon"
+                        loading="lazy">
                     BugHunter</a></li>
             <li><a href="#Home" class="nav-link">Home</a></li>
             <li><a href="#about" class="nav-link">About Me</a></li>
@@ -47,22 +76,20 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="sticky-nav">
-        <ul class="nav-list">
+    <nav class="sticky-nav" aria-label="Primary">
+        <ul class="nav-list nav-center">
             <li>
                 <a href="#BugHunter" class="nav-link">
-                    <img src="images/bug.svg" alt="Bug Icon" class="bug-icon"> BugHunter
+                    <img src="images/bug.svg" alt="Bug Icon" class="bug-icon" loading="lazy"> BugHunter
                 </a>
             </li>
-            <div class="nav-center">
-                <li><a href="#Home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About Me</a></li>
-                <li><a href="#resume" class="nav-link">Resume</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#automation-demo" class="nav-link">Automation Demos</a></li>
-                <li><a href="#education" class="nav-link">education</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </div>
+            <li><a href="#Home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About Me</a></li>
+            <li><a href="#resume" class="nav-link">Resume</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#automation-demo" class="nav-link">Automation Demos</a></li>
+            <li><a href="#education" class="nav-link">Education</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
     </nav>
 
@@ -70,14 +97,21 @@
         <div class="container">
             <img src="images/profile-photo.jpg" alt="Jusca" class="profile-photo">
             <h1>Ensuring Software Quality with Precision and Expertise</h1>
-            <h2>Intermediate Software Quality Assurance Engineer</h2>
-            <p>Hi, I am a Software Quality Assurance Engineer with experience working in complex, project-based & Agile
-                Scrum environments with over 3 years of experience. My expertise lies in automation testing, manual
-                testing, scripting, documentation,
-                and defect tracking. Throughout my journey, I have successfully implemented test plans, test cases, and
-                test processes.
-                I have also built automation frameworks from scratch, using Appium, Selenium, Postman and Rest-Assured
-                API. Proficient in Java, JUnit5, and Maven.</p>
+            <h2>Software Quality Assurance Engineer</h2>
+            <p>With over 5 years of experience working in complex, project-based, and Agile Scrum environments. Skilled
+                in both manual and automation testing, with strong expertise in scripting, documentation, and defect
+                tracking.
+
+                Proven track record in implementing test plans, test cases, and testing processes, as well as building
+                automation frameworks from scratch using Appium, Selenium/Playwright, TestNG, Postman, and Rest-Assured
+                API.
+
+                Technically proficient in Java, JavaScript, Python, and experienced in web automation (Selenium,
+                Playwright), mobile automation (Appium), API testing (Rest-Assured, SoapUI, Postman), and SQL for
+                database testing.
+
+                Adaptable and continuously learning new tools, programming languages, and technologies to enhance
+                testing efficiency and deliver high-quality software.</p>
         </div>
     </header>
 
@@ -111,9 +145,10 @@
         <section id="resume" class="container">
             <h2>Resume</h2>
             <div class="resume-links">
-                <a href="projects/assets/Copy of JUSCA MOLAIWA UPDATED LATEST CV.pdf" target="_blank">View My
+                <a href="projects/assets/JUSCA MOLAIWA 2025 LATEST CV.pdf" target="_blank"
+                    rel="noopener noreferrer">View My
                     Resume</a>
-                <a href="projects/assets/Copy of JUSCA MOLAIWA UPDATED LATEST CV.pdf" download>Download
+                <a href="projects/assets/JUSCA MOLAIWA 2025 LATEST CV.pdf" download>Download
                     My Resume</a>
             </div>
         </section>
@@ -201,7 +236,7 @@
                 </div>
             </div>
         </section>
-        
+
 
         <section id="automation-demo">
             <h2>Real-Time Automation Test Demo</h2>
@@ -213,9 +248,12 @@
 
             <h3 id="loginReportSection" style="display: none;">Real-Time Automation Login Test Report</h3>
             <a id="loginScreenshotLink" href="#" style="display:none;" target="_blank">View Screenshot</a>
-            <a id="loginVideoLink" href="#" style="display: none;" target="_blank">Watch Video</a> <!-- Initially hidden -->
-            <a id="loginLogsLink" href="#" style="display: none;" target="_blank">View Execution Logs</a> <!-- Initially hidden -->
-            <a id="loginReportLink" href="#" style="display: none;" target="_blank">View Detailed Report</a> <!-- Initially hidden -->
+            <a id="loginVideoLink" href="#" style="display: none;" target="_blank">Watch Video</a>
+            <!-- Initially hidden -->
+            <a id="loginLogsLink" href="#" style="display: none;" target="_blank">View Execution Logs</a>
+            <!-- Initially hidden -->
+            <a id="loginReportLink" href="#" style="display: none;" target="_blank">View Detailed Report</a>
+            <!-- Initially hidden -->
 
             <!-- Add spacing here -->
             <hr class="divider">
@@ -227,9 +265,12 @@
 
             <h3 id="orderReportSection" style="display: none;">Real-Time Automation Place Order Test Report</h3>
             <a id="orderScreenshotLink" href="#" style="display:none;" target="_blank">View Screenshot</a>
-            <a id="orderVideoLink" href="#" style="display: none;" target="_blank">Watch Video</a> <!-- Initially hidden -->
-            <a id="orderLogsLink" href="#" style="display: none;" target="_blank">View Execution Logs</a> <!-- Initially hidden -->
-            <a id="orderReportLink" href="#" style="display: none;" target="_blank">View Detailed Report</a> <!-- Initially hidden -->
+            <a id="orderVideoLink" href="#" style="display: none;" target="_blank">Watch Video</a>
+            <!-- Initially hidden -->
+            <a id="orderLogsLink" href="#" style="display: none;" target="_blank">View Execution Logs</a>
+            <!-- Initially hidden -->
+            <a id="orderReportLink" href="#" style="display: none;" target="_blank">View Detailed Report</a>
+            <!-- Initially hidden -->
 
             <!-- Add spacing here -->
             <hr class="divider">
@@ -262,10 +303,12 @@
             <hr class="divider">
 
             <h3>Source Code</h3>
-            <p>Explore the source code FE and BE for the above feedback form and automated tests by clicking the link below</p>
+            <p>Explore the source code FE and BE for the above feedback form and automated tests by clicking the link
+                below</p>
             <p>
-                <a href="https://github.com/JuscaMolaiwa/Jusca-QA-Portfolio/tree/main/automation-demos" target="_blank">
-                    <img src="images/github.svg" alt="GitHub" style="width: 30px; height: 30px;">
+                <a href="https://github.com/JuscaMolaiwa/Jusca-QA-Portfolio/tree/main/automation-demos" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="images/github.svg" alt="GitHub" style="width: 30px; height: 30px;" loading="lazy">
                     View Source Code on GitHub
                 </a>
             </p>
@@ -288,47 +331,56 @@
 
                     <li>
                         Software Engineering Program | ALX | In Progress
-                        <a href="projects/assets/Transcript - 459629 - Jusca Molaiwa.pdf" target="_blank">View PDF Certificate</a>
+                        <a href="projects/assets/ALX-CERTIFICATE.png" target="_blank"
+                            rel="noopener noreferrer">View PDF Certificate</a>
                     </li>
 
                     <li>
                         ISTQB Foundation Level (CTFL) V4.0 updated 2024 | ASTQB | August 2024
-                        <a href="projects/assets/2024-08-15_CTFL_Jusca Molaiwa_Pass.pdf" target="_blank">View PDF Certificate</a>
+                        <a href="projects/assets/sastqb_Jusca Molaiwa_CTFL.png" target="_blank"
+                            rel="noopener noreferrer">View PDF Certificate</a>
                     </li>
 
                     <li>
                         ISTQB Foundation Level (CTFL) V4.0 updated 2024 | Udemy Alumni | July 2024
-                        <a href="https://www.udemy.com/certificate/UC-fd0eae3e-8a00-42ae-abea-1c1c054092b1/" target="_blank">View Certificate</a>
+                        <a href="https://www.udemy.com/certificate/UC-fd0eae3e-8a00-42ae-abea-1c1c054092b1/"
+                            target="_blank" rel="noopener noreferrer">View Certificate</a>
                     </li>
 
                     <li>
                         DevOps, CI/CD(Continuous Integration/Delivery for Beginners) | Udemy Alumni | February 2023
-                        <a href="https://www.udemy.com/certificate/UC-00a397aa-5db4-4db3-abc2-bf358210eefd/" target="_blank">View Certificate</a>
+                        <a href="https://www.udemy.com/certificate/UC-00a397aa-5db4-4db3-abc2-bf358210eefd/"
+                            target="_blank" rel="noopener noreferrer">View Certificate</a>
                     </li>
 
                     <li>
                         Continuous Integration and Continuous Delivery (CI/CD) | Udemy Alumni | February 2023
-                        <a href="https://www.coursera.org/account/accomplishments/certificate/N2ZUTBVSCUYY" target="_blank">View Certificate</a>
+                        <a href="https://www.coursera.org/account/accomplishments/certificate/N2ZUTBVSCUYY"
+                            target="_blank" rel="noopener noreferrer">View Certificate</a>
                     </li>
 
                     <li>
                         Core Python 3 | Pluralsight | October 2022
-                        <a href="https://app.pluralsight.com/learner/user/courses/v2/34f42219-eafe-438a-832b-2d8ff8875a15/certificate" target="_blank">View Certificate</a>
+                        <a href="https://app.pluralsight.com/learner/user/courses/v2/34f42219-eafe-438a-832b-2d8ff8875a15/certificate"
+                            target="_blank" rel="noopener noreferrer">View Certificate</a>
                     </li>
 
                     <li>
                         Google IT Automation with Python Specialization | Coursera | October 2022
-                        <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/XQXN8XLMGEZ7" target="_blank">View Certificate</a>
+                        <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/XQXN8XLMGEZ7"
+                            target="_blank" rel="noopener noreferrer">View Certificate</a>
                     </li>
 
                     <li>
                         Appium - Mobile Testing (Android/IOS) | Udemy Alumni | July 2021
-                        <a href="https://www.udemy.com/certificate/UC-95b96c62-45be-455e-accd-5817777dadf9/" target="_blank">View Certificate</a>
+                        <a href="https://www.udemy.com/certificate/UC-95b96c62-45be-455e-accd-5817777dadf9/"
+                            target="_blank" rel="noopener noreferrer">View Certificate</a>
                     </li>
 
                     <li>
                         Python Programming | Udemy Alumni | June 2021
-                        <a href="https://www.udemy.com/certificate/UC-cbf64105-ea51-496a-92ee-1a524bd3b909/" target="_blank">View Certificate</a>
+                        <a href="https://www.udemy.com/certificate/UC-cbf64105-ea51-496a-92ee-1a524bd3b909/"
+                            target="_blank" rel="noopener noreferrer">View Certificate</a>
                     </li>
 
                 </ul>
@@ -338,12 +390,14 @@
         <section id="contact" class="container">
             <h2>CONNECT WITH ME</h2>
             <div class="contact-icons">
-                <p><a href="mailto:jusca.mol@gmail.com"><img src="images/gmail.svg" alt="Email"></a></p>
-                <p><a href="https://www.linkedin.com/in/jusca-molaiwa-7483a378/"><img src="images/linkedin.svg"
-                            alt="LinkedIn"></a></p>
-                <p><a href="https://testautomationu.applitools.com/me.html#Jusca%20Molaiwa"><img src="images/tau.svg"
-                            alt="TestAutomationUniversity"></a></p>
-                <p><a href="https://github.com/JuscaMolaiwa"><img src="images/github.svg" alt="GitHub"></a>
+                <p><a href="mailto:jusca.mol@gmail.com"><img src="images/gmail.svg" alt="Email" loading="lazy"></a></p>
+                <p><a href="https://www.linkedin.com/in/jusca-molaiwa-7483a378/" target="_blank"
+                        rel="noopener noreferrer"><img src="images/linkedin.svg" alt="LinkedIn" loading="lazy"></a></p>
+                <p><a href="https://testautomationu.applitools.com/me.html#Jusca%20Molaiwa" target="_blank"
+                        rel="noopener noreferrer"><img src="images/tau.svg" alt="TestAutomationUniversity"
+                            loading="lazy"></a></p>
+                <p><a href="https://github.com/JuscaMolaiwa" target="_blank" rel="noopener noreferrer"><img
+                            src="images/github.svg" alt="GitHub" loading="lazy"></a>
                 </p>
             </div>
         </section>
@@ -354,12 +408,16 @@
     <footer>
         <p>Copyright &copy; 2024. Jusca Molaiwa's QA Portfolio. All Rights Reserved.</p>
     </footer>
-    <script src="scripts/main.js"></script>
-    <script src="scripts/bug.js"></script>
-    <script src="scripts/burgermenu.js"></script>
-    <script src="scripts/automation-demos.js"></script>
-    <script src="scripts/form.js"></script>
-    <script src="scripts/automation-demo-place-order.js"></script>
+    <noscript>
+        <p style="text-align:center; padding: 1rem;">JavaScript is disabled. Interactive features like the burger menu
+            and automation demos require JavaScript to be enabled.</p>
+    </noscript>
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/bug.js" defer></script>
+    <script src="scripts/burgermenu.js" defer></script>
+    <script src="scripts/automation-demos.js" defer></script>
+    <script src="scripts/form.js" defer></script>
+    <script src="scripts/automation-demo-place-order.js" defer></script>
 
 </body>
 

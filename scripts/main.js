@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const burgerMenu = document.querySelector('.burger-menu');
-        const navMenu = document.querySelector('.nav-menu');
+    const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll(".nav-list a");
     const nav = document.querySelector('.sticky-nav');
     const sections = document.querySelectorAll("section");
@@ -101,19 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Toggle burger menu and nav list on mobile
-    burgerMenu.addEventListener("click", function () {
-        this.classList.toggle("open"); // Toggle open class on burger menu
-        nav.classList.toggle("open"); // Toggle open class on nav (sticky-nav)
-    });
-
-    // Close burger menu and nav list on nav link click (mobile)
-    navLinks.forEach(function (navLink) {
-        navLink.addEventListener("click", function () {
-            burgerMenu.classList.remove("open");
-            nav.classList.remove("open");
-        });
-    });
+    // Burger menu open/close is handled in burgermenu.js for consistency
 
     // Show or hide the back-to-top button based on scroll position
     window.addEventListener("scroll", function () {
@@ -132,39 +120,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to update nav background color based on section
     function updateNavBackground(sectionId) {
-        // Example logic for changing nav background color based on section
-        switch (sectionId) {
-            case 'home':
-                nav.style.backgroundColor = '#7878'; // Color for 'Home' section
-                break;
-            case 'about me':
-                nav.style.backgroundColor = '#BBB23'; // Color for 'About Me' section
-                break;
-            case 'resume':
-                nav.style.backgroundColor = '#ABB'; // Color for 'Resume' section
-                break;
-            case 'projects':
-                nav.style.backgroundColor = 'cream-white'; // Color for 'Projects' section
-                break;
-            case 'automation-demo':
-                nav.style.backgroundColor = '#BBB'; // Color for 'Skills' section
-                break;
-            case 'education':
-                nav.style.backgroundColor = '#787'; // Color for 'Certifications' section
-                break;
-            case 'contact':
-                nav.style.backgroundColor = '#788'; // Color for 'Contact' section
-                break;
-            default:
-                nav.style.backgroundColor = '#7878'; // Default color
-                break;
-        }
+        // Keep current nav styling managed via CSS; function retained for compatibility
+        // Optionally, could add subtle effects per section if needed later
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        burgerMenu.addEventListener('click', function () {
-            navMenu.classList.toggle('active');
-        });
-    });
+    // Removed duplicate DOMContentLoaded listener toggling navMenu; handled in burgermenu.js
 
 });

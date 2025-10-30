@@ -1,4 +1,23 @@
 .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+}
+:root {
+    --bg: #0f172a; /* slate-900 */
+    --surface: #111827; /* gray-900 */
+    --surface-2: #1f2937; /* gray-800 */
+    --text: #e5e7eb; /* gray-200 */
+    --muted: #9ca3af; /* gray-400 */
+    --brand: #2563eb; /* blue-600 */
+    --brand-700: #1d4ed8; /* blue-700 */
+    --accent: #22c55e; /* green-500 */
+    --danger: #ef4444; /* red-500 */
+    --card: #0b1220; /* deep slate */
+    --shadow: 0 10px 30px rgba(0,0,0,.25);
+    --radius: 12px;
+}
+.container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
@@ -14,6 +33,14 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    .profile-photo {
+        border-radius: 50%;
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+        margin-top: 12px;
+        box-shadow: 0 10px 20px rgba(0,0,0,.25);
+    }
     margin: 0;
     padding: 8px;
     word-wrap: break-word;
@@ -27,6 +54,15 @@ body {
 
 html, body {
     overflow-x: hidden;
+    body {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+        margin: 0;
+        padding: 8px 5px 0 5px;
+        word-wrap: break-word;
+        background: linear-gradient(180deg, #0b1020 0%, #0a0f1f 100%);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+    }
 }
 
 * {
@@ -34,6 +70,16 @@ html, body {
     padding: 0;
     box-sizing: border-box;
 }
+    header {
+        background: radial-gradient(1200px 600px at 10% 10%, rgba(37, 99, 235, 0.25), transparent 60%),
+                    radial-gradient(1000px 500px at 90% 20%, rgba(34, 197, 94, 0.2), transparent 60%),
+                    linear-gradient(180deg, rgba(17,24,39,0.6), rgba(17,24,39,0.3));
+        color: var(--text);
+        text-align: center;
+        padding: 72px 0 56px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+    }
 
 element {
     position: fixed;
@@ -42,22 +88,43 @@ element {
 }
 
 header {
+    h1 {
+        font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+        margin: 16px 0 12px;
+        letter-spacing: .2px;
+    }
     background-color: #4CAF50;
     color: white;
     text-align: center;
     padding: 50px 0;
 }
+    h2 {
+        font-size: clamp(1.4rem, 2vw, 1.8rem);
+        margin: 28px 0 16px;
+    }
 
 h1 {
     font-size: 2em;
     margin: 20px 0 10px;
     margin-top: 10px !important;
     margin-left: 0 !important;
+    p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--muted);
+        margin: 16px 0;
+    }
     margin-bottom: 20px !important
 }
 
 h2 {
     font-size: 1.5em;
+    a {
+        font-weight: 500;
+        text-decoration: none;
+        color: #93c5fd;
+    }
+    a:hover { color: #bfdbfe; }
     margin: 40px 0 20px;
 }
 
@@ -74,9 +141,33 @@ a {
 
 /* Call to Action Button Styles */
 .cta-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
+    .cta-button,
+    button,
+    input[type="submit"],
+    input[type="button"] {
+        background: linear-gradient(180deg, var(--brand) 0%, var(--brand-700) 100%);
+        color: #fff;
+        padding: 10px 20px;
+        border: 0;
+        border-radius: 999px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 12px;
+        text-align: center;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 6px 16px rgba(37,99,235,.35);
+        transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .cta-button:hover,
+    button:hover,
+    input[type="submit"]:hover,
+    input[type="button"]:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.05);
+        box-shadow: 0 10px 24px rgba(37,99,235,.40);
+    }
     border: none;
     border-radius: 5px;
     font-size: 1em;
@@ -86,6 +177,7 @@ a {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    .fas.fa-music { color: #22c55e; font-size: 1.05em; margin-left: 6px; }
 }
 
 .cta-button:hover {
@@ -101,6 +193,19 @@ a {
     /* Add some space between the text and the icon */
 }
 
+    footer {
+        text-align: center;
+        padding: 12px 0 10px;
+        background: rgba(17,24,39,.8);
+        color: rgba(255, 255, 255, 0.75);
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 1000;
+        font-size: .9em;
+        backdrop-filter: blur(8px);
+        border-top: 1px solid rgba(255,255,255,.06);
+    }
 /* FOOTER */
 footer {
     text-align: center;
@@ -119,16 +224,54 @@ footer {
 .sh-back-to-top {
     position: fixed;
     bottom: 30px;
+    .sh-back-to-top {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        text-align: center;
+        line-height: 48px;
+        background: linear-gradient(180deg, var(--brand) 0%, var(--brand-700) 100%);
+        color: #fff;
+        cursor: pointer;
+        border-radius: 50%;
+        display: none; /* Initially hidden */
+        z-index: 1001;
+        box-shadow: 0 10px 20px rgba(37,99,235,.3);
+        transition: transform .15s ease, box-shadow .2s ease;
+    }
+    .sh-back-to-top:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(37,99,235,.35); }
     right: 30px;
     width: 50px;
     height: 50px;
     text-align: center;
     line-height: 50px;
+    main { padding-bottom: 110px; }
+
+    /* Skip link */
+    .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+    .skip-link:focus {
+        left: 16px;
+        top: 16px;
+        width: auto;
+        height: auto;
+        padding: 8px 12px;
+        background: #111827;
+        color: #fff;
+        border-radius: 6px;
+        outline: 2px solid var(--brand);
+    }
     background-color: #7878;
     color: #fff;
-    cursor: pointer;
-    border-radius: 50%;
-    display: none;
+        body { font-size: 14px; }
     /* Initially hidden */
     z-index: 1001;
     transition: background-color 0.3s;

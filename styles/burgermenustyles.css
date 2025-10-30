@@ -1,136 +1,41 @@
 /* Burger menu styles */
-.burger-menu {
-    display: none;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    /* Position on the left side */
-    z-index: 1000;
-    cursor: pointer;
-}
+.burger-menu { display: none; position: fixed; top: 16px; left: 16px; z-index: 1100; cursor: pointer; outline: none; }
 
-.burger-icon {
-    width: 30px;
-    height: 3px;
-    background-color: #333;
-    position: relative;
-    transition: all 0.3s ease-in-out;
-
-}
+.burger-icon { width: 28px; height: 3px; background-color: #e5e7eb; position: relative; transition: all 0.25s ease-in-out; border-radius: 2px; }
 
 .burger-icon::before,
-.burger-icon::after {
-    content: '';
-    width: 30px;
-    height: 3px;
-    background-color: #333;
-    position: absolute;
-    transition: all 0.3s ease-in-out;
-}
+.burger-icon::after { content: ''; width: 28px; height: 3px; background-color: #e5e7eb; position: absolute; transition: all 0.25s ease-in-out; border-radius: 2px; }
 
-.burger-icon::before {
-    top: -10px;
-    
-}
+.burger-icon::before { top: -8px; }
 
-.burger-icon::after {
-    bottom: -10px;
-}
+.burger-icon::after { bottom: -8px; }
 
 /* Hidden navigation menu styles */
-.nav-menu {
-    display: none;
-    position: fixed;
-    top: 0px;
-    /* Adjust to your preference */
-    right: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    z-index: 1001; /* Ensure it's above burger-menu */
-    width: 200px;
-    /* Adjust width as needed */
+.nav-menu { display: none; position: fixed; top: 0; right: 0; background: rgba(17,24,39,.98); color: #e5e7eb; box-shadow: 0 10px 30px rgba(0,0,0,.45); border-radius: 0 0 0 12px; z-index: 1099; width: 80%; max-width: 320px; padding: 56px 24px 24px; transition: transform 0.25s ease, opacity 0.25s ease; height: 100%; overflow-y: auto; backdrop-filter: blur(8px); }
 
-    padding: 40px; /* Adjust window pane as needed */
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; 
-    height: 100%;
-    /* Take full height of the viewport */
-    overflow-y: auto;
-}
+.nav-menu ul { list-style: none; padding: 0; margin: 0; }
 
-.nav-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+.nav-menu li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
 
-.nav-menu li {
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-}
+.nav-menu li:last-child { border-bottom: 1px solid rgba(255,255,255,.06); }
 
-.nav-menu li:last-child {
-    border-bottom: 1px solid #ddd;
-}
+.nav-menu a { text-decoration: none; color: #e5e7eb; display: block; padding: 8px 16px; border-radius: 8px; }
+.nav-menu a:hover { background: rgba(99,102,241,.15); }
 
-.nav-menu a {
-    text-decoration: none;
-    color: #333;
-    display: block;
-    padding: 8px 16px;
-}
+.nav-menu.active { left: 0; display: block; }
 
-.nav-menu.active {
-    left: 0;
-    display: block;
-    /* Slide menu into view when active */
-}
+.close-button { position: absolute; top: 12px; right: 12px; cursor: pointer; color: #cbd5e1; background: none; border: 0; font-size: 1.6em; line-height: 1; z-index: 1101; }
 
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    color: #888;
-    background: none;
-    border: none;
-    font-size: 1.5em;
-    line-height: 1;
-    z-index: 1002; /* Ensure it's above .nav-menu */
-}
-
-.close-button:hover {
-    color: #333;
-}
+.close-button:hover { color: #fff; }
 
 /* Sticky Burger menu styles */
-.burger-menu {
-    position: fixed;
-    top: 0;
-    left: 0; /* Adjust if necessary */
-    right: 0;  /* Adjust if necessary */
-    background-color: #fff;
-    /* background color as needed */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    /* Ensure it's above other content */
-    padding: 17px;
-}
+.burger-menu { position: fixed; top: 0; left: 0; right: 0; background: transparent; box-shadow: none; z-index: 1100; padding: 16px; }
 
 /* Show burger menu on mobile */
 @media screen and (max-width: 768px) {
-    .burger-menu {
-        display: block;
-    }
-
-    .sticky-nav {
-        display: none;
-        /* Hide regular navigation on small screens */
-    }
-
-    .nav-menu {
-        display: none;
-    }
+    .burger-menu { display: block; }
+    .sticky-nav { display: none; }
+    .nav-menu { display: none; }
     
 }
 

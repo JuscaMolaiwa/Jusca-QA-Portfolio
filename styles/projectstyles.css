@@ -1,9 +1,11 @@
 /* Project Section Styles */
 .project {
-    border: 1px solid #ddd;
-    padding: 10px;
+    border: 1px solid rgba(255,255,255,.06);
+    padding: 20px;
     margin-bottom: 20px;
-    border-radius: 5px;
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(17,24,39,.6), rgba(17,24,39,.4));
+    box-shadow: var(--shadow);
 }
 
 
@@ -59,13 +61,7 @@
 
 
 /* Projects section styling */
-#projects {
-    color: #fff; /* White text for readability */
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
+#projects { color: #fff; padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow); position: relative; }
 
 
 
@@ -79,7 +75,7 @@
     height: 100%;
     background-size: cover;
     background-position: center;
-    opacity: 0.5; /* Adjust opacity as desired */
+    opacity: 0.2; /* softer overlay */
     background-image: url('../images/project.png'); 
 }
 
@@ -90,27 +86,12 @@
 }
 
 /* Heading styling */
-#projects h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #fff; /* White color for the heading */
-}
+#projects h2 { font-size: 2.2em; margin-bottom: 20px; color: #fff; }
 
 /* Project section styling */
-.project {
-    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for project details */
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: #333; /* Dark text for readability */
-}
+.project { color: #e5e7eb; }
 
 /* Adjust text colors for better readability */
-.project h3 {
-    color: #333; /* Dark color for project titles */
-}
+.project h3 { color: #fff; }
 
-.project p, .project ul {
-    color: #555; /* Medium gray color for project text */
-}
+.project p, .project ul { color: #cbd5e1; }

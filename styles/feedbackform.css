@@ -1,174 +1,77 @@
-/* Feedback Section Styles */
-section {
+/* Feedback Section Styles (scoped to automation demo section) */
+#automation-demo .feedback-section,
+#automation-demo #feedbackPrompt {
     padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    max-width: 600px;
+    background: #ffffff; /* light panel inside light card */
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: var(--radius);
+    max-width: 700px;
     margin: 20px auto;
-    font-family: Arial, sans-serif;
+    font-family: inherit;
 }
 
 /* Feedback Header */
-h4 {
-    color: #333;
-    margin-bottom: 10px;
-}
+#automation-demo h4 { color: #0f172a; margin-bottom: 10px; }
 
 /* Feedback Button Styles */
-#feedbackButton {
-    padding: 10px 15px;
-    background-color: #007bff; /* Blue background */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#feedbackButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
+#feedbackButton { padding: 10px 16px; background: linear-gradient(180deg, var(--brand), var(--brand-700)); color: white; border: none; border-radius: 999px; cursor: pointer; transition: transform .15s ease, box-shadow .2s ease; box-shadow: 0 6px 16px rgba(37,99,235,.35); }
+#feedbackButton:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(37,99,235,.4); }
 
 /* Feedback Form Styles */
-#feedbackForm {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    gap: 50px; /* Add spacing between form elements */
-}
+#feedbackForm { margin-top: 20px; display: flex; flex-direction: column; gap: 16px; }
 
 /* Form Field Styles */
-label {
-    margin: 0 0 5px;
-    font-weight: bold;
-}
+#feedbackForm label { margin: 0 0 6px; font-weight: 600; color: #0f172a; }
 
-input[type="text"],
-input[type="email"],
-textarea {
+#feedbackForm input[type="text"],
+#feedbackForm input[type="email"],
+#feedbackForm textarea {
     width: 100%;
-    padding: 15px;
-    border-radius: 30px; /* Rounded input fields */
-    border: 1px solid #ccc;
-    background-color: #f7f7f7; /* Light background to match design */
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    background-color: #fff;
+    color: #0f172a;
     font-size: 16px;
     outline: none;
-    transition: border-color 0.3s;
-    margin-bottom: 12px; /* Additional spacing below textarea */
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin-bottom: 8px;
 }
 
 /* Placeholder Styling */
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-textarea::placeholder {
-    color: #c1c1c1; /* Lighter placeholder color */
-}
+#feedbackForm input::placeholder,
+#feedbackForm textarea::placeholder { color: #64748b; }
 
 /* Focus Effects */
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
-    border-color: #007bff; /* Blue border on focus */
-    outline: none;
-}
+#feedbackForm input:focus,
+#feedbackForm textarea:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.2); }
 
 /* Textarea Specific Styles */
-textarea {
-    height: 100px;
-    resize: none; /* Disable resizing */
-}
+#feedbackForm textarea { height: 120px; resize: vertical; }
 
 /* Submit Button Styles */
-button[type="submit"] {
-    display: flex;
-    margin-top: 15px;
-    padding: 0 25px;
-    background-color: #28a745; /* Green background */
-    color: white;
-    border: none;
-    border-radius: 30px; /* Rounded button to match design */
-    font-size: 16px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.4s;
-
-    min-width: 150px;
-    height: 40px;
-}
-
-button[type="submit"]::after {
-    content: '→'; /* Add arrow icon to submit button */
-    margin-left: 10px;
-    font-size: 18px;
-}
-
-button[type="submit"]:hover {
-    background-color: #218838; /* Darker green on hover */
-}
+#feedbackForm button[type="submit"] { display: inline-flex; margin-top: 8px; padding: 10px 22px; background: linear-gradient(180deg, #22c55e, #16a34a); color: white; border: none; border-radius: 999px; font-size: 16px; font-weight: 600; align-items: center; justify-content: center; cursor: pointer; transition: transform .15s ease, box-shadow .2s ease; min-width: 150px; }
+#feedbackForm button[type="submit"]::after { content: '→'; margin-left: 10px; font-size: 18px; }
+#feedbackForm button[type="submit"]:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(34,197,94,.35); }
 
 /* Close Button Styles */
-#closeFeedbackForm {
-    padding: 0 15px;
-    background-color: #6c757d; /* Gray background to indicate secondary action */
-    color: white;
-    border: none;
-    border-radius: 20px; /* Rounded button shape */
-    font-size: 12px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 15px;
-    min-width: 80px;
-    height: 25px;
-}
-
-#closeFeedbackForm:hover {
-    background-color: #5a6268; /* Darker gray on hover */
-}
+#closeFeedbackForm { padding: 6px 14px; background-color: #64748b; color: white; border: none; border-radius: 999px; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .15s ease, box-shadow .2s ease; margin-top: 8px; min-width: 80px; height: 28px; }
+#closeFeedbackForm:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(100,116,139,.35); }
 
 
 /* Inline Submit and Close Buttons */
-#feedbackForm button[type="submit"], #feedbackForm #closeFeedbackForm {
-    display: inline-block;
-    margin-right: 100px;
-}
+#feedbackForm button[type="submit"], #feedbackForm #closeFeedbackForm { display: inline-block; margin-right: 10px; }
 
 /* Feedback Status Message Styles */
-#feedbackStatusMessage {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #333;
-}
+#feedbackStatusMessage { margin-top: 12px; font-size: 16px; color: #0f172a; }
 
 
 @media (max-width: 768px) {
     /* Adjustments for mobile view */
-    label {
-        font-size: 14px; /* Smaller font size for labels */
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
-        padding: 12px; /* Adjust padding for inputs */
-    }
-
-    button {
-        padding: 12px; /* Adjust padding for buttons */
-        font-size: 14px; /* Smaller font size for buttons */
-    }
-
-    /* Inline Submit and Close Buttons */
-    #feedbackForm button[type="submit"], #feedbackForm #closeFeedbackForm {
-    display: inline-block;
-    margin-right: auto;
-}
+    #feedbackForm label { font-size: 14px; }
+    #feedbackForm input,
+    #feedbackForm textarea { padding: 12px; }
+    #feedbackForm button { padding: 12px; font-size: 14px; }
+    #feedbackForm button[type="submit"], #feedbackForm #closeFeedbackForm { display: inline-block; margin-right: auto; }
 }
 

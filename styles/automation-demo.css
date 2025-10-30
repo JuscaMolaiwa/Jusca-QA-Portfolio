@@ -1,119 +1,55 @@
 #automation-demo {
-    background-color: #f9f9f9; /* Light background for contrast */
-    border: 1px solid #ddd; /* Subtle border */
-    border-radius: 8px; /* Rounded corners */
-    padding: 40px; /* Match the padding of .skills */
-    margin: 20px; /* Margin around the section */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Match box shadow */
+    background: #f8fafc; /* light card for strong contrast on dark page */
+    color: #0f172a;
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: var(--radius); 
+    padding: 40px; 
+    margin: 20px auto; 
+    box-shadow: var(--shadow);
     position: relative;
-    width: 100%; /* Full width to match the skills section */
-    max-width: 1000px; /* Maximum width to prevent stretching */
-    margin-top: 20px;
-    margin-left: auto; /* Center horizontally */
-    margin-right: auto; /* Center horizontally */
+    width: 100%; 
+    max-width: 1000px; 
 }
 
-#automation-demo h2 {
-    color: #333; /* Darker text for the heading */
-    font-size: 24px; /* Size of the heading */
-    margin-bottom: 10px; /* Space below the heading */
-}
+#automation-demo h2 { color: #0f172a; font-size: 26px; margin-bottom: 10px; }
 
-#automation-demo h3 {
-    color: #2c3e50; /* Darker color for headings */
-    font-size: 24px; /* Size of the heading */
-    margin-bottom: 10px; /* Spacing below headings */
-}
+#automation-demo h3 { color: #111827; font-size: 22px; margin-bottom: 10px; }
 
-#automation-demo h4 {
-    color: #333; /* Darker text for the heading */
-    font-size: 24px; /* Size of the heading */
-    margin-bottom: 10px; /* Space below the heading */
-}
+#automation-demo h4 { color: #111827; font-size: 20px; margin-bottom: 10px; }
 
 
-#automation-demo p {
-    color: #666; /* Gray text for descriptions */
-    font-size: 16px; /* Size of the paragraph text */
-    margin-bottom: 15px; /* Space below each paragraph */
-}
+#automation-demo p { color: #334155; font-size: 16px; margin-bottom: 15px; }
 
-#runLoginTestButton {
-    background-color: #007bff; /* Bootstrap primary color */
-    color: white; /* White text color */
-    border: none; /* No border */
-    border-radius: 4px; /* Rounded corners */
-    padding: 10px 20px; /* Padding inside the button */
-    cursor: pointer; /* Cursor change on hover */
-    transition: background-color 0.4s; /* Smooth background color change */
-}
-
-#runLoginTestButton:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
+#runLoginTestButton { background: linear-gradient(180deg, var(--brand) 0%, var(--brand-700) 100%); color: #fff; border: none; border-radius: 999px; padding: 10px 20px; cursor: pointer; transition: transform .15s ease, box-shadow .2s ease; box-shadow: 0 6px 16px rgba(37,99,235,.25); }
+#runLoginTestButton:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(37,99,235,.35); }
 
 #automation-demo h3 {
     color: #333; /* Darker text for subheading */
     margin-top: 20px; /* Space above the subheading */
 }
 
-#automation-demo a {
-    display: block; /* Stack links vertically */
-    margin: 5px 0; /* Space between links */
-    color: #007bff; /* Link color */
-    text-decoration: none; /* No underline */
-}
+#automation-demo a { display: inline-flex; align-items: center; gap: 8px; margin: 6px 12px 6px 0; color: #2563eb; text-decoration: none; padding: 6px 10px; border-radius: 8px; background: #e2e8f0; }
+#automation-demo a:hover { background: #cbd5e1; }
 
-#automation-demo a:hover {
-    text-decoration: underline; /* Underline on hover */
-}
-
-#automation-demo:hover {
-    transform: translateY(-2px); /* Slight lift on hover for modern feel */
-}
+#automation-demo:hover { transform: translateY(-1px); }
 
 /* Success styles */
-#loginResult.success {
-    background-color: #4CAF50; /* Green background for success */
-    color: white; /* White text */
-    display: inline-block; /* Key property */
-}
+#loginResult.success { background-color: var(--accent); color: #081220; display: inline-block; }
 
 /* Failure styles */
-#loginResult.failure {
-    background-color: #f44336; /* Red background for failure */
-    color: white; /* White text */
-    display: inline-block; /* Key property */
-}
+#loginResult.failure { background-color: var(--danger); color: #fff; display: inline-block; }
 
-#loginResult {
-    font-size: 1.2em; /* Slightly larger font */
-    border-radius: 5px; /* Rounded corners */
-    margin-top: 10px; /* Space above the result message */
-    margin-bottom: 10px; /* Space above the result message */
-    display: inline-block; /* Ensures the background only covers the text */
-    text-decoration: none; /* No underline */
-    padding: 5px; /* Adjust padding for better spacing */
-    word-wrap: break-word; /* Prevent long URLs from overflowing */
-}
+#loginResult { font-size: 1.05em; border-radius: 999px; margin: 10px 0; display: inline-block; text-decoration: none; padding: 6px 12px; word-wrap: break-word; }
 
 
-#loginScreenshotLink {
-    font-size: 1.1em;
-    width: 100%; /* Full width to match the skills section */
-    max-width: 135px
-}
+#loginScreenshotLink { font-size: 1.05em; width: auto; max-width: none; }
 
 #loginScreenshotLink:hover {
     background-color: #007BFF;
     color: white;
 }
 
-#orderScreenshotLink {
-    font-size: 1.1em;
-    width: 100%; /* Full width to match the skills section */
-    max-width: 135px
-}
+#orderScreenshotLink { font-size: 1.05em; width: auto; max-width: none; }
 
 #orderScreenshotLink:hover {
     background-color: #007BFF;
@@ -122,50 +58,19 @@
 
 /*PLACING ORDER STYLES*/
 
-#placeOrderButton {
-    background-color: #007bff; /* Bootstrap primary color */
-    color: white; /* White text color */
-    border: none; /* No border */
-    border-radius: 4px; /* Rounded corners */
-    padding: 10px 20px; /* Padding inside the button */
-    cursor: pointer; /* Cursor change on hover */
-    transition: background-color 0.4s; /* Smooth background color change */
-}
-
-#placeOrderButton:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
+#placeOrderButton { background: linear-gradient(180deg, var(--brand) 0%, var(--brand-700) 100%); color: #fff; border: none; border-radius: 999px; padding: 10px 20px; cursor: pointer; transition: transform .15s ease, box-shadow .2s ease; box-shadow: 0 6px 16px rgba(37,99,235,.25); }
+#placeOrderButton:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(37,99,235,.35); }
 
 
 /* Success styles */
-#orderResult.success {
-    background-color: #4CAF50; /* Green background for success */
-    color: white; /* White text */
-    display: inline-block; /* Key property */
-}
+#orderResult.success { background-color: var(--accent); color: #081220; display: inline-block; }
 
 /* Failure styles */
-#orderResult.failure {
-    background-color: #f44336; /* Red background for failure */
-    color: white; /* White text */
-    display: inline-block; /* Key property */
-}
+#orderResult.failure { background-color: var(--danger); color: #fff; display: inline-block; }
 
-#orderResult {
-    font-size: 1.2em; /* Slightly larger font */
-    border-radius: 5px; /* Rounded corners */
-    margin-top: 10px; /* Space above the result message */
-    display: inline-block; /* Ensures the background only covers the text */
-    text-decoration: none; /* No underline */
-    padding: 5px; /* Adjust padding for better spacing */
-    word-wrap: break-word; /* Prevent long URLs from overflowing */
-}
+#orderResult { font-size: 1.05em; border-radius: 999px; margin-top: 10px; display: inline-block; text-decoration: none; padding: 6px 12px; word-wrap: break-word; }
 
-.divider {
-        margin: 30px 0;
-        border: none;
-        border-top: 2px solid #ddd;
-}
+.divider { margin: 30px 0; border: none; border-top: 1px solid rgba(0,0,0,.08); }
 
 @media (max-width: 768px) {
     body {
