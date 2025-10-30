@@ -291,3 +291,6 @@ main {
         font-size: 14px;
     }
 }
+
+/* Offset content for fixed top navigation */
+body { padding-top: 60px; }

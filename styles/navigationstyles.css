@@ -33,14 +33,16 @@
 .sticky-nav {
     background: rgba(17,24,39,.7);
     padding: 10px 0;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
     overflow: hidden;
     width: 100%;
     z-index: 1000;
-    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease, transform 0.25s ease;
     border-bottom: 1px solid rgba(255,255,255,.06);
     backdrop-filter: blur(10px);
+    will-change: transform;
 }
 
 .sticky-nav.scrolled { background-color: rgba(17,24,39,.9); }
@@ -85,3 +87,6 @@ nav {
     background: linear-gradient(90deg, #93c5fd, #22c55e);
     border-radius: 2px;
 }
+
+/* Auto-hide modifier; applied via JS on small screens */
+.sticky-nav.nav-hidden { transform: translateY(-100%); }

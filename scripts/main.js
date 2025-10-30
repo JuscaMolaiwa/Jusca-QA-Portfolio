@@ -126,10 +126,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Initial update of active nav link and nav background color
     updateActiveNavLink();
+    // Ensure nav is visible initially
+    nav.classList.remove('nav-hidden');
 
-    // Update active nav link and nav background color on scroll
+    // Smart auto-hide disabled (keep nav always visible); still update active link/background on scroll
+    let lastScrollY = window.scrollY || 0;
+    const autoHideEnabled = () => false; // disable auto-hide across breakpoints
+
     window.addEventListener("scroll", function () {
         updateActiveNavLink();
+
+    if (!autoHideEnabled()) return;
+        const current = window.scrollY || 0;
+
+        // Do not hide when at very top
+        if (current <= 0) {
+            nav.classList.remove('nav-hidden');
+            lastScrollY = current;
+            return;
+        }
+
+        // Don't hide if mobile menu is open
+        const overlayMenu = document.querySelector('.nav-menu');
+        const menuOpen = overlayMenu && overlayMenu.classList.contains('active');
+        if (menuOpen) {
+            nav.classList.remove('nav-hidden');
+            lastScrollY = current;
+            return;
+        }
+
+        const delta = current - lastScrollY;
+        const threshold = 8; // small threshold to avoid jitter
+        if (Math.abs(delta) > threshold) {
+            if (delta > 0 && current > 100) {
+                // scrolling down
+                // nav.classList.add('nav-hidden'); // disabled
+            } else {
+                // scrolling up (no-op, nav remains visible)
+                nav.classList.remove('nav-hidden');
+            }
+            lastScrollY = current;
+        }
     });
 
     // Smooth scroll to section on nav link click and update URL hash
@@ -167,8 +204,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Fallback for very old browsers
                     location.hash = targetId;
                 }
+                // Ensure nav is visible after a click (kept for safety)
+                nav.classList.remove('nav-hidden');
             }
         });
+    });
+
+    // On resize, show nav to avoid being stuck hidden when switching breakpoints
+    window.addEventListener('resize', function() {
+        nav.classList.remove('nav-hidden');
     });
 
     // Burger menu open/close is handled in burgermenu.js for consistency
