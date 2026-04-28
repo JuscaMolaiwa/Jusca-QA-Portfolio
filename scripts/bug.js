@@ -1,3 +1,4 @@
+//bug.js
 document.addEventListener("DOMContentLoaded", function () {
     const stickyBugHunterLink = document.querySelector('.sticky-nav .nav-link[href="#BugHunter"]');
     const stickyBugIcon = document.querySelector('.sticky-nav .bug-icon');

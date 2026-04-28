@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="Jusca Molaiwa — Software Quality Assurance Engineer portfolio featuring automation demos, projects, resume, and contact details.">
+    <meta name="description" content="Jusca Molaiwa — Software Quality Assurance Engineer portfolio featuring automation demos, projects, resume, and contact details.">
     <meta name="author" content="Jusca Molaiwa">
-    <meta name="theme-color" content="#0a0a0a">
-
-    <title>Jusca - Quality Assurance Engineer Portfolio</title>
+    <meta name="theme-color" content="#0d1117">
+    <title>Jusca Molaiwa — QA Engineer Portfolio</title>
     <link rel="icon" href="images/robot.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="images/robot.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <!-- Open Graph / Twitter Cards -->
+    <!-- SEO / Social -->
     <meta property="og:title" content="Jusca Molaiwa — QA Engineer Portfolio">
     <meta property="og:description" content="Automation, manual testing, frameworks, and real-time demos.">
     <meta property="og:type" content="website">
@@ -25,401 +24,1181 @@
     <meta name="twitter:title" content="Jusca Molaiwa — QA Engineer Portfolio">
     <meta name="twitter:description" content="Automation, manual testing, frameworks, and real-time demos.">
     <meta name="twitter:image" content="images/profile-photo.jpg">
-
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Jusca Molaiwa",
-      "jobTitle": "Software Quality Assurance Engineer",
-      "url": "https://github.com/JuscaMolaiwa"
-    }
+        {"@context":"https://schema.org","@type":"Person","name":"Jusca Molaiwa","jobTitle":"Software Quality Assurance Engineer","url":"https://github.com/JuscaMolaiwa"}
     </script>
-    <link rel="stylesheet" href="styles/mainstyles.css?v=20251030155001">
-    <link rel="stylesheet" href="styles/aboutstyles.css?v=20251030155001">
-    <link rel="stylesheet" href="styles/resumestyles.css?v=20251030155001">
-    <link rel="stylesheet" href="styles/projectstyles.css?v=20251030155001">
-    <link rel="stylesheet" href="styles/bugstyles.css?v=20251030155001">
-    <link rel="stylesheet" href="styles/burgermenustyles.css?v=20251030155001">
-    <link rel="stylesheet" href="styles/contactstyles.css?v=20251030155001">
-    <link rel="stylesheet" href="styles/navigationstyles.css?v=20251030155001">
-    <link rel="stylesheet" href="styles/skillstyles.css?v=20251030155001">
-    <link rel="stylesheet" href="styles/educationstyles.css?v=20251030155001">
-    <link rel="stylesheet" href="styles/automation-demo.css?v=20251030155001">
-    <link rel="stylesheet" href="styles/feedbackform.css?v=20251030155001">
+
+    <style>
+        /* ── Reset & Base ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+          --bg: #0d1117;
+          --bg2: #161b22;
+          --bg3: #1c2330;
+          --accent: #00e5a0;
+          --accent2: #00b37e;
+          --text: #e6edf3;
+          --muted: #7d8590;
+          --border: rgba(255,255,255,0.08);
+          --card-bg: #161b22;
+          --nav-h: 64px;
+          --radius: 12px;
+          --font-display: 'Syne', sans-serif;
+          --font-body: 'DM Sans', sans-serif;
+          --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+          font-family: var(--font-body);
+          background: var(--bg);
+          color: var(--text);
+          line-height: 1.7;
+          font-size: 16px;
+          overflow-x: hidden;
+        }
+        a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+        a:hover { color: #fff; }
+        img { display: block; max-width: 100%; }
+        section { padding: 96px 0; }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+        h2 {
+          font-family: var(--font-display);
+          font-size: clamp(1.8rem, 4vw, 2.5rem);
+          font-weight: 700;
+          margin-bottom: 48px;
+          position: relative;
+          display: inline-block;
+        }
+        h2::after {
+          content: '';
+          position: absolute;
+          left: 0; bottom: -10px;
+          width: 40px; height: 3px;
+          background: var(--accent);
+          border-radius: 2px;
+        }
+        h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+
+        /* ── Skip link ── */
+        .skip-link {
+          position: absolute; left: -9999px; top: 8px; padding: 8px 16px;
+          background: var(--accent); color: #000; border-radius: 4px; font-weight: 600; z-index: 9999;
+        }
+        .skip-link:focus { left: 8px; }
+
+        /* ── Navigation ── */
+        .sticky-nav {
+          position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+          height: var(--nav-h);
+          background: rgba(13,17,23,0.85);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border-bottom: 1px solid var(--border);
+          transition: background var(--transition);
+        }
+        .nav-inner {
+          max-width: 1100px; margin: 0 auto; padding: 0 24px;
+          height: 100%; display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-logo {
+          font-family: var(--font-display); font-weight: 800; font-size: 1.1rem;
+          color: var(--accent); display: flex; align-items: center; gap: 8px; text-decoration: none;
+        }
+        .nav-logo img { width: 22px; height: 22px; transition: transform 0.3s ease; }
+        /* Bug running animation — matches bug.js */
+        @keyframes bugRun {
+          0%   { transform: translateX(0)   rotate(0deg);   }
+          20%  { transform: translateX(6px)  rotate(15deg);  }
+          40%  { transform: translateX(-6px) rotate(-15deg); }
+          60%  { transform: translateX(5px)  rotate(10deg);  }
+          80%  { transform: translateX(-4px) rotate(-10deg); }
+          100% { transform: translateX(0)   rotate(0deg);   }
+        }
+        .bug-icon.running { animation: bugRun 0.6s ease infinite; }
+        .nav-logo .bug-icon { display: inline-block; }
+        .nav-list {
+          display: flex; gap: 4px; list-style: none;
+        }
+        .nav-list a {
+          font-size: 0.85rem; font-weight: 500; color: var(--muted);
+          padding: 6px 12px; border-radius: 6px;
+          transition: color var(--transition), background var(--transition);
+          letter-spacing: 0.02em; text-transform: uppercase;
+        }
+        .nav-list a:hover, .nav-list a.active { color: var(--text); background: rgba(255,255,255,0.06); }
+        .nav-list a.active { color: var(--accent); }
+
+        /* ── Burger ── */
+        .burger-menu {
+          display: none; cursor: pointer; flex-direction: column;
+          gap: 5px; padding: 8px; z-index: 200;
+        }
+        .burger-menu span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+        .burger-menu.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger-menu.open span:nth-child(2) { opacity: 0; }
+        .burger-menu.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ── Mobile nav drawer ── */
+        .nav-drawer {
+          position: fixed; top: 0; right: -100%; width: min(320px, 85vw);
+          height: 100vh; background: var(--bg2);
+          border-left: 1px solid var(--border);
+          z-index: 150; padding: 80px 32px 32px;
+          transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+          display: flex; flex-direction: column; gap: 8px;
+        }
+        .nav-drawer.open { right: 0; }
+        .nav-drawer a {
+          font-family: var(--font-display); font-size: 1.1rem; color: var(--muted);
+          padding: 10px 0; border-bottom: 1px solid var(--border); display: block;
+          transition: color var(--transition);
+        }
+        .nav-drawer a:hover { color: var(--accent); }
+        .nav-overlay {
+          position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+          z-index: 140; opacity: 0; pointer-events: none;
+          transition: opacity 0.3s;
+        }
+        .nav-overlay.open { opacity: 1; pointer-events: all; }
+
+        /* ── Hero ── */
+        #Home {
+          min-height: 100vh;
+          display: flex; align-items: center;
+          padding-top: var(--nav-h);
+          position: relative;
+          overflow: hidden;
+        }
+        #Home::before {
+          content: '';
+          position: absolute; inset: 0;
+          background:
+            radial-gradient(ellipse 80% 60% at 60% 30%, rgba(0,229,160,0.08) 0%, transparent 70%),
+            radial-gradient(ellipse 50% 50% at 10% 80%, rgba(0,179,126,0.05) 0%, transparent 60%);
+          pointer-events: none;
+        }
+        .hero-grid {
+          display: grid; grid-template-columns: 1fr 220px;
+          gap: 48px; align-items: center; max-width: 960px; margin: 0 auto; padding: 0 24px;
+        }
+        .hero-eyebrow {
+          font-size: 0.8rem; font-weight: 500; letter-spacing: 0.15em;
+          text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+          display: flex; align-items: center; gap: 8px;
+        }
+        .hero-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+        .hero-title {
+          font-family: var(--font-display);
+          font-size: clamp(2.4rem, 5vw, 3.6rem);
+          font-weight: 800; line-height: 1.1;
+          margin-bottom: 20px; letter-spacing: -0.02em;
+        }
+        .hero-title span { color: var(--accent); }
+        .hero-sub { color: var(--muted); font-size: 1.05rem; max-width: 520px; margin-bottom: 36px; line-height: 1.8; }
+        .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn {
+          display: inline-flex; align-items: center; gap: 8px;
+          padding: 12px 24px; border-radius: 8px;
+          font-size: 0.9rem; font-weight: 500; letter-spacing: 0.02em;
+          transition: all var(--transition); cursor: pointer; border: none;
+        }
+        .btn-primary { background: var(--accent); color: #000; }
+        .btn-primary:hover { background: #fff; color: #000; transform: translateY(-2px); }
+        .btn-outline {
+          background: transparent; color: var(--text);
+          border: 1px solid var(--border);
+        }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+        .hero-photo-wrap {
+          position: relative; display: flex; justify-content: center;
+        }
+        .hero-photo {
+          width: 200px; height: 200px; border-radius: 50%;
+          object-fit: cover;
+          border: 3px solid rgba(0,229,160,0.3);
+          box-shadow: 0 0 0 8px rgba(0,229,160,0.05), 0 24px 60px rgba(0,0,0,0.5);
+        }
+        .hero-photo-ring {
+          position: absolute; inset: -12px;
+          border-radius: 50%;
+          border: 1px dashed rgba(0,229,160,0.25);
+          animation: spin 30s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .hero-stats {
+          display: flex; gap: 32px; margin-top: 40px; padding-top: 40px;
+          border-top: 1px solid var(--border);
+        }
+        .stat-val { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+        .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+        /* ── Section headings ── */
+        .section-label {
+          font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+          color: var(--accent); font-weight: 500; margin-bottom: 12px;
+        }
+
+        /* ── About ── */
+        #about { background: var(--bg); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+        .about-text p { color: var(--muted); margin-bottom: 16px; font-size: 1rem; }
+        .about-text p i { color: var(--accent); margin: 0 3px; }
+        .about-highlights { display: grid; gap: 16px; }
+        .highlight-card {
+          background: var(--card-bg); border: 1px solid var(--border);
+          border-radius: var(--radius); padding: 20px 24px;
+          display: flex; gap: 16px; align-items: flex-start;
+          transition: border-color var(--transition), transform var(--transition);
+        }
+        .highlight-card:hover { border-color: rgba(0,229,160,0.3); transform: translateX(4px); }
+        .highlight-icon {
+          width: 36px; height: 36px; min-width: 36px;
+          border-radius: 8px; background: rgba(0,229,160,0.1);
+          display: flex; align-items: center; justify-content: center;
+          color: var(--accent); font-size: 0.9rem;
+        }
+        .highlight-card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+        .highlight-card p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+        /* ── Resume ── */
+        #resume { background: var(--bg2); }
+        .resume-card {
+          background: var(--bg3); border: 1px solid var(--border);
+          border-radius: var(--radius); padding: 40px;
+          display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;
+        }
+        .resume-card p { color: var(--muted); max-width: 440px; }
+        .resume-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+        /* ── Projects ── */
+        #projects { background: var(--bg); }
+        .projects-grid { display: grid; gap: 20px; }
+        .project-card {
+          background: var(--card-bg); border: 1px solid var(--border);
+          border-radius: var(--radius); padding: 28px 32px;
+          transition: border-color var(--transition), transform var(--transition);
+          position: relative; overflow: hidden;
+        }
+        .project-card::before {
+          content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+          width: 3px; background: var(--accent);
+          transform: scaleY(0); transform-origin: bottom;
+          transition: transform 0.3s ease;
+        }
+        .project-card:hover { border-color: rgba(0,229,160,0.25); transform: translateY(-3px); }
+        .project-card:hover::before { transform: scaleY(1); }
+        .project-meta {
+          display: flex; gap: 12px; flex-wrap: wrap;
+          margin-bottom: 12px; margin-top: 6px;
+        }
+        .badge {
+          font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em;
+          padding: 3px 10px; border-radius: 20px;
+          background: rgba(0,229,160,0.1); color: var(--accent);
+          border: 1px solid rgba(0,229,160,0.2);
+        }
+        .badge.secondary {
+          background: rgba(255,255,255,0.05); color: var(--muted);
+          border-color: var(--border);
+        }
+        .project-card ul { color: var(--muted); padding-left: 18px; margin-top: 12px; }
+        .project-card ul li { margin-bottom: 6px; font-size: 0.9rem; }
+
+        /* ── Skills ── */
+        #skills { background: var(--bg2); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .skills-cat {
+          background: var(--bg3); border: 1px solid var(--border);
+          border-radius: var(--radius); padding: 24px;
+          transition: border-color var(--transition);
+        }
+        .skills-cat:hover { border-color: rgba(0,229,160,0.25); }
+        .skills-cat-title {
+          font-family: var(--font-display); font-size: 0.85rem; font-weight: 700;
+          text-transform: uppercase; letter-spacing: 0.1em;
+          color: var(--accent); margin-bottom: 16px;
+          display: flex; align-items: center; gap: 8px;
+        }
+        .skills-cat-title i { font-size: 0.9rem; }
+        .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+        .pill {
+          font-size: 0.78rem; padding: 4px 12px; border-radius: 20px;
+          background: rgba(255,255,255,0.05); color: var(--muted);
+          border: 1px solid var(--border);
+          transition: all var(--transition);
+        }
+        .pill:hover { background: rgba(0,229,160,0.1); color: var(--accent); border-color: rgba(0,229,160,0.3); }
+
+        /* ── Automation Demo ── */
+        #automation-demo { background: var(--bg); }
+        .demo-grid { display: grid; gap: 20px; }
+        .demo-card {
+          background: var(--card-bg); border: 1px solid var(--border);
+          border-radius: var(--radius); padding: 28px 32px;
+        }
+        .demo-card h3 { margin-bottom: 8px; }
+        .demo-card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
+        .demo-btn {
+          display: inline-flex; align-items: center; gap: 8px;
+          padding: 10px 22px; border-radius: 8px;
+          background: rgba(0,229,160,0.12); color: var(--accent);
+          border: 1px solid rgba(0,229,160,0.3); font-size: 0.88rem; font-weight: 500;
+          cursor: pointer; transition: all var(--transition); font-family: var(--font-body);
+        }
+        .demo-btn:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+        .demo-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .demo-status {
+          margin-top: 12px; font-size: 0.85rem; min-height: 20px;
+          color: var(--muted); display: flex; align-items: center; gap: 8px;
+        }
+        .demo-status.running { color: var(--accent); }
+        .demo-status.success { color: #3fb950; }
+        .demo-status.error { color: #f85149; }
+        .demo-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+        .demo-links a {
+          font-size: 0.8rem; display: flex; align-items: center; gap: 5px;
+          color: var(--muted); border: 1px solid var(--border);
+          padding: 5px 12px; border-radius: 6px;
+          transition: all var(--transition);
+        }
+        .demo-links a:hover { color: var(--accent); border-color: rgba(0,229,160,0.3); }
+        .divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+        /* ── Feedback form ── */
+        .feedback-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-top: 8px; }
+        .feedback-wrap h4 { font-family: var(--font-display); font-size: 1rem; margin-bottom: 6px; }
+        .feedback-wrap > p { color: var(--muted); font-size: 0.88rem; margin-bottom: 16px; }
+        .feedback-form { display: none; flex-direction: column; gap: 14px; }
+        .feedback-form.visible { display: flex; }
+        .feedback-form label { font-size: 0.82rem; color: var(--muted); margin-bottom: 4px; display: block; }
+        .feedback-form input,
+        .feedback-form textarea {
+          width: 100%; background: var(--bg3); border: 1px solid var(--border);
+          color: var(--text); border-radius: 8px; padding: 10px 14px;
+          font-family: var(--font-body); font-size: 0.9rem;
+          transition: border-color var(--transition); outline: none;
+        }
+        .feedback-form input:focus,
+        .feedback-form textarea:focus { border-color: rgba(0,229,160,0.4); }
+        .feedback-form textarea { min-height: 100px; resize: vertical; }
+        .form-actions { display: flex; gap: 10px; }
+        .feedback-status { margin-top: 10px; font-size: 0.85rem; color: var(--accent); display: none; }
+
+        /* ── Source code link ── */
+        .source-link {
+          display: inline-flex; align-items: center; gap: 10px;
+          margin-top: 24px; color: var(--muted); font-size: 0.88rem;
+          border: 1px solid var(--border); padding: 10px 18px; border-radius: 8px;
+          transition: all var(--transition);
+        }
+        .source-link:hover { color: var(--accent); border-color: rgba(0,229,160,0.3); }
+        .source-link img { width: 18px; height: 18px; filter: invert(0.6); }
+
+        /* ── Education / Timeline ── */
+        #education { background: var(--bg2); }
+        .edu-section { margin-bottom: 48px; }
+        .edu-section h3 { color: var(--text); margin-bottom: 24px; font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+        .edu-card {
+          background: var(--bg3); border: 1px solid var(--border);
+          border-radius: var(--radius); padding: 24px 28px; margin-bottom: 12px;
+          transition: border-color var(--transition);
+        }
+        .edu-card:hover { border-color: rgba(0,229,160,0.25); }
+        .edu-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+        .edu-card .edu-meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 12px; }
+        .edu-card .edu-status { font-size: 0.78rem; color: var(--accent); margin-top: 4px; }
+        .cert-item {
+          background: var(--bg3); border: 1px solid var(--border);
+          border-radius: var(--radius); padding: 16px 22px;
+          margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+          transition: border-color var(--transition);
+        }
+        .cert-item:hover { border-color: rgba(0,229,160,0.25); }
+        .cert-name { font-size: 0.88rem; font-weight: 500; }
+        .cert-issuer { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+        .cert-link {
+          font-size: 0.78rem; white-space: nowrap; display: flex; align-items: center; gap: 5px;
+          color: var(--accent); border: 1px solid rgba(0,229,160,0.25);
+          padding: 5px 12px; border-radius: 6px;
+          transition: all var(--transition);
+        }
+        .cert-link:hover { background: rgba(0,229,160,0.1); }
+
+        /* ── Contact — matches contactstyles.css ── */
+        #contact {
+          text-align: center; display: flex; flex-direction: column; align-items: center;
+          transition: transform 0.5s ease;
+        }
+        #contact:hover { transform: translateY(-2px); }
+        #contact h2 {
+          font-style: italic; color: var(--accent);
+          transition: color var(--transition); display: block;
+        }
+        #contact h2:hover { color: #fff; }
+        .contact-intro { color: var(--muted); max-width: 440px; margin: 0 auto 20px; }
+        .contact-icons { display: flex; justify-content: center; flex-wrap: wrap; margin-top: 20px; gap: 8px; }
+        /* Each icon is a pill-shaped badge */
+        .contact-icons p {
+          margin: 6px; padding: 0; border-radius: 15px;
+          width: 130px; height: 52px;
+          display: flex; justify-content: center; align-items: center;
+          background: var(--bg3); border: 1px solid var(--border);
+          transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+          overflow: hidden;
+        }
+        .contact-icons p:hover {
+          background-color: #007acc;
+          border-color: #007acc;
+          box-shadow: 0 4px 12px rgba(0,122,204,0.35);
+        }
+        /* Icons sized to sit neatly inside the badge */
+        .contact-icons img {
+          display: block; width: 80px; height: 28px;
+          object-fit: contain; padding: 0;
+          filter: brightness(0) invert(1);
+          transition: filter 0.3s ease;
+        }
+        .contact-icons p:hover img { filter: brightness(0) invert(1); }
+        @media (max-width: 768px) {
+          #contact { padding: 20px; }
+          .contact-icons { padding: 10px; margin-top: 10px; }
+          .contact-icons p { width: 100px; height: 44px; }
+          .contact-icons img { width: 64px; height: 22px; }
+        }
+
+        /* ── Back to top ── */
+        .back-to-top {
+          position: fixed; bottom: 28px; right: 28px; z-index: 99;
+          width: 44px; height: 44px; border-radius: 50%;
+          background: var(--bg2); border: 1px solid var(--border);
+          display: flex; align-items: center; justify-content: center;
+          color: var(--muted); cursor: pointer;
+          opacity: 0; pointer-events: none;
+          transition: all var(--transition);
+        }
+        .back-to-top.visible { opacity: 1; pointer-events: all; }
+        .back-to-top:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+
+        /* ── Footer ── */
+        footer {
+          background: var(--bg2); border-top: 1px solid var(--border);
+          text-align: center; padding: 24px; font-size: 0.82rem; color: var(--muted);
+        }
+
+        /* ── Certs list — matches educationstyles.css .collapsed pattern ── */
+        #certsList { list-style: none; padding-left: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px; }
+        #certsList li {
+          display: flex; align-items: center; justify-content: space-between; gap: 12px;
+          padding: 14px 18px; background: var(--bg3); border: 1px solid var(--border);
+          border-radius: var(--radius); font-size: 0.88rem; color: var(--muted);
+          transition: border-color var(--transition), transform 0.2s ease;
+        }
+        #certsList li:hover { border-color: rgba(0,229,160,0.25); transform: translateY(-1px); }
+        #certsList.collapsed li:nth-child(n+4) { display: none; }
+        #certsList .cert-link {
+          flex: 0 0 auto; white-space: nowrap;
+          border: 1px solid rgba(0,229,160,0.3); color: var(--accent);
+          padding: 6px 14px; border-radius: 999px; font-size: 0.78rem;
+          display: flex; align-items: center; gap: 5px;
+          transition: all var(--transition);
+        }
+        #certsList .cert-link:hover { background: rgba(0,229,160,0.1); }
+        /* Toggle button — matches .view-more-toggle from educationstyles.css */
+        .view-more-toggle {
+          display: block; margin: 12px auto 0;
+          padding: 8px 20px; border: 1px solid rgba(0,229,160,0.35);
+          color: var(--accent); background: transparent;
+          border-radius: 999px; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem;
+          transition: background var(--transition), box-shadow var(--transition);
+          display: flex; align-items: center; gap: 8px;
+        }
+        .view-more-toggle:hover { background: rgba(0,229,160,0.08); }
+        .view-more-toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+        .view-more-toggle i { transition: transform 0.35s ease; font-size: 0.75rem; }
+        .view-more-toggle[aria-expanded="true"] i { transform: rotate(180deg); }
+        @media (max-width: 560px) {
+          #certsList li { flex-wrap: wrap; align-items: flex-start; }
+          #certsList .cert-link { flex: 1 1 100%; margin-top: 6px; justify-content: center; }
+        }
+
+        /* ── Scroll animations ── */
+        .fade-up {
+          opacity: 0; transform: translateY(24px);
+          transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+          .nav-list { display: none; }
+          .burger-menu { display: flex; }
+          .hero-grid { grid-template-columns: 1fr; }
+          .hero-photo-wrap { order: -1; }
+          .hero-photo { width: 140px; height: 140px; }
+          .hero-stats { gap: 24px; }
+          .about-grid { grid-template-columns: 1fr; }
+          .cert-item { flex-direction: column; align-items: flex-start; }
+          section { padding: 64px 0; }
+        }
+        @media (max-width: 480px) {
+          .hero-title { font-size: 2rem; }
+          .skills-grid { grid-template-columns: 1fr; }
+          .resume-card { flex-direction: column; }
+        }
+
+        /* ── Spinner ── */
+        @keyframes spin-btn { to { transform: rotate(360deg); } }
+        .spinner {
+          width: 14px; height: 14px; border: 2px solid rgba(0,229,160,0.3);
+          border-top-color: var(--accent); border-radius: 50%;
+          animation: spin-btn 0.7s linear infinite; display: inline-block;
+        }
+    </style>
 </head>
-
 <body>
-    <a class="skip-link" href="#Home">Skip to main content</a>
-    <!-- Burger menu -->
-    <div class="burger-menu" role="button" aria-label="Open navigation menu" aria-controls="navMenu"
-        aria-expanded="false" tabindex="0">
-        <div class="burger-icon"></div>
-    </div>
 
-    <!-- Hidden navigation menu -->
-    <div id="navMenu" class="nav-menu" aria-hidden="true" aria-label="Mobile navigation menu">
-        <button class="close-button" aria-label="Close navigation" onclick="toggleNavMenu()">✕</button>
-        <ul>
-            <li><a href="#BugHunter" class="nav-link"><img src="images/bug.svg" alt="Bug Icon" class="bug-icon"
-                        loading="lazy">
-                    BugHunter</a></li>
-            <li><a href="#Home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About Me</a></li>
-            <li><a href="#resume" class="nav-link">Resume</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#automation-demo" class="nav-link">Automation Demos</a></li>
-            <li><a href="#education" class="nav-link">Education</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
+<a class="skip-link" href="#Home">Skip to main content</a>
+
+<!-- Nav overlay -->
+<div class="nav-overlay" id="navOverlay" onclick="closeDrawer()"></div>
+
+<!-- Mobile drawer -->
+<nav class="nav-drawer" id="navDrawer" aria-label="Mobile navigation">
+    <a href="#BugHunter" id="hiddenBugHunterLink" onclick="closeDrawer()"><img src="images/bug.svg" alt="Bug icon" class="bug-icon" id="hiddenBugIcon" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;"> BugHunter</a>
+    <a href="#Home" onclick="closeDrawer()">Home</a>
+    <a href="#about" onclick="closeDrawer()">About Me</a>
+    <a href="#resume" onclick="closeDrawer()">Resume</a>
+    <a href="#projects" onclick="closeDrawer()">Projects</a>
+    <a href="#skills" onclick="closeDrawer()">Skills</a>
+    <a href="#automation-demo" onclick="closeDrawer()">Automation Demos</a>
+    <a href="#education" onclick="closeDrawer()">Education</a>
+    <a href="#contact" onclick="closeDrawer()">Contact</a>
+</nav>
+
+<!-- Desktop nav -->
+<header class="sticky-nav" role="banner">
+    <div class="nav-inner">
+        <a href="#BugHunter" class="nav-logo" id="stickyBugHunterLink" aria-label="BugHunter — Home">
+            <img src="images/bug.svg" alt="Bug icon" class="bug-icon" id="stickyBugIcon">
+            BugHunter
+        </a>
+        <ul class="nav-list" role="list">
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#automation-demo">Demos</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="burger-menu" id="burgerBtn" aria-label="Open navigation menu" aria-expanded="false" onclick="toggleDrawer()">
+            <span></span><span></span><span></span>
+        </button>
     </div>
+</header>
 
-    <!-- Navigation -->
-    <nav class="sticky-nav" aria-label="Primary">
-        <ul class="nav-list nav-center">
-            <li>
-                <a href="#BugHunter" class="nav-link">
-                    <img src="images/bug.svg" alt="Bug Icon" class="bug-icon" loading="lazy"> BugHunter
-                </a>
-            </li>
-            <li><a href="#Home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About Me</a></li>
-            <li><a href="#resume" class="nav-link">Resume</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#automation-demo" class="nav-link">Automation Demos</a></li>
-            <li><a href="#education" class="nav-link">Education</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-    </nav>
+<main id="main-content">
 
-    <header id="Home">
-        <div class="container">
-            <img src="images/profile-photo.jpg" alt="Jusca" class="profile-photo">
-            <h1>Ensuring Software Quality with Precision and Expertise</h1>
-            <h2>Software Quality Assurance Engineer</h2>
-            <p>With over 5 years of experience working in complex, project-based, and Agile Scrum environments. Skilled
-                in both manual and automation testing, with strong expertise in scripting, documentation, and defect
-                tracking.
-
-                Proven track record in implementing test plans, test cases, and testing processes, as well as building
-                automation frameworks from scratch using Appium, Selenium/Playwright, TestNG, Postman, and Rest-Assured
-                API.
-
-                Technically proficient in Java, JavaScript, Python, and experienced in web automation (Selenium,
-                Playwright), mobile automation (Appium), API testing (Rest-Assured, SoapUI, Postman), and SQL for
-                database testing.
-
-                Adaptable and continuously learning new tools, programming languages, and technologies to enhance
-                testing efficiency and deliver high-quality software.</p>
+    <!-- ── HERO ── -->
+    <section id="Home" aria-label="Introduction">
+        <div class="hero-grid">
+            <div>
+                <p class="hero-eyebrow" aria-hidden="true">QA Engineer · Johannesburg, ZA</p>
+                <h1 class="hero-title">
+                    Ensuring Software<br>
+                    Quality with <span>Precision</span><br>
+                    &amp; Expertise.
+                </h1>
+                <p class="hero-sub">
+                    5+ years of manual and automation testing in Agile Scrum environments.
+                    Building test frameworks, hunting bugs, and shipping reliable software.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#projects" class="btn btn-primary"><i class="fas fa-folder-open"></i> View Projects</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Get In Touch</a>
+                </div>
+                <div class="hero-stats">
+                    <div>
+                        <div class="stat-val">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div>
+                        <div class="stat-val">3</div>
+                        <div class="stat-label">Major Projects</div>
+                    </div>
+                    <div>
+                        <div class="stat-val">9</div>
+                        <div class="stat-label">Certifications</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-photo-wrap">
+                <div class="hero-photo-ring" aria-hidden="true"></div>
+                <img src="images/profile-photo.jpg" alt="Jusca Molaiwa, QA Engineer" class="hero-photo" loading="eager">
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section id="about" class="container">
-            <h2>About Me</h2>
-            <p>
-                I started my career as an Analytical Chemistry student and lab analyst intern, where I developed a keen
-                eye for detail and a methodical approach to problem-solving. Transitioning into QA, I brought these
-                skills to the world of software testing. I have extensive experience in both manual and automation
-                testing, working with tools like Selenium, Appium, and Azure DevOps.
-            </p>
-            <p>
-                When I am not<i class="fas fa-bug"></i> bug hunting or deeply immersed in the world of software
-                testing, you'll often find me deep
-                in the trenches of Call of
-                Duty or strategizing my next big move in FIFA. Gaming has been a real passion of mine for years –
-                there's just something about the thrill of competition and the friendships formed online that keeps me
-                coming back for more.
-            </p>
-            <p>
-                Outside of the digital realm, you'll find me in my garden, surrounded by plants and chirping birds.
-                There's nothing quite like the peace and satisfaction that comes from tending to nature and watching it
-                flourish.
-            </p>
-            <p>
-                And last but not least, music<i class="fas fa-music"></i> is my constant companion throughout the day.
-            </p>
-        </section>
-
-        <section id="resume" class="container">
-            <h2>Resume</h2>
-            <div class="resume-links">
-                <a href="projects/assets/JUSCA MOLAIWA 2025 LATEST CV.pdf" target="_blank"
-                    rel="noopener noreferrer">View My
-                    Resume</a>
-                <a href="projects/assets/JUSCA MOLAIWA 2025 LATEST CV.pdf" download>Download
-                    My Resume</a>
+    <!-- ── ABOUT ── -->
+    <section id="about" aria-labelledby="about-heading">
+        <div class="container">
+            <p class="section-label">Who I Am</p>
+            <h2 id="about-heading">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text fade-up">
+                    <p>I started my career as an Analytical Chemistry student and lab analyst intern, where I developed a keen eye for detail and a methodical approach to problem-solving. Transitioning into QA, I brought these skills to the world of software testing — with extensive experience in manual and automation testing using Selenium, Appium, and Azure DevOps.</p>
+                    <p>When I'm not <i class="fas fa-bug"></i> bug hunting, you'll find me deep in Call of Duty, strategising in FIFA, or in my garden surrounded by plants and birds. Music <i class="fas fa-music"></i> is my constant companion through it all.</p>
+                </div>
+                <div class="about-highlights fade-up">
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="fas fa-robot"></i></div>
+                        <div>
+                            <h4>Automation Expert</h4>
+                            <p>Selenium, Playwright, Appium, TestNG, Rest-Assured, Postman</p>
+                        </div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="fas fa-code"></i></div>
+                        <div>
+                            <h4>Multi-Language</h4>
+                            <p>Java, Python, JavaScript — building frameworks from scratch</p>
+                        </div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="fas fa-infinity"></i></div>
+                        <div>
+                            <h4>CI/CD Pipelines</h4>
+                            <p>AWS & Azure DevOps — continuous integration and delivery</p>
+                        </div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div>
+                            <h4>Mobile Testing</h4>
+                            <p>Android & iOS automation with Appium and real device testing</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" class="container">
-            <h2>Projects</h2>
-
-            <div class="project sasol">
-                <h3>Sasol Rewards App</h3>
-                <p><strong>Company:</strong> Entelect</p>
-                <p><strong>Duration:</strong> October 2022 - Present</p>
-                <ul>
-                    <li>Collaborated on ensuring app quality through comprehensive manual and automated testing using
-                        Appium, Selenium, and API automation.</li>
-                    <li>Managed defects and facilitated timely resolutions with developers via Azure DevOps, enhancing
-                        app usability.</li>
-                    <li>Implemented CI/CD pipelines to streamline testing and deployment, improving the efficiency and
-                        reliability of new feature releases.</li>
-                </ul>
+    <!-- ── RESUME ── -->
+    <section id="resume" aria-labelledby="resume-heading">
+        <div class="container">
+            <p class="section-label">Career</p>
+            <h2 id="resume-heading">Resume</h2>
+            <div class="resume-card fade-up">
+                <div>
+                    <h3 style="margin-bottom:8px;">Jusca Molaiwa</h3>
+                    <p>Software Quality Assurance Engineer with 5+ years of experience in manual and automation testing. Download or view the full CV below.</p>
+                </div>
+                <div class="resume-actions">
+                    <a href="projects/assets/JUSCA MOLAIWA 2025 LATEST CV.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        <i class="fas fa-eye"></i> View CV
+                    </a>
+                    <a href="projects/assets/JUSCA MOLAIWA 2025 LATEST CV.pdf" download class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="project zulzi">
-                <h3>Internal QA (Zulzi)</h3>
-                <p><strong>Company:</strong> Zulzi On-Demand Pty Ltd</p>
-                <p><strong>Duration:</strong> October 2020 - September 2022</p>
-                <ul>
-                    <li>Conducted comprehensive manual and automated testing, detecting and reporting bugs, and ensuring
-                        bug fixes with the development team.</li>
-                    <li>Prioritized and executed test cases, performing automated regression tests after each software
-                        update.</li>
-                    <li>Developed and maintained automated test scripts, ensuring efficient and thorough testing
-                        processes.</li>
-                </ul>
-            </div>
+    <!-- ── PROJECTS ── -->
+    <section id="projects" aria-labelledby="projects-heading">
+        <div class="container">
+            <p class="section-label">Work</p>
+            <h2 id="projects-heading">Projects</h2>
+            <div class="projects-grid">
 
-            <div class="project checkers">
-                <h3>Checkers Sixty60 App Development</h3>
-                <p><strong>Company:</strong> Zulzi On-Demand Pty Ltd</p>
-                <p><strong>Duration:</strong> October 2020 - September 2022</p>
-                <ul>
-                    <li>Leveraged expertise in manual and automated testing to ensure the seamless performance of the
-                        Checkers Sixty60 mobile app.</li>
-                    <li>Developed and implemented robust automated tests using Appium (mobile) and Selenium (web),
-                        complemented by API automation for integration testing.</li>
-                </ul>
-            </div>
-
-        </section>
-        <section id="skills" class="container">
-            <h2>Skills</h2>
-            <div class="skills">
-                <div class="skills-category">
-                    <strong>Automation Testing:</strong>
+                <article class="project-card fade-up">
+                    <h3>Sasol Rewards App</h3>
+                    <div class="project-meta">
+                        <span class="badge">Entelect</span>
+                        <span class="badge secondary">Oct 2022 – Present</span>
+                    </div>
                     <ul>
-                        <li>Selenium</li>
-                        <li>Playwright</li>
-                        <li>Appium</li>
-                        <li>Java, Python</li>
-                        <li>TestNG</li>
-                        <li>Maven</li>
-                        <li>AWS & Azure DevOps CI/CD Pipelines</li>
+                        <li>Comprehensive manual and automated testing using Appium, Selenium, and API automation.</li>
+                        <li>Managed defects and facilitated timely resolutions with developers via Azure DevOps.</li>
+                        <li>Implemented CI/CD pipelines to streamline testing and deployment of new feature releases.</li>
                     </ul>
-                </div>
-                <div class="skills-category">
-                    <strong>Software Engineering:</strong>
+                </article>
+
+                <article class="project-card fade-up">
+                    <h3>Internal QA — Zulzi</h3>
+                    <div class="project-meta">
+                        <span class="badge">Zulzi On-Demand Pty Ltd</span>
+                        <span class="badge secondary">Oct 2020 – Sep 2022</span>
+                    </div>
                     <ul>
-                        <li>Programming Languages: Python, JavaScript, Java</li>
-                        <li>Web Development: HTML, CSS, JavaScript</li>
-                        <li>Database Management: MySQL</li>
-                        <li>APIs: RESTful APIs</li>
+                        <li>Conducted comprehensive manual and automated testing, detecting and reporting bugs.</li>
+                        <li>Prioritised and executed test cases, running automated regression tests after each release.</li>
+                        <li>Developed and maintained automated test scripts ensuring efficient testing processes.</li>
                     </ul>
-                </div>
-                <div class="skills-category">
-                    <strong>Manual Testing:</strong>
+                </article>
+
+                <article class="project-card fade-up">
+                    <h3>Checkers Sixty60 App</h3>
+                    <div class="project-meta">
+                        <span class="badge">Zulzi On-Demand Pty Ltd</span>
+                        <span class="badge secondary">Oct 2020 – Sep 2022</span>
+                    </div>
                     <ul>
-                        <li>Test Planning</li>
-                        <li>Test Case Design</li>
-                        <li>Test Execution</li>
-                        <li>Defect Management</li>
-                        <li>Reporting/Test Metrics</li>
+                        <li>Ensured seamless performance of the Checkers Sixty60 mobile app through manual and automated testing.</li>
+                        <li>Built automated tests using Appium (mobile) and Selenium (web) with API integration testing.</li>
                     </ul>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SKILLS ── -->
+    <section id="skills" aria-labelledby="skills-heading">
+        <div class="container">
+            <p class="section-label">Expertise</p>
+            <h2 id="skills-heading">Skills</h2>
+            <div class="skills-grid fade-up">
+
+                <div class="skills-cat">
+                    <div class="skills-cat-title"><i class="fas fa-robot"></i> Automation Testing</div>
+                    <div class="skill-pills">
+                        <span class="pill">Selenium</span>
+                        <span class="pill">Playwright</span>
+                        <span class="pill">Appium</span>
+                        <span class="pill">TestNG</span>
+                        <span class="pill">Maven</span>
+                        <span class="pill">Java</span>
+                        <span class="pill">Python</span>
+                        <span class="pill">AWS CI/CD</span>
+                        <span class="pill">Azure DevOps</span>
+                    </div>
                 </div>
-                <div class="skills-category">
-                    <strong>Tools and Technologies:</strong>
-                    <p>Azure DevOps,AWS, Mockoon, Git/GitHub, Flask, MySQL, Nginx</p>
+
+                <div class="skills-cat">
+                    <div class="skills-cat-title"><i class="fas fa-code"></i> Software Engineering</div>
+                    <div class="skill-pills">
+                        <span class="pill">Python</span>
+                        <span class="pill">JavaScript</span>
+                        <span class="pill">Java</span>
+                        <span class="pill">HTML/CSS</span>
+                        <span class="pill">MySQL</span>
+                        <span class="pill">RESTful APIs</span>
+                    </div>
+                </div>
+
+                <div class="skills-cat">
+                    <div class="skills-cat-title"><i class="fas fa-clipboard-check"></i> Manual Testing</div>
+                    <div class="skill-pills">
+                        <span class="pill">Test Planning</span>
+                        <span class="pill">Test Case Design</span>
+                        <span class="pill">Test Execution</span>
+                        <span class="pill">Defect Management</span>
+                        <span class="pill">Test Metrics</span>
+                    </div>
+                </div>
+
+                <div class="skills-cat">
+                    <div class="skills-cat-title"><i class="fas fa-tools"></i> Tools &amp; Tech</div>
+                    <div class="skill-pills">
+                        <span class="pill">Azure DevOps</span>
+                        <span class="pill">AWS</span>
+                        <span class="pill">Postman</span>
+                        <span class="pill">SoapUI</span>
+                        <span class="pill">Rest-Assured</span>
+                        <span class="pill">Git/GitHub</span>
+                        <span class="pill">Flask</span>
+                        <span class="pill">Docker</span>
+                        <span class="pill">Nginx</span>
+                        <span class="pill">Mockoon</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── AUTOMATION DEMO ── -->
+    <section id="automation-demo" aria-labelledby="demo-heading">
+        <div class="container">
+            <p class="section-label">Live Demos</p>
+            <h2 id="demo-heading">Real-Time Automation Test Demos</h2>
+            <div class="demo-grid">
+
+                <!-- Login test -->
+                <div class="demo-card fade-up">
+                    <h3>Saucedemo Login Test</h3>
+                    <p>Runs an automated login test against saucedemo.com using Selenium.</p>
+                    <button class="demo-btn" id="runLoginTestButton">
+                        <i class="fas fa-play"></i> Run Login Test
+                    </button>
+                    <div class="demo-status" id="loginStatusMessage"></div>
+                    <div class="demo-status" id="loginResult"></div>
+                    <div class="demo-links" id="loginLinks" style="display:none;">
+                        <a id="loginScreenshotLink" href="#" target="_blank"><i class="fas fa-image"></i> Screenshot</a>
+                        <a id="loginVideoLink" href="#" target="_blank"><i class="fas fa-video"></i> Video</a>
+                        <a id="loginLogsLink" href="#" target="_blank"><i class="fas fa-file-alt"></i> Logs</a>
+                        <a id="loginReportLink" href="#" target="_blank"><i class="fas fa-chart-bar"></i> Report</a>
+                    </div>
+                </div>
+
+                <!-- Place order test -->
+                <div class="demo-card fade-up">
+                    <h3>Saucedemo Place Order Test</h3>
+                    <p>Runs an automated place-order flow test against saucedemo.com.</p>
+                    <button class="demo-btn" id="placeOrderButton">
+                        <i class="fas fa-play"></i> Run Place Order Test
+                    </button>
+                    <div class="demo-status" id="orderStatusMessage"></div>
+                    <div class="demo-status" id="orderResult"></div>
+                    <div class="demo-links" id="orderLinks" style="display:none;">
+                        <a id="orderScreenshotLink" href="#" target="_blank"><i class="fas fa-image"></i> Screenshot</a>
+                        <a id="orderVideoLink" href="#" target="_blank"><i class="fas fa-video"></i> Video</a>
+                        <a id="orderLogsLink" href="#" target="_blank"><i class="fas fa-file-alt"></i> Logs</a>
+                        <a id="orderReportLink" href="#" target="_blank"><i class="fas fa-chart-bar"></i> Report</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="divider">
+
+            <!-- Feedback -->
+            <div class="feedback-wrap fade-up">
+                <h4>Feedback</h4>
+                <p>Share your thoughts about the automation demos above.</p>
+                <button class="demo-btn" id="feedbackButton"><i class="fas fa-comment"></i> Give Feedback</button>
+                <div class="feedback-form" id="feedbackForm">
+                    <div>
+                        <label for="fb-name">Name</label>
+                        <input type="text" id="fb-name" name="name" placeholder="Your name" required minlength="3" maxlength="30" autocomplete="name">
+                    </div>
+                    <div>
+                        <label for="fb-email">Email</label>
+                        <input type="email" id="fb-email" name="email" placeholder="your@email.com" required autocomplete="email">
+                    </div>
+                    <div>
+                        <label for="fb-message">Message</label>
+                        <textarea id="fb-message" name="message" placeholder="Your feedback…" required minlength="10"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button class="demo-btn" id="submitFeedbackBtn" type="button" onclick="submitFeedback()"><i class="fas fa-paper-plane"></i> Submit</button>
+                        <button class="btn btn-outline" type="button" onclick="closeFeedbackForm()" style="font-size:0.88rem;">Cancel</button>
+                    </div>
+                </div>
+                <p class="feedback-status" id="feedbackStatusMessage"></p>
+            </div>
+
+            <hr class="divider">
+
+            <a href="https://github.com/JuscaMolaiwa/Jusca-QA-Portfolio/tree/main/automation-demos" target="_blank" rel="noopener noreferrer" class="source-link">
+                <img src="images/github.svg" alt="GitHub" loading="lazy">
+                View Source Code on GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- ── EDUCATION ── -->
+    <section id="education" aria-labelledby="education-heading">
+        <div class="container">
+            <p class="section-label">Background</p>
+            <h2 id="education-heading">Education &amp; Certifications</h2>
+
+            <div class="edu-section fade-up">
+                <h3>Higher Qualification</h3>
+                <div class="edu-card">
+                    <h4>National Diploma in Analytical Chemistry</h4>
+                    <p class="edu-meta">Vaal University of Technology &bull; 2013 – 2017</p>
+                    <p class="edu-status"><i class="fas fa-clock"></i> One subject remaining</p>
                 </div>
             </div>
-        </section>
 
+            <div class="edu-section fade-up">
+                <h3>Professional Development</h3>
 
-        <section id="automation-demo">
-            <h2>Real-Time Automation Test Demo</h2>
-
-            <p>Click the button below to run an automated login test on saucedemo</p>
-            <button id="runLoginTestButton">Run Saucedemo Login Test</button>
-            <p id="loginStatusMessage"></p> <!-- For displaying the running status -->
-            <p id="loginResult"></p>
-
-            <h3 id="loginReportSection" style="display: none;">Real-Time Automation Login Test Report</h3>
-            <a id="loginScreenshotLink" href="#" style="display:none;" target="_blank">View Screenshot</a>
-            <a id="loginVideoLink" href="#" style="display: none;" target="_blank">Watch Video</a>
-            <!-- Initially hidden -->
-            <a id="loginLogsLink" href="#" style="display: none;" target="_blank">View Execution Logs</a>
-            <!-- Initially hidden -->
-            <a id="loginReportLink" href="#" style="display: none;" target="_blank">View Detailed Report</a>
-            <!-- Initially hidden -->
-
-            <!-- Add spacing here -->
-            <hr class="divider">
-
-            <p>Click the button below to run an automated place order test on saucedemo</p>
-            <button id="placeOrderButton">Run Saucedemo Place Order Test</button>
-            <p id="orderStatusMessage"></p> <!-- For displaying the running status -->
-            <p id="orderResult"></p>
-
-            <h3 id="orderReportSection" style="display: none;">Real-Time Automation Place Order Test Report</h3>
-            <a id="orderScreenshotLink" href="#" style="display:none;" target="_blank">View Screenshot</a>
-            <a id="orderVideoLink" href="#" style="display: none;" target="_blank">Watch Video</a>
-            <!-- Initially hidden -->
-            <a id="orderLogsLink" href="#" style="display: none;" target="_blank">View Execution Logs</a>
-            <!-- Initially hidden -->
-            <a id="orderReportLink" href="#" style="display: none;" target="_blank">View Detailed Report</a>
-            <!-- Initially hidden -->
-
-            <!-- Add spacing here -->
-            <hr class="divider">
-
-            <!-- Feedback prompt section -->
-            <div id="feedbackPrompt">
-                <h4>Feedback Form</h4>
-                <p>Click the button below to give feedback regarding the automated login test on Saucedemo</p>
-                <button id="feedbackButton">Give feedback</button>
-            </div>
-
-            <!-- Feedback form initially hidden -->
-            <form id="feedbackForm" method="POST" action="/submit-feedback" style="display: none;">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter Name" required minlength="3" maxlength="30">
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter email" required>
-
-                <label for="message">Feedback:</label>
-                <textarea id="message" name="message" placeholder="Enter message" required minlength="10"></textarea>
-
-                <button type="submit">Submit Feedback</button>
-                <button type="button" id="closeFeedbackForm">Close</button> <!-- Close button -->
-            </form>
-
-            <p id="feedbackStatusMessage" style="display: none;"></p> <!-- Element to display feedback status -->
-
-            <!-- Add spacing here -->
-            <hr class="divider">
-
-            <h3>Source Code</h3>
-            <p>Explore the source code FE and BE for the above feedback form and automated tests by clicking the link
-                below</p>
-            <p>
-                <a href="https://github.com/JuscaMolaiwa/Jusca-QA-Portfolio/tree/main/automation-demos" target="_blank"
-                    rel="noopener noreferrer">
-                    <img src="images/github.svg" alt="GitHub" style="width: 30px; height: 30px;" loading="lazy">
-                    View Source Code on GitHub
-                </a>
-            </p>
-
-            <!-- Add spacing here -->
-            <hr class="divider">
-        </section>
-
-        <section id="education" class="container">
-            <h2>Higher Qualification</h2>
-            <div class="education">
-                <h3>National Diploma in Analytical Chemistry</h3>
-                <ul>
-                    <li><strong>Institution:</strong> Vaal University of Technology</li>
-                    <li><strong>Duration:</strong> 2013 - 2017</li>
-                    <li><strong>Status:</strong> Incomplete (One Subject Remaining)</li>
+                <ul id="certsList" class="collapsed">
+                    <li>Software Engineering Program | ALX | February 2025
+                        <a href="projects/assets/ALX-CERTIFICATE.png" target="_blank" rel="noopener noreferrer" class="cert-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </li>
+                    <li>ISTQB Foundation Level (CTFL) V4.0 | ASTQB | August 2024
+                        <a href="projects/assets/sastqb_Jusca Molaiwa_CTFL.png" target="_blank" rel="noopener noreferrer" class="cert-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </li>
+                    <li>ISTQB Foundation Level (CTFL) V4.0 — Course | Udemy | July 2024
+                        <a href="https://www.udemy.com/certificate/UC-fd0eae3e-8a00-42ae-abea-1c1c054092b1/" target="_blank" rel="noopener noreferrer" class="cert-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </li>
+                    <li>DevOps, CI/CD for Beginners | Udemy | February 2023
+                        <a href="https://www.udemy.com/certificate/UC-00a397aa-5db4-4db3-abc2-bf358210eefd/" target="_blank" rel="noopener noreferrer" class="cert-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </li>
+                    <li>Continuous Integration &amp; Delivery (CI/CD) | Coursera | February 2023
+                        <a href="https://www.coursera.org/account/accomplishments/certificate/N2ZUTBVSCUYY" target="_blank" rel="noopener noreferrer" class="cert-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </li>
+                    <li>Core Python 3 | Pluralsight | October 2022
+                        <a href="https://app.pluralsight.com/learner/user/courses/v2/34f42219-eafe-438a-832b-2d8ff8875a15/certificate" target="_blank" rel="noopener noreferrer" class="cert-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </li>
+                    <li>Google IT Automation with Python Specialisation | Coursera | October 2022
+                        <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/XQXN8XLMGEZ7" target="_blank" rel="noopener noreferrer" class="cert-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </li>
+                    <li>Appium — Mobile Testing (Android/iOS) | Udemy | July 2021
+                        <a href="https://www.udemy.com/certificate/UC-95b96c62-45be-455e-accd-5817777dadf9/" target="_blank" rel="noopener noreferrer" class="cert-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </li>
+                    <li>Python Programming | Udemy | June 2021
+                        <a href="https://www.udemy.com/certificate/UC-cbf64105-ea51-496a-92ee-1a524bd3b909/" target="_blank" rel="noopener noreferrer" class="cert-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </li>
                 </ul>
-                <h3>Professional Development:</h3>
-                <ul>
 
-                    <li>
-                        Software Engineering Program | ALX | February 2025
-                        <a href="projects/assets/ALX-CERTIFICATE.png" target="_blank" rel="noopener noreferrer">View PDF
-                            Certificate</a>
-                    </li>
+                <button class="view-more-toggle" id="certsToggle" onclick="toggleCerts()" aria-expanded="false" aria-controls="certsList">
+                    <span id="certsToggleText">View more</span> <i class="fas fa-chevron-down" id="certsToggleIcon"></i>
+                </button>
 
-                    <li>
-                        ISTQB Foundation Level (CTFL) V4.0 updated 2024 | ASTQB | August 2024
-                        <a href="projects/assets/sastqb_Jusca Molaiwa_CTFL.png" target="_blank"
-                            rel="noopener noreferrer">View PDF Certificate</a>
-                    </li>
-
-                    <li>
-                        ISTQB Foundation Level (CTFL) V4.0 updated 2024 | Udemy Alumni | July 2024
-                        <a href="https://www.udemy.com/certificate/UC-fd0eae3e-8a00-42ae-abea-1c1c054092b1/"
-                            target="_blank" rel="noopener noreferrer">View Certificate</a>
-                    </li>
-
-                    <li>
-                        DevOps, CI/CD(Continuous Integration/Delivery for Beginners) | Udemy Alumni | February 2023
-                        <a href="https://www.udemy.com/certificate/UC-00a397aa-5db4-4db3-abc2-bf358210eefd/"
-                            target="_blank" rel="noopener noreferrer">View Certificate</a>
-                    </li>
-
-                    <li>
-                        Continuous Integration and Continuous Delivery (CI/CD) | Udemy Alumni | February 2023
-                        <a href="https://www.coursera.org/account/accomplishments/certificate/N2ZUTBVSCUYY"
-                            target="_blank" rel="noopener noreferrer">View Certificate</a>
-                    </li>
-
-                    <li>
-                        Core Python 3 | Pluralsight | October 2022
-                        <a href="https://app.pluralsight.com/learner/user/courses/v2/34f42219-eafe-438a-832b-2d8ff8875a15/certificate"
-                            target="_blank" rel="noopener noreferrer">View Certificate</a>
-                    </li>
-
-                    <li>
-                        Google IT Automation with Python Specialization | Coursera | October 2022
-                        <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/XQXN8XLMGEZ7"
-                            target="_blank" rel="noopener noreferrer">View Certificate</a>
-                    </li>
-
-                    <li>
-                        Appium - Mobile Testing (Android/IOS) | Udemy Alumni | July 2021
-                        <a href="https://www.udemy.com/certificate/UC-95b96c62-45be-455e-accd-5817777dadf9/"
-                            target="_blank" rel="noopener noreferrer">View Certificate</a>
-                    </li>
-
-                    <li>
-                        Python Programming | Udemy Alumni | June 2021
-                        <a href="https://www.udemy.com/certificate/UC-cbf64105-ea51-496a-92ee-1a524bd3b909/"
-                            target="_blank" rel="noopener noreferrer">View Certificate</a>
-                    </li>
-
-                </ul>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="contact" class="container">
-            <h2>CONNECT WITH ME</h2>
+    <!-- ── CONTACT ── -->
+    <section id="contact" aria-labelledby="contact-heading">
+        <div class="container">
+            <p class="section-label">Let's Connect</p>
+            <h2 id="contact-heading" style="display:block; text-align:center; margin-bottom:12px;">Get In Touch</h2>
+            <p class="contact-intro">Open to new opportunities, collaborations, and conversations about software quality.</p>
             <div class="contact-icons">
-                <p><a href="mailto:jusca.mol@gmail.com"><img src="images/gmail.svg" alt="Email" loading="lazy"></a></p>
-                <p><a href="https://www.linkedin.com/in/jusca-molaiwa-7483a378/" target="_blank"
-                        rel="noopener noreferrer"><img src="images/linkedin.svg" alt="LinkedIn" loading="lazy"></a></p>
-                <p><a href="https://testautomationu.applitools.com/me.html#Jusca%20Molaiwa" target="_blank"
-                        rel="noopener noreferrer"><img src="images/tau.svg" alt="TestAutomationUniversity"
-                            loading="lazy"></a></p>
-                <p><a href="https://github.com/JuscaMolaiwa" target="_blank" rel="noopener noreferrer"><img
-                            src="images/github.svg" alt="GitHub" loading="lazy"></a>
+                <p>
+                    <a href="mailto:jusca.mol@gmail.com" aria-label="Send email to Jusca">
+                        <img src="images/gmail.svg" alt="Email" loading="lazy">
+                    </a>
+                </p>
+                <p>
+                    <a href="https://www.linkedin.com/in/jusca-molaiwa-7483a378/" target="_blank" rel="noopener noreferrer" aria-label="Jusca on LinkedIn">
+                        <img src="images/linkedin.svg" alt="LinkedIn" loading="lazy">
+                    </a>
+                </p>
+                <p>
+                    <a href="https://testautomationu.applitools.com/me.html#Jusca%20Molaiwa" target="_blank" rel="noopener noreferrer" aria-label="Jusca on Test Automation University">
+                        <img src="images/tau.svg" alt="Test Automation University" loading="lazy">
+                    </a>
+                </p>
+                <p>
+                    <a href="https://github.com/JuscaMolaiwa" target="_blank" rel="noopener noreferrer" aria-label="Jusca on GitHub">
+                        <img src="images/github.svg" alt="GitHub" loading="lazy">
+                    </a>
                 </p>
             </div>
-        </section>
-    </main>
-    <div class="sh-back-to-top sh-back-to-top1">
-        <i class="fa fa-angle-up"></i>
-    </div>
-    <footer>
-        <p>Copyright &copy; 2024. Jusca Molaiwa's QA Portfolio. All Rights Reserved.</p>
-    </footer>
-    <noscript>
-        <p style="text-align:center; padding: 1rem;">JavaScript is disabled. Interactive features like the burger menu
-            and automation demos require JavaScript to be enabled.</p>
-    </noscript>
-    <script src="scripts/main.js?v=20251030155001" defer></script>
-    <script src="scripts/bug.js?v=20251030155001" defer></script>
-    <script src="scripts/burgermenu.js?v=20251030155001" defer></script>
-    <script src="scripts/automation-demos.js?v=20251030155001" defer></script>
-    <script src="scripts/form.js?v=20251030155001" defer></script>
-    <script src="scripts/automation-demo-place-order.js?v=20251030155001" defer></script>
+        </div>
+    </section>
+
+</main>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<footer>
+    <p>Copyright &copy; 2025 Jusca Molaiwa. All Rights Reserved.</p>
+</footer>
+
+<noscript>
+    <p style="text-align:center;padding:1rem;background:#161b22;color:#7d8590;">
+        JavaScript is disabled. Interactive features require JavaScript.
+    </p>
+</noscript>
+
+<script>
+    // ── Certs toggle — matches educationstyles.css .collapsed pattern ──
+    function toggleCerts() {
+      const list = document.getElementById('certsList');
+      const btn = document.getElementById('certsToggle');
+      const txt = document.getElementById('certsToggleText');
+      const collapsed = list.classList.toggle('collapsed');
+      btn.setAttribute('aria-expanded', !collapsed);
+      txt.textContent = collapsed ? 'View more' : 'View less';
+    }
+
+    // ── Bug icon animation — matches bug.js ──
+    (function() {
+      function animateBugIcon(bugIcon) {
+        bugIcon.classList.add('running');
+        setTimeout(function() { bugIcon.classList.remove('running'); }, 5000);
+      }
+      const stickyLink = document.getElementById('stickyBugHunterLink');
+      const stickyIcon = document.getElementById('stickyBugIcon');
+      const hiddenLink = document.getElementById('hiddenBugHunterLink');
+      const hiddenIcon = document.getElementById('hiddenBugIcon');
+      if (stickyLink && stickyIcon) {
+        stickyLink.addEventListener('click', function(e) { e.preventDefault(); animateBugIcon(stickyIcon); });
+      }
+      if (hiddenLink && hiddenIcon) {
+        hiddenLink.addEventListener('click', function(e) { animateBugIcon(hiddenIcon); });
+      }
+    })();
+
+    // ── Mobile drawer ──
+    function toggleDrawer() {
+      const drawer = document.getElementById('navDrawer');
+      const overlay = document.getElementById('navOverlay');
+      const btn = document.getElementById('burgerBtn');
+      const open = drawer.classList.toggle('open');
+      overlay.classList.toggle('open', open);
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+    }
+    function closeDrawer() {
+      document.getElementById('navDrawer').classList.remove('open');
+      document.getElementById('navOverlay').classList.remove('open');
+      const btn = document.getElementById('burgerBtn');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    // ── Active nav link on scroll ──
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const navLinks = document.querySelectorAll('.nav-list a');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => observer.observe(s));
+
+    // ── Fade-up on scroll ──
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const fadeObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => fadeObs.observe(el));
+
+    // ── Back to top ──
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 400), { passive: true });
+
+    // ── Automation demo helpers ──
+    function setDemoState(prefix, status, msg, result) {
+      const statusEl = document.getElementById(prefix + 'StatusMessage');
+      const resultEl = document.getElementById(prefix + 'Result');
+      statusEl.className = 'demo-status ' + status;
+      statusEl.innerHTML = status === 'running' ? '<span class="spinner"></span> ' + msg : msg;
+      if (result !== undefined) resultEl.textContent = result;
+    }
+
+    function showDemoLinks(prefix, data) {
+      const linksEl = document.getElementById(prefix + 'Links');
+      if (!linksEl) return;
+      const map = {
+        [prefix + 'ScreenshotLink']: data.screenshot_url,
+        [prefix + 'VideoLink']: data.video_url,
+        [prefix + 'LogsLink']: data.logs_url,
+        [prefix + 'ReportLink']: data.report_url,
+      };
+      let anyVisible = false;
+      Object.entries(map).forEach(([id, url]) => {
+        const el = document.getElementById(id);
+        if (el && url) { el.href = url; anyVisible = true; }
+        else if (el) el.style.display = 'none';
+      });
+      linksEl.style.display = anyVisible ? 'flex' : 'none';
+    }
+
+    // Login test
+    document.getElementById('runLoginTestButton').addEventListener('click', async function() {
+      const btn = this;
+      btn.disabled = true;
+      setDemoState('login', 'running', 'Running login test…');
+      document.getElementById('loginLinks').style.display = 'none';
+      document.getElementById('loginResult').textContent = '';
+      try {
+        const res = await fetch('/run-login-test', { method: 'POST' });
+        const data = await res.json();
+        if (data.status === 'success') {
+          setDemoState('login', 'success', 'Test completed.', data.result || 'Login test passed.');
+        } else {
+          setDemoState('login', 'error', 'Test failed.', data.result || data.message || 'An error occurred.');
+        }
+        showDemoLinks('login', data);
+      } catch (e) {
+        setDemoState('login', 'error', 'Could not reach the automation server. Make sure the backend is running.');
+      }
+      btn.disabled = false;
+    });
+
+    // Place order test
+    document.getElementById('placeOrderButton').addEventListener('click', async function() {
+      const btn = this;
+      btn.disabled = true;
+      setDemoState('order', 'running', 'Running place order test…');
+      document.getElementById('orderLinks').style.display = 'none';
+      document.getElementById('orderResult').textContent = '';
+      try {
+        const res = await fetch('/run-place-order-test', { method: 'POST' });
+        const data = await res.json();
+        if (data.status === 'success') {
+          setDemoState('order', 'success', 'Test completed.', data.result || 'Place order test passed.');
+        } else {
+          setDemoState('order', 'error', 'Test failed.', data.result || data.message || 'An error occurred.');
+        }
+        showDemoLinks('order', data);
+      } catch (e) {
+        setDemoState('order', 'error', 'Could not reach the automation server. Make sure the backend is running.');
+      }
+      btn.disabled = false;
+    });
+
+    // ── Feedback form ──
+    document.getElementById('feedbackButton').addEventListener('click', function() {
+      const form = document.getElementById('feedbackForm');
+      form.classList.add('visible');
+      this.style.display = 'none';
+    });
+    function closeFeedbackForm() {
+      document.getElementById('feedbackForm').classList.remove('visible');
+      document.getElementById('feedbackButton').style.display = '';
+      document.getElementById('feedbackStatusMessage').style.display = 'none';
+    }
+    async function submitFeedback() {
+      const name = document.getElementById('fb-name').value.trim();
+      const email = document.getElementById('fb-email').value.trim();
+      const message = document.getElementById('fb-message').value.trim();
+      const statusEl = document.getElementById('feedbackStatusMessage');
+
+      if (!name || name.length < 3) { alert('Please enter your name (at least 3 characters).'); return; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email.'); return; }
+      if (!message || message.length < 10) { alert('Feedback must be at least 10 characters.'); return; }
+
+      const btn = document.getElementById('submitFeedbackBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Sending…';
+
+      try {
+        const res = await fetch('/submit-feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, message })
+        });
+        const data = await res.json().catch(() => ({}));
+        statusEl.style.display = 'block';
+        statusEl.style.color = res.ok ? 'var(--accent)' : '#f85149';
+        statusEl.textContent = res.ok
+          ? (data.message || 'Thank you for your feedback!')
+          : (data.message || 'Something went wrong. Please try again.');
+        if (res.ok) {
+          document.getElementById('fb-name').value = '';
+          document.getElementById('fb-email').value = '';
+          document.getElementById('fb-message').value = '';
+        }
+      } catch {
+        statusEl.style.display = 'block';
+        statusEl.style.color = '#f85149';
+        statusEl.textContent = 'Could not submit feedback — backend may be offline.';
+      }
+
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit';
+    }
+</script>
 
 </body>
-
 </html>
