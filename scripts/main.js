@@ -1,4 +1,5 @@
 //main.js
+
 (function() {
     // Professional Development: show only first 3, add View more/less toggle
     document.addEventListener('DOMContentLoaded', function() {
