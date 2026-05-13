@@ -1,74 +1,19 @@
-/* Resume Section Styles */
-#resume {
-    background-color: #f9f9f9;
-    /* Light background color */
-    color: #333;
-    /* Dark text color */
-    padding: 40px;
-    /* Padding around content */
-    border-radius: 8px;
-    /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Subtle shadow */
-    margin-top: 20px;
-    /* Top margin to separate from previous section */
+/* resumestyles.css */
+
+#resume { background: var(--bg2); }
+
+.resume-card {
+  background:    var(--bg3);
+  border:        1px solid var(--border);
+  border-radius: var(--radius);
+  padding:       40px;
+  display:       flex; align-items: center; justify-content: space-between;
+  flex-wrap:     wrap; gap: 24px;
 }
+.resume-card p { color: var(--muted); max-width: 440px; }
 
-#resume h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #333;
-    /* Dark color for heading */
-}
+.resume-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
-.resume-links {
-    margin-top: 20px;
-    /* Top margin for spacing */
-}
-
-.resume-links a {
-    display: inline-block;
-    /* Display links in a row */
-    text-decoration: none;
-    /* Remove underline */
-    background-color: #007acc;
-    /* Background color */
-    color: #fff;
-    /* Text color */
-    padding: 8.5px;
-    /* Adjust padding for mobile layout */
-    margin-bottom: 10px;
-    /* Add space between the buttons */
-    margin-right: 10px;
-    /* Right margin between links */
-    border-radius: 5px;
-    /* Rounded corners */
-    transition: background-color 0.3s ease;
-    /* Smooth background transition */
-}
-
-.resume-links a:hover {
-    background-color: #005fa3;
-    /* Darker background color on hover */
-}
-
-.resume-links a:last-child {
-    margin-right: 0;
-    /* Remove right margin from last link */
-}
-
-/* Resume Section Styles - Mobile (target screens less than 768px wide) */
-@media screen and (max-width: 768px) {
-    #resume {
-        padding: 20px;
-    }
-
-    .resume-links a {
-        padding: 10px 15px;
-        /* Adjust padding for smaller screens */
-        margin-bottom: 5px;
-        /* Reduce space between buttons */
-        font-size: 14px;
-        /* Optionally reduce font size for smaller screens */
-    }
+@media (max-width: 480px) {
+  .resume-card { flex-direction: column; }
 }

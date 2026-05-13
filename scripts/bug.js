@@ -1,32 +1,32 @@
-//bug.js
-document.addEventListener("DOMContentLoaded", function () {
-    const stickyBugHunterLink = document.querySelector('.sticky-nav .nav-link[href="#BugHunter"]');
-    const stickyBugIcon = document.querySelector('.sticky-nav .bug-icon');
-    const hiddenBugHunterLink = document.querySelector('#navMenu .nav-link[href="#BugHunter"]');
-    const hiddenBugIcon = document.querySelector('#navMenu .bug-icon');
+// bug.js
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
 
-    // Function to animate the bug icon
-// sourcery skip: avoid-function-declarations-in-blocks
-    function animateBugIcon(bugIcon) {
-        bugIcon.classList.add('running');
-        setTimeout(function () {
-            bugIcon.classList.remove('running');
-        }, 5000); // Adjust timing to match animation duration
-    }
+  const stickyBugHunterLink = document.getElementById('stickyBugHunterLink');
+  const stickyBugIcon       = document.getElementById('stickyBugIcon');
+  const hiddenBugHunterLink = document.getElementById('hiddenBugHunterLink');
+  const hiddenBugIcon       = document.getElementById('hiddenBugIcon');
 
-    // Add click event listener for the sticky navigation menu
-    if (stickyBugHunterLink && stickyBugIcon) {
-        stickyBugHunterLink.addEventListener('click', function (event) {
-            event.preventDefault();
-            animateBugIcon(stickyBugIcon);
-        });
-    }
+  function animateBugIcon(bugIcon) {
+    if (!bugIcon) return;
+    bugIcon.classList.add('running');
+    setTimeout(function () {
+      bugIcon.classList.remove('running');
+    }, 5000);
+  }
 
-    // Add click event listener for the hidden navigation menu
-    if (hiddenBugHunterLink && hiddenBugIcon) {
-        hiddenBugHunterLink.addEventListener('click', function (event) {
-            event.preventDefault();
-            animateBugIcon(hiddenBugIcon);
-        });
-    }
+  if (stickyBugHunterLink && stickyBugIcon) {
+    stickyBugHunterLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      animateBugIcon(stickyBugIcon);
+      const home = document.getElementById('Home');
+      if (home) home.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  if (hiddenBugHunterLink && hiddenBugIcon) {
+    hiddenBugHunterLink.addEventListener('click', function () {
+      animateBugIcon(hiddenBugIcon);
+    });
+  }
 });

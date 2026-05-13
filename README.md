@@ -1,65 +1,208 @@
-# Jusca QA Portfolio
+# Jusca Molaiwa — QA Engineer Portfolio
 
-A personal portfolio for Jusca Molaiwa, Software Quality Assurance Engineer. The site showcases experience, projects, skills, education, and interactive automation demos.
+[![GitHub Pages](https://img.shields.io/badge/Live%20Site-GitHub%20Pages-0d1117?style=flat&logo=github&logoColor=00e5a0)](https://juscamolaiwa.github.io/Jusca-QA-Portfolio)
+[![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red?style=flat)](./LICENSE)
 
-## What’s inside
+A personal portfolio for **Jusca Molaiwa**, Software Quality Assurance Engineer based in Johannesburg, ZA. The site showcases 5+ years of QA experience, live automation demos, projects, skills, certifications, and contact details.
 
-- Static site (HTML/CSS/JS) in the project root, entry point: `index.html`
-- Automation demo backend (Flask + Selenium) under `automation-demos/`
-- Frontend scripts for real-time test triggers in `scripts/`
-- Styles organized in `styles/`
+---
 
-## View locally
+## Table of Contents
 
-You can open `index.html` directly in your browser:
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Automation Demo Backend](#automation-demo-backend)
+- [Scripts Reference](#scripts-reference)
+- [Styles Reference](#styles-reference)
+- [Recent Improvements](#recent-improvements)
+- [Contributing](#contributing)
+- [License](#license)
 
-- macOS Finder: Double‑click `index.html`
-- Terminal (optional):
-  - `open index.html`
+---
 
-The homepage is fully static; interactive features (menu, test buttons) require JavaScript enabled.
+## Project Structure
 
-## Automation demos (backend)
+```
+Jusca-QA-Portfolio/
+├── index.html                  # Main entry point (static)
+├── images/                     # Icons, profile photo, logos
+├── projects/
+│   └── assets/                 # CV PDF and certificate images
+├── styles/                     # One CSS file per section/concern
+│   ├── mainstyles.css
+│   ├── navigationstyles.css
+│   ├── herostyles.css
+│   ├── aboutstyles.css
+│   ├── resumestyles.css
+│   ├── projectstyles.css
+│   ├── skillstyles.css
+│   ├── automation-demo.css
+│   ├── feedbackform.css
+│   ├── educationstyles.css
+│   ├── contactstyles.css
+│   ├── bugstyles.css
+│   └── burgermenustyles.css
+├── scripts/                    # One JS file per feature
+│   ├── main.js                 # Scroll, nav, fade-up, back-to-top
+│   ├── burgermenu.js           # Mobile drawer open/close
+│   ├── bug.js                  # Bug icon animation
+│   ├── automation-demos.js     # Login test trigger
+│   ├── automation-demo-place-order.js  # Place order test trigger
+│   ├── form.js                 # Feedback form submit
+│   └── bump_asset_version.py   # Cache-busting version bumper
+└── automation-demos/           # Flask + Selenium backend
+    ├── web_automation_app.py   # Flask app entry point
+    ├── Dockerfile
+    └── docker-compose.yml
+```
 
-The `automation-demos` folder contains a Flask application that triggers headless browser automation for demo purposes. It is designed for a containerized environment and may require additional setup (browsers, drivers, MySQL) to run locally.
+---
 
-- Folder: `automation-demos/`
-- Entry: `web_automation_app.py`
-- Container: `Dockerfile`, `docker-compose.yml`
+## Getting Started
 
-Notes:
+### View locally (static frontend)
 
-- The app expects system binaries (Firefox/Chrome, geckodriver/chromedriver) and writes artifacts to specific paths.
-- Some absolute paths and CORS origins are environment-specific and may need updating before local use.
-- MySQL is used for feedback storage; connection settings are placeholders.
-
-### Quick start (containerized) — advanced users
-
-This setup is provided as a reference. It may require adjustments for ports, volumes, and driver paths.
+The homepage is fully static. No build step or server required.
 
 ```bash
-# From the repository root
+# Clone the repo
+git clone https://github.com/JuscaMolaiwa/Jusca-QA-Portfolio.git
+cd Jusca-QA-Portfolio
+
+# Open in browser
+open index.html          # macOS
+start index.html         # Windows
+xdg-open index.html      # Linux
+```
+
+> **Note:** JavaScript must be enabled. The burger menu, test buttons, feedback form, and scroll animations all require it.
+
+### Cache-busting (after updating CSS/JS)
+
+After changing any stylesheet or script, run the version bumper to prevent browsers from serving stale cached files:
+
+```bash
+python3 scripts/bump_asset_version.py
+```
+
+This appends a UTC timestamp `?v=YYYYMMDDHHMMSS` to all `styles/*.css` and `scripts/*.js` references in `index.html`.
+
+---
+
+## Automation Demo Backend
+
+The `automation-demos/` folder contains a **Flask + Selenium** application that triggers headless browser automation and returns results (screenshots, videos, logs, reports) to the frontend.
+
+The live backend is hosted at: `https://jusca.pythonanywhere.com`
+
+### Endpoints
+
+| Method | Endpoint           | Description                               |
+|--------|--------------------|-------------------------------------------|
+| `POST` | `/run-login-test`  | Runs automated Saucedemo login test       |
+| `POST` | `/place-order`     | Runs automated Saucedemo place-order test |
+| `POST` | `/submit-feedback` | Saves user feedback to MySQL              |
+
+### Run locally (Docker — advanced)
+
+> This setup requires Docker and may need adjustments for driver paths, ports, and environment variables before it runs locally.
+
+```bash
 cd automation-demos
-# Build and start
 docker compose up --build
 ```
 
-Once up, the reverse proxy is exposed on <http://localhost:8080> (if the compose stack starts successfully).
+Once running, the reverse proxy is available at `http://localhost:8080`.
 
-## Recent improvements
+### Requirements
 
-- Accessibility: allow zooming on mobile, added skip link, ARIA labels for navigation, consistent link labels.
-- SEO: meta description, Open Graph and Twitter Card tags, structured data (Person).
-- Performance: removed duplicate Font Awesome load, lazy-loaded non-critical images, deferred scripts.
-- HTML validity: fixed invalid `div` inside `ul` in navigation; kept class semantics.
-- Security: added `rel="noopener noreferrer"` to external links.
+- Firefox or Chrome + matching WebDriver (geckodriver / chromedriver)
+- MySQL for feedback storage — update connection settings in `web_automation_app.py`
+- Environment-specific CORS origins may need updating
+
+---
+
+## Scripts Reference
+
+| File                             | Purpose                                                                                         |
+|----------------------------------|-------------------------------------------------------------------------------------------------|
+| `main.js`                        | Active nav highlighting, smooth scroll, fade-up animations, back-to-top, certs view-more toggle |
+| `burgermenu.js`                  | Mobile nav drawer — open, close, ESC key, resize handling                                       |
+| `bug.js`                         | BugHunter logo click animation (`.running` class on bug icon)                                   |
+| `automation-demos.js`            | Fetches `/run-login-test`, shows result + artifact links                                        |
+| `automation-demo-place-order.js` | Fetches `/place-order`, shows result + artifact links                                           |
+| `form.js`                        | Feedback form show/hide and JSON POST to `/submit-feedback`                                     |
+| `bump_asset_version.py`          | Bumps `?v=` cache-busting query string on all local assets                                      |
+
+---
+
+## Styles Reference
+
+| File                   | Covers                                                          |
+|------------------------|-----------------------------------------------------------------|
+| `mainstyles.css`       | Reset, CSS variables, base typography, buttons, footer, fade-up |
+| `navigationstyles.css` | Sticky nav, desktop nav list, mobile drawer, overlay            |
+| `herostyles.css`       | Hero layout, profile photo, spinning ring, stats row            |
+| `aboutstyles.css`      | About grid, highlight cards                                     |
+| `resumestyles.css`     | Resume download card                                            |
+| `projectstyles.css`    | Project cards, badges                                           |
+| `skillstyles.css`      | Skills grid, pill tags                                          |
+| `automation-demo.css`  | Demo cards, run buttons, status messages, artifact links        |
+| `feedbackform.css`     | Feedback form show/hide, inputs, submit button                  |
+| `educationstyles.css`  | Education cards, cert list, view-more toggle                    |
+| `contactstyles.css`    | Contact icon badges, hover effects                              |
+| `bugstyles.css`        | Bug icon `@keyframes bugRun` animation                          |
+| `burgermenustyles.css` | `body.no-scroll` lock when drawer is open                       |
+
+---
+
+## Recent Improvements
+
+### Design & UI
+- Complete dark-theme redesign — deep navy (`#0d1117`) with electric teal (`#00e5a0`) accent
+- New hero section with animated dashed profile photo ring and stats row
+- Skills rebuilt as interactive pill tags; projects and certs as proper cards with hover effects
+- Scroll-triggered fade-up animations on all content sections
+
+### Accessibility
+- Skip-to-content link for keyboard users
+- `aria-label`, `aria-expanded`, `aria-controls` on all interactive elements
+- `role="list"` on navigation, `role="banner"` on header
+- Mobile viewport allows user zoom (`user-scalable=yes`)
+
+### Performance
+- Removed duplicate Font Awesome stylesheet load
+- Non-critical images lazy-loaded (`loading="lazy"`)
+- All scripts deferred (loaded at end of `<body>`)
+- `bump_asset_version.py` prevents stale cache serving
+
+### Code quality
+- Inline styles and scripts extracted into dedicated CSS/JS files
+- Feedback form uses JSON POST — no native `<form>` submit
+- `automation-demos.js` and `automation-demo-place-order.js` guard against missing DOM elements
+- `burgermenu.js` exposes `toggleDrawer()` / `closeDrawer()` globally for inline HTML compatibility
+
+### SEO & Social
+- `<meta name="description">`, Open Graph, and Twitter Card tags
+- JSON-LD structured data (`Person` schema)
+- `rel="noopener noreferrer"` on all external links
+
+---
 
 ## Contributing
 
-- Keep HTML semantic and accessible (landmarks, headings, labels).
-- Prefer small, focused CSS and JS changes.
-- If changing automation demos, consider container runtime and portability.
+- Keep HTML semantic — use landmarks (`<header>`, `<main>`, `<section>`, `<article>`), proper heading hierarchy, and descriptive labels.
+- One concern per file — add new styles to the relevant `styles/*.css` file, not inline.
+- Run `bump_asset_version.py` after any CSS/JS change before committing.
+- If modifying automation demos, test in the containerized environment to preserve portability.
+
+---
 
 ## License
 
-This project’s code is © 2024–2025 Jusca Molaiwa. All rights reserved. Icons and third‑party libraries are subject to their respective licenses.
+© 2025 Jusca Molaiwa. All rights reserved.
+
+Third-party libraries and icons are subject to their respective licenses:
+- [Font Awesome](https://fontawesome.com/license) — Free tier, CC BY 4.0
+- [Google Fonts](https://fonts.google.com) — SIL Open Font License
+- [Syne](https://fonts.google.com/specimen/Syne) & [DM Sans](https://fonts.google.com/specimen/DM+Sans) — OFL

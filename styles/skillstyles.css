@@ -1,39 +1,39 @@
-#skills {
-    background-color: #f8fafc; /* Light card for strong contrast */
-    color: #0f172a;
-    padding: 40px;
-    border-radius: var(--radius);
-    border: 1px solid rgba(0,0,0,.06);
-    box-shadow: var(--shadow);
-    margin-top: 20px; /* Spacing between sections */
+/* skillstyles.css */
+
+#skills { background: var(--bg2); }
+
+.skills-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;
 }
 
-.skills { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-    gap: 18px; 
+.skills-cat {
+  background:    var(--bg3);
+  border:        1px solid var(--border);
+  border-radius: var(--radius);
+  padding:       24px;
+  transition:    border-color var(--transition);
 }
+.skills-cat:hover { border-color: rgba(0,229,160,0.25); }
 
-.skills-category {
-    padding: 18px; 
-    border-radius: 12px; 
-    background: #ffffff; 
-    border: 1px solid rgba(0,0,0,.06); 
-    box-shadow: 0 6px 14px rgba(0,0,0,.06);
-    transition: transform .15s ease, box-shadow .2s ease; 
+.skills-cat-title {
+  font-family:    var(--font-display);
+  font-size:      0.85rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color:          var(--accent); margin-bottom: 16px;
+  display:        flex; align-items: center; gap: 8px;
 }
-.skills-category:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,.10); }
+.skills-cat-title i { font-size: 0.9rem; }
 
-.skills-category strong { display: block; margin-bottom: 10px; font-weight: 700; color: #0f172a; }
+.skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
 
-.skills-category ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 10px; }
-
-.skills-category li { margin: 0; background: #e2e8f0; color: #0f172a; padding: 6px 10px; border-radius: 999px; font-size: .95rem; }
-
-/* Paragraph support for categories that use <p> instead of <ul> */
-.skills-category p { color: #334155; margin: 6px 0 0; }
-
-@media (max-width: 768px) {
-    #skills { padding: 28px; }
+.pill {
+  font-size:   0.78rem; padding: 4px 12px; border-radius: 20px;
+  background:  rgba(255,255,255,0.05); color: var(--muted);
+  border:      1px solid var(--border);
+  transition:  all var(--transition);
 }
+.pill:hover { background: rgba(0,229,160,0.1); color: var(--accent); border-color: rgba(0,229,160,0.3); }
 
+@media (max-width: 480px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}

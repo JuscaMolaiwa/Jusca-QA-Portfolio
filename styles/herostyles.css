@@ -1,0 +1,143 @@
+/* herostyles.css */
+
+/* ── Hero section ── */
+#Home {
+  min-height:  100vh;
+  display:     flex;
+  align-items: center;
+  padding-top: var(--nav-h);
+  position:    relative;
+  overflow:    hidden;
+}
+
+/* Radial background glow */
+#Home::before {
+  content:        '';
+  position:       absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 30%, rgba(0,229,160,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 10% 80%, rgba(0,179,126,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ── Two-column grid ── */
+.hero-grid {
+  display:     grid;
+  grid-template-columns: 1fr 220px;
+  gap:         48px;
+  align-items: center;
+}
+
+/* ── Eyebrow label ── */
+.hero-eyebrow {
+  font-size:      0.8rem;
+  font-weight:    500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color:          var(--accent);
+  margin-bottom:  16px;
+  display:        flex;
+  align-items:    center;
+  gap:            8px;
+}
+.hero-eyebrow::before {
+  content:    '';
+  width:      24px;
+  height:     1px;
+  background: var(--accent);
+}
+
+/* ── Title ── */
+.hero-title {
+  font-family:   var(--font-display);
+  font-size:     clamp(2.4rem, 5vw, 3.6rem);
+  font-weight:   800;
+  line-height:   1.1;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+.hero-title span { color: var(--accent); }
+
+/* ── Subtitle ── */
+.hero-sub {
+  color:         var(--muted);
+  font-size:     1.05rem;
+  max-width:     520px;
+  margin-bottom: 36px;
+  line-height:   1.8;
+}
+
+/* ── CTA buttons ── */
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ── Stats row ── */
+.hero-stats {
+  display:       flex;
+  gap:           32px;
+  margin-top:    40px;
+  padding-top:   40px;
+  border-top:    1px solid var(--border);
+}
+.stat-val {
+  font-family: var(--font-display);
+  font-size:   1.8rem;
+  font-weight: 800;
+  color:       var(--accent);
+}
+.stat-label {
+  font-size:      0.8rem;
+  color:          var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top:     2px;
+}
+
+/* ── Profile photo ── */
+.hero-photo-wrap {
+  position: relative;
+  display:  flex;
+  justify-content: center;
+}
+
+.hero-photo {
+  width:         200px;
+  height:        200px;
+  border-radius: 50%;
+  object-fit:    cover;
+  border:        3px solid rgba(0,229,160,0.3);
+  box-shadow:    0 0 0 8px rgba(0,229,160,0.05), 0 24px 60px rgba(0,0,0,0.5);
+  position:      relative;
+  z-index:       1;
+}
+
+/* Spinning dashed ring around photo */
+.hero-photo-ring {
+  position:      absolute;
+  inset:         -12px;
+  border-radius: 50%;
+  border:        1px dashed rgba(0,229,160,0.25);
+  animation:     spin 30s linear infinite;
+  z-index:       0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-photo-wrap { order: -1; justify-content: center; }
+  .hero-photo      { width: 140px; height: 140px; }
+  .hero-photo-ring { inset: -10px; }
+  .hero-eyebrow    { justify-content: center; }
+  .hero-ctas       { justify-content: center; }
+  .hero-stats      { gap: 24px; justify-content: center; }
+  .hero-sub        { margin-left: auto; margin-right: auto; }
+}
+
+@media (max-width: 480px) {
+  .hero-title  { font-size: 2rem; }
+  .hero-stats  { gap: 16px; flex-wrap: wrap; }
+}

@@ -1,61 +1,84 @@
-document.getElementById('feedbackButton').addEventListener('click', function() {
-    const feedbackForm = document.getElementById('feedbackForm');
-    const feedbackPrompt = document.getElementById('feedbackPrompt'); // Reference to the feedback prompt section
+// form.js
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
 
-    feedbackForm.style.display = 'block'; // Show the feedback form
-    feedbackPrompt.style.display = 'none'; // Hide the feedback prompt (text and button)
-});
+  const feedbackButton     = document.getElementById('feedbackButton');
+  const feedbackForm       = document.getElementById('feedbackForm');
+  const feedbackPrompt     = document.getElementById('feedbackPrompt');
+  const closeFeedbackBtn   = document.getElementById('closeFeedbackForm');
+  const feedbackStatus     = document.getElementById('feedbackStatusMessage');
+  const submitFeedbackBtn  = document.getElementById('submitFeedbackBtn');
 
-document.getElementById('feedbackForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting the traditional way
-
-    const formData = new FormData(this); // Gather form data
-    fetch('/submit-feedback', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        const feedbackStatusMessage = document.getElementById('feedbackStatusMessage');
-        feedbackStatusMessage.style.display = 'block'; // Show the feedback status message
-
-        // Check the status from the server response
-        if (data.status === 'success') {
-            feedbackStatusMessage.textContent = data.message; // Display success message
-
-            // Clear the form after successful submission
-            this.reset(); // Reset the form fields
-
-            // Hide the success message after 5 seconds
-            setTimeout(() => {
-                feedbackStatusMessage.style.display = 'none'; // Hide the message
-            }, 10000); // 5000 milliseconds = 5 seconds
-
-        } else {
-            feedbackStatusMessage.textContent = 'There was an error submitting your feedback. Please try again.'; // Error message
-
-            // Hide the error message after 5 seconds
-            setTimeout(() => {
-                feedbackStatusMessage.style.display = 'none'; // Hide the message
-            }, 10000); // 5000 milliseconds = 5 seconds
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('feedbackStatusMessage').textContent = 'An error occurred. Please try again later.';
-
-        // Hide the error message after 5 seconds
-        setTimeout(() => {
-            feedbackStatusMessage.style.display = 'none'; // Hide the message
-        }, 10000); // 5000 milliseconds = 5 seconds
+  // Show form, hide prompt
+  if (feedbackButton) {
+    feedbackButton.addEventListener('click', function () {
+      if (feedbackForm)  feedbackForm.classList.add('visible');
+      if (feedbackPrompt) feedbackPrompt.style.display = 'none';
+      feedbackButton.style.display = 'none';
     });
-});
+  }
 
-// Close button functionality
-document.getElementById('closeFeedbackForm').addEventListener('click', function() {
-    const feedbackForm = document.getElementById('feedbackForm');
-    const feedbackPrompt = document.getElementById('feedbackPrompt'); // Reference to the feedback prompt section
+  // Close form, show prompt
+  if (closeFeedbackBtn) {
+    closeFeedbackBtn.addEventListener('click', function () {
+      if (feedbackForm)  feedbackForm.classList.remove('visible');
+      if (feedbackPrompt) feedbackPrompt.style.display = '';
+      if (feedbackButton) feedbackButton.style.display = '';
+      if (feedbackStatus) feedbackStatus.style.display = 'none';
+    });
+  }
 
-    feedbackForm.style.display = 'none'; // Hide the feedback form
-    feedbackPrompt.style.display = 'block'; // Show the feedback prompt (text and button)
+  // Submit via fetch (JSON, no native form POST)
+  if (submitFeedbackBtn) {
+    submitFeedbackBtn.addEventListener('click', function () {
+      const name    = document.getElementById('fb-name')    ? document.getElementById('fb-name').value.trim()    : '';
+      const email   = document.getElementById('fb-email')   ? document.getElementById('fb-email').value.trim()   : '';
+      const message = document.getElementById('fb-message') ? document.getElementById('fb-message').value.trim() : '';
+
+      if (!name || name.length < 3)          { alert('Please enter your name (at least 3 characters).'); return; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+      if (!message || message.length < 10)   { alert('Feedback must be at least 10 characters.'); return; }
+
+      submitFeedbackBtn.disabled = true;
+      submitFeedbackBtn.textContent = 'Sending…';
+
+      fetch('/submit-feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message })
+      })
+        .then(function (response) { return response.json().then(function (data) { return { ok: response.ok, data }; }); })
+        .then(function (res) {
+          if (feedbackStatus) {
+            feedbackStatus.style.display = 'block';
+            feedbackStatus.style.color   = res.ok ? 'var(--accent)' : '#f85149';
+            feedbackStatus.textContent   = res.ok
+              ? (res.data.message || 'Thank you for your feedback!')
+              : (res.data.message || 'There was an error submitting your feedback. Please try again.');
+          }
+          if (res.ok) {
+            ['fb-name', 'fb-email', 'fb-message'].forEach(function (id) {
+              const el = document.getElementById(id);
+              if (el) el.value = '';
+            });
+            setTimeout(function () {
+              if (feedbackStatus) feedbackStatus.style.display = 'none';
+            }, 10000);
+          }
+        })
+        .catch(function (error) {
+          console.error('Feedback error:', error);
+          if (feedbackStatus) {
+            feedbackStatus.style.display = 'block';
+            feedbackStatus.style.color   = '#f85149';
+            feedbackStatus.textContent   = 'An error occurred. Please try again later.';
+            setTimeout(function () { feedbackStatus.style.display = 'none'; }, 10000);
+          }
+        })
+        .finally(function () {
+          submitFeedbackBtn.disabled    = false;
+          submitFeedbackBtn.innerHTML   = '<i class="fas fa-paper-plane"></i> Submit';
+        });
+    });
+  }
 });
