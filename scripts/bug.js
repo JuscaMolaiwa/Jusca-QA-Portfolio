@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       ctx.globalAlpha = alpha;
       ctx.font        = '600 12px sans-serif';
-      ctx.fillStyle   = '#c084fc';
+      ctx.fillStyle   = '#FF0000';
       ctx.textAlign   = 'center';
 
       ctx.shadowColor = '#a855f7';
@@ -372,7 +372,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ctx.textAlign   = 'center';
         ctx.shadowColor = userCaught ? '#4ade80' : '#a78bfa';
         ctx.shadowBlur  = 10;
-        ctx.fillText(userCaught ? 'NICE CATCH! 🏆' : "IT'S A BUG!", bugX, bugY - 52);
+        ctx.fillText(userCaught ? 'NICE CATCH!' : "IT'S A BUG!", bugX, bugY - 52);
         ctx.restore();
       }
 
@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function () {
       setTimeout(() => ov.remove(), 420);
     }
     ov.addEventListener('click', dismiss);
-    setTimeout(dismiss, 15000);
+    setTimeout(dismiss, 10000);
   }
 
   // ── Triggers ───────────────────────────────────────────────
