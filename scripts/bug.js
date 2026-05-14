@@ -351,7 +351,11 @@ document.addEventListener('DOMContentLoaded', function () {
       ctx.globalAlpha = canvasAlpha;
 
       // Net
-      if (netAlpha > 0) drawNet(netX, netY, 36, netAlpha * canvasAlpha);
+      //if (netAlpha > 0) drawNet(netX, netY, 36, netAlpha * canvasAlpha);
+      // Net ONLY when user successfully caught the bug
+      if (userCaught && netAlpha > 0) {
+      drawNet(netX, netY, 36, netAlpha * canvasAlpha);
+      }
 
       // Bug
       ctx.save();
