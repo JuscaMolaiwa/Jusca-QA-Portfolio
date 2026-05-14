@@ -1,6 +1,6 @@
 # Jusca Molaiwa — QA Engineer Portfolio
 
-[![GitHub Pages](https://img.shields.io/badge/Live%20Site-GitHub%20Pages-0d1117?style=flat&logo=github&logoColor=00e5a0)](https://juscamolaiwa.github.io/Jusca-QA-Portfolio)
+[![GitHub Pages](https://img.shields.io/badge/Live%20Site-GitHub%20Pages-0d1117?style=flat&logo=github&logoColor=00e5a0)](https://jusca.pythonanywhere.com/)
 [![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red?style=flat)](./LICENSE)
 
 A personal portfolio for **Jusca Molaiwa**, Software Quality Assurance Engineer based in Johannesburg, ZA. The site showcases 5+ years of QA experience, live automation demos, projects, skills, certifications, and contact details.
