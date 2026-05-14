@@ -1,247 +1,267 @@
 import os
 import time
+import traceback
+import logging
 
 from flask_mysqldb import MySQL
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required
-
-from flask import Flask, jsonify, request  # type: ignore
-#from selenium.webdriver.chrome.service import Service  # type: ignore
-#from webdriver_manager.chrome import ChromeDriverManager  # type: ignore
-from selenium import webdriver  # type: ignore
-from flask_cors import CORS  # type: ignore
-from flask import send_from_directory # type: ignore
+from flask import Flask, jsonify, request, send_from_directory
+from flask_cors import CORS
+from selenium import webdriver
 from chromedriver_py import binary_path
 
 from page_objects.login_page import LoginPage
 from page_objects.place_order import OrderPage
-# from utilities.logs_util import setup_logging
+
+# ── Logging setup ─────────────────────────────────────────────────────────────
+# Logs appear in PythonAnywhere's error log tab
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s [%(levelname)s] %(message)s'
+)
+log = logging.getLogger(__name__)
 
 app = Flask(__name__)
-# Enable CORS for specific routes and origins
+
+# ── CORS ──────────────────────────────────────────────────────────────────────
 CORS(app, resources={
-    r"/run-login-test": {"origins": "https://jusca.pythonanywhere.com/"},
-     r"/place-order": {"origins": "https://jusca.pythonanywhere.com/"},
-     r"/submit-feedback": {"origins": "https://jusca.pythonanywhere.com/"},
-    r"/feedbacks": {"origins": "https://jusca.pythonanywhere.com/"}
+    r"/run-login-test":  {"origins": ["https://jusca.pythonanywhere.com", "https://juscamolaiwa.github.io"]},
+    r"/place-order":     {"origins": ["https://jusca.pythonanywhere.com", "https://juscamolaiwa.github.io"]},
+    r"/submit-feedback": {"origins": ["https://jusca.pythonanywhere.com", "https://juscamolaiwa.github.io"]},
+    r"/feedbacks":       {"origins": ["https://jusca.pythonanywhere.com", "https://juscamolaiwa.github.io"]}
 })
 
-
-# Configure JWT secret key
-app.config['JWT_SECRET_KEY'] = 'jw-secret-key'  #
+# ── JWT ───────────────────────────────────────────────────────────────────────
+app.config['JWT_SECRET_KEY'] = 'jw-secret-key'
 jwt = JWTManager(app)
 
-# Dummy user credentials
 users = {
     "admin": "passsword",
     "user1": "password1"
 }
 
-
-app.config['MYSQL_HOST'] = 'MySQL host address'  # Your MySQL host address
-app.config['MYSQL_USER'] = 'MySQL username'  # Your MySQL username
+# ── MySQL ─────────────────────────────────────────────────────────────────────
+app.config['MYSQL_HOST']     = 'MySQL host address'
+app.config['MYSQL_USER']     = 'MySQL username'
 app.config['MYSQL_PASSWORD'] = 'MySQL password'
-app.config['MYSQL_DB'] = 'MySQL database name'  #  database nameName
+app.config['MYSQL_DB']       = 'MySQL database name'
 
 mysql = MySQL(app)
 
-# Route to serve screenshots
+# ── Screenshot directory — use a path relative to this file ──────────────────
+# Absolute paths like /home/Jusca/... break if the username or folder changes.
+BASE_DIR       = os.path.dirname(os.path.abspath(__file__))
+SCREENSHOT_DIR = os.path.join(BASE_DIR, 'screenshots')
+VIDEO_DIR      = os.path.join(BASE_DIR, 'automation-vids')
+LOG_DIR        = os.path.join(BASE_DIR, 'automation-logs')
+
+def ensure_dirs():
+    """Create artifact directories if they don't exist."""
+    for d in (SCREENSHOT_DIR, VIDEO_DIR, LOG_DIR):
+        os.makedirs(d, exist_ok=True)
+
+# ── Chrome driver builder ─────────────────────────────────────────────────────
+def build_driver():
+    """
+    Build a headless Chrome WebDriver.
+    Logs the chromedriver path so you can verify it in PythonAnywhere's error log.
+    """
+    log.info(f"chromedriver binary path: {binary_path}")
+    log.info(f"chromedriver exists: {os.path.exists(binary_path)}")
+
+    svc     = webdriver.ChromeService(executable_path=binary_path)
+    options = webdriver.ChromeOptions()
+    options.add_argument("--no-sandbox")
+    options.add_argument("--headless")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--window-size=1920,1080")
+    # Required on some Linux environments
+    options.add_argument("--disable-extensions")
+    options.add_argument("--disable-setuid-sandbox")
+    options.add_argument("--remote-debugging-port=0")
+
+    driver = webdriver.Chrome(service=svc, options=options)
+    log.info("Chrome launched successfully")
+    return driver
+
+def save_screenshot(driver, name):
+    """Save a screenshot and return the relative URL, or None on failure."""
+    ensure_dirs()
+    path = os.path.join(SCREENSHOT_DIR, name)
+    try:
+        driver.save_screenshot(path)
+        log.info(f"Screenshot saved: {path}")
+        return f'/screenshots/{name}'
+    except Exception as e:
+        log.error(f"Failed to save screenshot: {e}")
+        return None
+
+# ── Static asset routes ───────────────────────────────────────────────────────
+
 @app.route('/screenshots/<path:filename>')
 def serve_screenshot(filename):
-    return send_from_directory('/home/Jusca/JUSCA-QA-PORTFOLIO/automation-demos/screenshots', filename)
+    return send_from_directory(SCREENSHOT_DIR, filename)
 
-# Route to serve logs
 @app.route('/automation-logs/<path:filename>')
 def serve_log(filename):
-    return send_from_directory("automation-logs", filename)
+    return send_from_directory(LOG_DIR, filename)
 
-# Route to serve videos
 @app.route('/automation-vids/<path:filename>')
 def serve_video(filename):
-    return send_from_directory('/home/Jusca/JUSCA-QA-PORTFOLIO/automation-demos/automation-vids', filename)
+    return send_from_directory(VIDEO_DIR, filename)
+
+
+# ── Login test ────────────────────────────────────────────────────────────────
 
 @app.route('/run-login-test', methods=['POST'])
 def run_test():
-    driver = None
-
-    # log_file_path = setup_logging()
-
-    screenshot_dir = "/home/Jusca/JUSCA-QA-PORTFOLIO/automation-demos/screenshots"
-    screenshot_name = ""
+    driver          = None
+    screenshot_url  = None
 
     try:
-        # Set up Chrome Service and options
-        svc = webdriver.ChromeService(executable_path=binary_path)
-        chrome_options = webdriver.ChromeOptions()
-
-        # Add Chrome options
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--disable-gpu")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-
-        # Initialize the driver
-        driver = webdriver.Chrome(service=svc, options=chrome_options)
-        driver.maximize_window()
-
-        try:
-            driver.get("https://www.saucedemo.com/")
-        except Exception as e:
-            print(f"Error occurred while accessing the URL: {e}")
-
-        print(driver.title)  # Print the title of the page
-
-        # Create an instance of the LoginPage
+        log.info("=== /run-login-test started ===")
+        driver     = build_driver()
         login_page = LoginPage(driver)
 
-        ## Perform login actions
-        login_page.perform_login("standard_user","secret_sauce")
-
-        # Create screenshots directory if it doesn't exist
-        if not os.path.exists('screenshots'):
-            os.makedirs('screenshots')
-
-        # Check if login was successful
-        if login_page.is_login_successful():
-            result = "Login successful 🎉🎉!"
-            print("Taking screenshot for successful login...")
-            try:
-                time.sleep(10)
-                timestamp = time.strftime("%Y-%m-%d-%Hh:%Mm")
-                screenshot_name = f"{timestamp}_login_successful.png"
-                driver.save_screenshot(os.path.join(screenshot_dir, screenshot_name))
-                print(f"Screenshot saved at: {os.path.join(screenshot_dir, screenshot_name)}")
-
-            except Exception as e:
-                    print(f"Failed to save screenshot: {e}")
-        else:
-            result = "Login failed ❌"
-            print("Taking screenshot for failed login...")
-            try:
-                timestamp = time.strftime("%Y-%m-%d")
-                screenshot_name = f"{timestamp}_login_failed.png"
-                driver.save_screenshot(os.path.join(screenshot_dir,screenshot_name))
-            except Exception as e:
-                print(f"Failed to save screenshot: {e}")
-
-    except Exception as e:
-        result = f"Error occurred: {str(e)}"
-        print(result)
-        return jsonify({'error': str(e), 'result': result}), 500
-
-    finally:
-        # Ensure driver quits if it was created
-        if driver:
-            driver.quit()
-
-
-    # Return JSON response with result and screenshot paths
-    screenshot_url = f'/screenshots/{screenshot_name}' if screenshot_name else None
-    #logs_url = f'/automation-logs/{os.path.basename(log_file_path)}'
-    #video_url = f'/automation-vids/{video_name}'  # Update this line to create the video URL
-    #report_url = '/allure-report'
-
-    return jsonify({
-    'result': result,
-    'screenshot': screenshot_url
-    #'logs': logs_url,
-    #'video': video_url
-    #'report': report_url
-    })
-
-
-@app.route('/place-order', methods=['POST'])
-def place_order():
-    driver = None
-    screenshot_dir = "/home/Jusca/JUSCA-QA-PORTFOLIO/automation-demos/screenshots"
-    screenshot_name = ""
-
-    try:
-        svc = webdriver.ChromeService(executable_path=binary_path)
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--disable-gpu")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-
-        driver = webdriver.Chrome(service=svc, options=chrome_options)
-        driver.maximize_window()
-
+        log.info("Navigating to saucedemo.com")
         driver.get("https://www.saucedemo.com/")
-        login_page = LoginPage(driver)
+        log.info(f"Page title: {driver.title}")
 
+        log.info("Performing login")
+        login_page.perform_login("standard_user", "secret_sauce")
 
-        # Reuse the perform_login method
-        if login_page.perform_login("standard_user", "secret_sauce"):
-            result = "Login successful 🎉"
-            # Now proceed to place an order
+        timestamp = time.strftime("%Y-%m-%d_%H-%M-%S")
 
-            order_page = OrderPage(driver)
-
-            if order_page.place_order("Jusca", "Tester", "2191"):
-                result = "Order placed successfully 🛒✅"
-                screenshot_name = f"{time.strftime('%Y-%m-%d')}_order_success.png"
-            else:
-                result = "Order placement failed ❌"
-                screenshot_name = f"{time.strftime('%Y-%m-%d')}_order_failed.png"
+        if login_page.is_login_successful():
+            result         = "Login successful 🎉🎉!"
+            screenshot_url = save_screenshot(driver, f"{timestamp}_login_successful.png")
+            log.info(result)
         else:
-            result = "Login failed ❌"
-            screenshot_name = f"{time.strftime('%Y-%m-%d')}_login_failed.png"
-
-        driver.save_screenshot(os.path.join(screenshot_dir, screenshot_name))
+            result         = "Login failed ❌"
+            screenshot_url = save_screenshot(driver, f"{timestamp}_login_failed.png")
+            log.warning(result)
 
     except Exception as e:
+        # Log the full traceback — visible in PythonAnywhere error log
+        log.error(f"run_test exception: {e}\n{traceback.format_exc()}")
         result = f"Error occurred: {str(e)}"
-        print(result)
-        return jsonify({'error': str(e), 'result': result}), 500
+        return jsonify({'error': str(e), 'result': result, 'traceback': traceback.format_exc()}), 500
 
     finally:
         if driver:
             driver.quit()
+            log.info("Driver closed")
 
-    screenshot_url = f'/screenshots/{screenshot_name}' if screenshot_name else None
+    log.info("=== /run-login-test complete ===")
     return jsonify({'result': result, 'screenshot': screenshot_url})
 
 
-#FEEDBACK FORM AND DATABASE
+# ── Place order ───────────────────────────────────────────────────────────────
+
+@app.route('/place-order', methods=['POST'])
+def place_order():
+    driver         = None
+    screenshot_url = None
+
+    try:
+        log.info("=== /place-order started ===")
+        driver     = build_driver()
+        login_page = LoginPage(driver)
+
+        log.info("Navigating to saucedemo.com")
+        driver.get("https://www.saucedemo.com/")
+        log.info(f"Page title: {driver.title}")
+
+        timestamp = time.strftime("%Y-%m-%d_%H-%M-%S")
+
+        log.info("Performing login")
+        if login_page.perform_login("standard_user", "secret_sauce"):
+            log.info("Login successful, proceeding to place order")
+            order_page = OrderPage(driver)
+
+            if order_page.place_order("Jusca", "Tester", "2191"):
+                result         = "Order placed successfully 🛒✅"
+                screenshot_url = save_screenshot(driver, f"{timestamp}_order_success.png")
+                log.info(result)
+            else:
+                result         = "Order placement failed ❌"
+                screenshot_url = save_screenshot(driver, f"{timestamp}_order_failed.png")
+                log.warning(result)
+        else:
+            result         = "Login failed ❌"
+            screenshot_url = save_screenshot(driver, f"{timestamp}_login_failed.png")
+            log.warning(result)
+
+    except Exception as e:
+        log.error(f"place_order exception: {e}\n{traceback.format_exc()}")
+        result = f"Error occurred: {str(e)}"
+        return jsonify({'error': str(e), 'result': result, 'traceback': traceback.format_exc()}), 500
+
+    finally:
+        if driver:
+            driver.quit()
+            log.info("Driver closed")
+
+    log.info("=== /place-order complete ===")
+    return jsonify({'result': result, 'screenshot': screenshot_url})
+
+
+# ── Feedback ──────────────────────────────────────────────────────────────────
+
 @app.route('/submit-feedback', methods=['POST'])
 def submit_feedback():
-    name = request.form.get('name')
-    email = request.form.get('email')
-    message = request.form.get('message')
+    # form.js sends Content-Type: application/json via fetch()
+    # request.form only reads multipart/form-data or x-www-form-urlencoded
+    if request.is_json:
+        data    = request.get_json(silent=True) or {}
+        name    = data.get('name',    '').strip()
+        email   = data.get('email',   '').strip()
+        message = data.get('message', '').strip()
+    else:
+        name    = (request.form.get('name')    or '').strip()
+        email   = (request.form.get('email')   or '').strip()
+        message = (request.form.get('message') or '').strip()
 
-    # Validate input (optional, but recommended)
+    log.info(f"Feedback received — name='{name}' email='{email}' message_len={len(message)}")
+
     if not name or not email or not message:
+        log.warning("Feedback rejected — missing fields")
         return jsonify({'status': 'error', 'message': 'All fields are required.'}), 400
 
     try:
-        # Store the feedback entry in the MySQL database
         cursor = mysql.connection.cursor()
-        cursor.execute("INSERT INTO feedback (name, email, message) VALUES (%s, %s, %s)", (name, email, message))
+        cursor.execute(
+            "INSERT INTO feedback (name, email, message) VALUES (%s, %s, %s)",
+            (name, email, message)
+        )
         mysql.connection.commit()
         cursor.close()
+        log.info("Feedback saved to database")
     except Exception as e:
+        log.error(f"DB error: {e}\n{traceback.format_exc()}")
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
     return jsonify({
-        'status': 'success',
-        'message': f'Hi {name}! Your Feedback was submitted successfully!'
+        'status':  'success',
+        'message': f'Hi {name}! Your feedback was submitted successfully!'
     })
 
 
-# Route for logging in and generating a token
+# ── Auth ──────────────────────────────────────────────────────────────────────
+
 @app.route('/login', methods=['POST'])
 def login():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
 
     if username in users and users[username] == password:
-        # Generate an access token
         access_token = create_access_token(identity=username)
         return jsonify(access_token=access_token), 200
 
     return jsonify({"msg": "Invalid credentials"}), 401
 
-# Protect the /feedbacks route with JWT
+
 @app.route('/feedbacks', methods=['GET'])
 @jwt_required()
 def get_feedbacks():
@@ -251,12 +271,15 @@ def get_feedbacks():
         results = cursor.fetchall()
         cursor.close()
 
-        # Format results into a list of dictionaries
-        feedbacks = [{'id': row[0], 'name': row[1], 'email': row[2], 'message': row[3], 'created_at': row[4]} for row in results]
-
-        return jsonify(feedbacks), 200  # Return 200 OK status
+        feedbacks = [
+            {'id': row[0], 'name': row[1], 'email': row[2], 'message': row[3], 'created_at': row[4]}
+            for row in results
+        ]
+        return jsonify(feedbacks), 200
     except Exception as e:
-        return jsonify({"error": str(e)}), 500  # Return 500 Internal Server Error if something goes wrong
+        log.error(f"get_feedbacks error: {e}")
+        return jsonify({"error": str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5005)
