@@ -17,6 +17,10 @@
 .feedback-form.visible      { display: flex; }
 
 .feedback-form label        { font-size: 0.82rem; color: var(--muted); margin-bottom: 4px; display: block; }
+
+/* Field wrapper — needed to position error message */
+.field-wrap { display: flex; flex-direction: column; gap: 4px; }
+
 .feedback-form input,
 .feedback-form textarea {
   width:         100%;
@@ -28,7 +32,24 @@
 .feedback-form input:focus,
 .feedback-form textarea:focus { border-color: rgba(0,229,160,0.4); }
 
+/* Invalid state — red border */
+.feedback-form input.invalid,
+.feedback-form textarea.invalid {
+  border-color: #f85149;
+}
+
 .feedback-form textarea { min-height: 100px; resize: vertical; }
+
+/* Inline field error message */
+.field-error {
+  font-size:   0.76rem;
+  color:       #f85149;
+  display:     none;
+  align-items: center;
+  gap:         5px;
+  min-height:  16px;
+}
+.field-error.visible { display: flex; }
 
 .form-actions { display: flex; gap: 10px; }
 
