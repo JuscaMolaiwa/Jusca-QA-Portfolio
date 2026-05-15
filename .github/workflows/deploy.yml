@@ -16,6 +16,7 @@ jobs:
           key:         ${{ secrets.PA_SSH_PRIVATE_KEY }}
           script: |
             cd ~/JUSCA-QA-PORTFOLIO
-            git pull origin main
-            touch /var/www/jusca_pythonanywhere_com_wsgi.py
+            git fetch origin
+            git reset --hard origin/main
+            reload_webapp jusca.pythonanywhere.com
             echo "Deployed at $(date)"
