@@ -52,17 +52,13 @@ document.addEventListener('DOMContentLoaded', function () {
         75%  { transform:rotate(-15deg) scale(1.1); }
         100% { transform:rotate(0deg)   scale(1);   }
       }
-
       .body-bug-shaking { animation: bfxShake 0.55s ease; }
-
       #bug-escape-overlay {
         position:fixed; inset:0; z-index:99999;
         background:rgba(0,0,0,0.93);
         display:flex; align-items:center; justify-content:center;
         animation:bfxFadeIn 0.3s ease;
-        cursor:pointer;
-        font-family:monospace;
-        transition:opacity 0.4s;
+        cursor:pointer; font-family:monospace; transition:opacity 0.4s;
       }
       #bug-escape-overlay::before {
         content:''; position:absolute; inset:0; pointer-events:none;
@@ -71,43 +67,30 @@ document.addEventListener('DOMContentLoaded', function () {
           rgba(255,0,0,0.04) 2px, rgba(255,0,0,0.04) 4px
         );
       }
-      .bfx-wrap    { text-align:center; padding:2rem; position:relative; }
-      .bfx-icon    {
-        display:block; font-size:72px; margin-bottom:1.25rem;
-        animation:bfxIconSpin 0.4s ease infinite;
-      }
-      .bfx-title   {
+      .bfx-wrap  { text-align:center; padding:2rem; position:relative; }
+      .bfx-icon  { display:block; font-size:72px; margin-bottom:1.25rem; animation:bfxIconSpin 0.4s ease infinite; }
+      .bfx-title {
         position:relative; font-size:26px; font-weight:700;
         color:#ff4444; letter-spacing:5px; text-transform:uppercase;
-        text-shadow:0 0 24px rgba(255,68,68,0.9);
-        margin-bottom:0.75rem;
+        text-shadow:0 0 24px rgba(255,68,68,0.9); margin-bottom:0.75rem;
       }
       .bfx-title::before {
-        content:attr(data-text); position:absolute;
-        inset:0; color:#00ffff; opacity:0.6;
-        animation:bfxGlitch 1.8s infinite;
+        content:attr(data-text); position:absolute; inset:0;
+        color:#00ffff; opacity:0.6; animation:bfxGlitch 1.8s infinite;
       }
       .bfx-title::after {
-        content:attr(data-text); position:absolute;
-        inset:0; color:#ff00ff; opacity:0.45;
-        animation:bfxGlitch 1.8s infinite 0.09s;
+        content:attr(data-text); position:absolute; inset:0;
+        color:#ff00ff; opacity:0.45; animation:bfxGlitch 1.8s infinite 0.09s;
       }
-      .bfx-sub  {
-        font-size:14px; color:#ff9999; margin-bottom:1.25rem;
-        animation:bfxFadeIn 0.5s ease 0.3s both;
-      }
+      .bfx-sub  { font-size:14px; color:#ff9999; margin-bottom:1.25rem; animation:bfxFadeIn 0.5s ease 0.3s both; }
       .bfx-code {
         font-size:12px; color:#ff6666; text-align:left;
-        background:rgba(255,0,0,0.08);
-        border:1px solid rgba(255,0,0,0.25);
+        background:rgba(255,0,0,0.08); border:1px solid rgba(255,0,0,0.25);
         border-radius:6px; padding:0.9rem 1.4rem;
         max-width:400px; margin:0 auto 1.5rem;
         line-height:2; animation:bfxFadeIn 0.5s ease 0.5s both;
       }
-      .bfx-hint {
-        font-size:12px; color:#555;
-        animation:bfxFadeIn 0.5s ease 1.2s both;
-      }
+      .bfx-hint { font-size:12px; color:#555; animation:bfxFadeIn 0.5s ease 1.2s both; }
     `;
     document.head.appendChild(s);
   }
@@ -117,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!bugIcon) return;
     if (bugIcon.dataset.running === 'true') return;
     bugIcon.dataset.running = 'true';
-
     setTimeout(function () {
       const canvas = document.getElementById('bug-trail-canvas');
       launchRocketTrail(bugIcon, canvas, function (userCaughtIt) {
@@ -137,13 +119,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const originX = rect.left + rect.width  / 2;
     const originY = rect.top  + rect.height / 2;
 
-    bugIcon.style.opacity = '0';
+    // Draw the bug 1.6× its natural size so it's clearly visible
+    const BUG_W  = rect.width  * 1.0;
+    const BUG_H  = rect.height * 1.0;
+    const HALO_R = Math.max(BUG_W, BUG_H) * 0.40;
 
-    // Enable clicks during flight
+    bugIcon.style.opacity = '0';
     canvas.style.pointerEvents = 'auto';
     canvas.style.cursor        = 'crosshair';
 
-    const DURATION  = 9500;
+    const DURATION  = 10000;
     const FLY_END   = 0.85;
     const CATCH_END = 0.93;
     const start     = performance.now();
@@ -162,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function lerp(a, b, t) { return a + (b - a) * t; }
     function getColor(t)   { return `hsl(${(t * 200) % 360}, 90%, 60%)`; }
 
-    // Natural catch position (top-right empty space)
     const catchX = W - 120;
     const catchY = originY + 10;
 
@@ -176,13 +160,11 @@ document.addEventListener('DOMContentLoaded', function () {
       if (userCaught || done) return;
       const dist = Math.hypot(e.clientX - currentBugX, e.clientY - currentBugY);
       if (dist < 85) {
-        // HIT
         userCaught = true;
         catchTime  = performance.now();
         catchAtX   = currentBugX;
         catchAtY   = currentBugY;
       } else {
-        // MISS
         const msgs = ['too slow!', 'missed!', 'try again!', 'almost...'];
         missFlashes.push({
           x: e.clientX, y: e.clientY, life: 1,
@@ -221,6 +203,61 @@ document.addEventListener('DOMContentLoaded', function () {
       ctx.restore();
     }
 
+    // ── drawBug: dark backdrop + pulsing warning-light halo ──
+    function drawBug(bx, by, bAngle, raw, caught, cAlpha) {
+      ctx.save();
+      ctx.translate(bx, by);
+      ctx.rotate(bAngle * Math.PI / 180);
+
+      // Warning-light strobe: fast sin oscillation (~8 cycles/sec feel)
+      // raw goes 0→1 over 9.5s so raw*Math.PI*22 ≈ 22 half-cycles = ~11 flashes
+      const pulse      = (Math.sin(raw * Math.PI * 22) + 1) / 2;  // 0→1, rapidly
+      const haloAlpha  = caught ? 0.3 : 0.4 + pulse * 0.5;         // dim when caught
+      const haloScale  = 1 + pulse * 0.2;                           // breathes in/out
+      const haloColor  = caught
+        ? '#a78bfa'
+        : (pulse > 0.5 ? '#ff2200' : '#ffaa00');  // red ↔ orange flash
+
+      // 1. Dark radial backdrop — blacks out the bg behind the bug
+      //    so it's always readable against any page content
+      const grad = ctx.createRadialGradient(0, 0, HALO_R * 0.05, 0, 0, HALO_R * 2.2);
+      grad.addColorStop(0,    'rgba(0,0,0,0.82)');
+      grad.addColorStop(0.45, 'rgba(0,0,0,0.55)');
+      grad.addColorStop(0.75, 'rgba(0,0,0,0.22)');
+      grad.addColorStop(1,    'rgba(0,0,0,0)');
+      ctx.globalAlpha = cAlpha;
+      ctx.beginPath();
+      ctx.arc(0, 0, HALO_R * 2.2, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // 2. Outer warning ring — pulses in/out like a hazard light
+      ctx.globalAlpha = haloAlpha * cAlpha;
+      ctx.shadowColor = haloColor;
+      ctx.shadowBlur  = 30 + pulse * 28;
+      ctx.strokeStyle = haloColor;
+      ctx.lineWidth   = 2.5 + pulse * 2.5;
+      ctx.beginPath();
+      ctx.arc(0, 0, HALO_R * haloScale, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // 3. Inner ring for depth
+      ctx.globalAlpha = haloAlpha * 0.4 * cAlpha;
+      ctx.shadowBlur  = 10;
+      ctx.lineWidth   = 1;
+      ctx.beginPath();
+      ctx.arc(0, 0, HALO_R * haloScale * 0.6, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // 4. The bug icon
+      ctx.shadowColor = haloColor;
+      ctx.shadowBlur  = 16 + pulse * 20;
+      ctx.globalAlpha = cAlpha;
+      ctx.drawImage(bugIcon, -BUG_W / 2, -BUG_H / 2, BUG_W, BUG_H);
+
+      ctx.restore();
+    }
+
     function tick(now) {
       if (done) return;
       const raw = Math.min((now - start) / DURATION, 1);
@@ -230,48 +267,36 @@ document.addEventListener('DOMContentLoaded', function () {
       let labelAlpha = 0, canvasAlpha = 1;
       let caught = false;
 
-      // ── User caught early ────────────────────────────────
       if (userCaught) {
         caught = true;
         const t = (now - catchTime) / 1000;
-
         const jitter = Math.max(0.6 - t, 0) * 14;
         bugX  = catchAtX + (Math.random() - 0.5) * jitter;
         bugY  = catchAtY + (Math.random() - 0.5) * jitter;
         angle = (Math.random() - 0.5) * 35 * Math.max(1 - t * 2, 0);
-
-        netAlpha = Math.min(t * 6, 1);
-        netX = lerp(catchAtX + 130, catchAtX + 38, Math.min(t * 4, 1));
-        netY = lerp(catchAtY - 70,  catchAtY + 8,  Math.min(t * 4, 1));
-
-        labelAlpha  = Math.min((t - 0.25) * 4, 1) *
-                      Math.max(1 - (t - 0.85) * 3, 0);
+        netAlpha    = Math.min(t * 6, 1);
+        netX        = lerp(catchAtX + 130, catchAtX + 38, Math.min(t * 4, 1));
+        netY        = lerp(catchAtY - 70,  catchAtY + 8,  Math.min(t * 4, 1));
+        labelAlpha  = Math.min((t - 0.25) * 4, 1) * Math.max(1 - (t - 0.85) * 3, 0);
         canvasAlpha = t > 1.3 ? Math.max(1 - (t - 1.3) * 2, 0) : 1;
-
         if (t > 2.1) {
-          done = true;
-          cleanup();
+          done = true; cleanup();
           ctx.clearRect(0, 0, W, H);
           bugIcon.style.opacity = '';
-          onDone(true); // caught — no break
-          return;
+          onDone(true); return;
         }
 
-      // ── Phase 1: fly ─────────────────────────────────────
       } else if (raw < FLY_END) {
         const phase = easeInOut(raw);
         const baseX = originX + Math.sin(phase * Math.PI * 0.6) * (W * 0.08);
         const baseY = originY + Math.sin(phase * Math.PI)       * (H * 0.82);
-
         const ret      = Math.max((raw - 0.5) / (FLY_END - 0.5), 0);
         const veerEase = ret * ret;
         bugX = lerp(baseX, catchX, veerEase * 0.6);
         bugY = lerp(baseY, catchY, veerEase * 0.6);
-
         const dx = Math.cos(phase * Math.PI * 0.6) * (W * 0.08) * 0.01;
         const dy = Math.cos(phase * Math.PI)       * (H * 0.82) * 0.01;
         angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
-
         for (let i = 0; i < 4; i++) {
           trails.push({
             x: bugX, y: bugY,
@@ -282,24 +307,21 @@ document.addEventListener('DOMContentLoaded', function () {
           });
         }
 
-      // ── Phase 2: auto-caught at top-right ────────────────
       } else if (raw < CATCH_END) {
         caught = true;
-        const p = (raw - FLY_END) / (CATCH_END - FLY_END);
+        const p      = (raw - FLY_END) / (CATCH_END - FLY_END);
         const jitter = (1 - p) * 11;
         bugX  = catchX + (Math.random() - 0.5) * jitter * 2;
         bugY  = catchY + (Math.random() - 0.5) * jitter;
         angle = (Math.random() - 0.5) * 40 * (1 - p);
-
         netAlpha = Math.min(p * 5, 1);
         netX = lerp(W + 60,      catchX + 38, Math.min(p * 3.5, 1));
         netY = lerp(catchY - 50, catchY + 8,  Math.min(p * 3.5, 1));
 
-      // ── Phase 3: label + fade ─────────────────────────────
       } else {
         caught = true;
-        const p = (raw - CATCH_END) / (1 - CATCH_END);
-        bugX  = catchX; bugY = catchY; angle = 0;
+        const p  = (raw - CATCH_END) / (1 - CATCH_END);
+        bugX = catchX; bugY = catchY; angle = 0;
         netAlpha    = Math.max(1 - p * 2, 0);
         netX        = catchX + 38; netY = catchY + 8;
         labelAlpha  = Math.min(p * 3, 1) * Math.max(1 - (p - 0.6) * 4, 0);
@@ -309,32 +331,24 @@ document.addEventListener('DOMContentLoaded', function () {
       currentBugX = bugX;
       currentBugY = bugY;
 
-      // ── Draw ─────────────────────────────────────────────
       ctx.clearRect(0, 0, W, H);
 
-    // "Click to catch" hint — stays visible longer
-    if (!userCaught && raw < 0.75) {
-      ctx.save();
-
-      // stays fully visible, then fades near the end
-      let alpha = 1;
-
-      if (raw > 0.6) {
-        alpha = 1 - ((raw - 0.6) / 0.15);
+      // Hint text — also pulses like a warning
+      if (!userCaught && raw < 0.75) {
+        ctx.save();
+        let hintAlpha = 1;
+        if (raw > 0.6) hintAlpha = 1 - ((raw - 0.6) / 0.15);
+        const hp = (Math.sin(raw * Math.PI * 14) + 1) / 2;
+        ctx.globalAlpha = hintAlpha;
+        ctx.font        = `600 ${12 + hp * 2}px sans-serif`;
+        ctx.fillStyle   = hp > 0.5 ? '#ff3300' : '#ffaa00';
+        ctx.textAlign   = 'center';
+        ctx.shadowColor = '#ff4400';
+        ctx.shadowBlur  = 8 + hp * 12;
+        ctx.fillText('CLICK THE MOVING BUG TO CATCH IT!', W / 2, H / 1.5);
+        ctx.restore();
       }
 
-      ctx.globalAlpha = alpha;
-      ctx.font        = '600 12px sans-serif';
-      ctx.fillStyle   = '#FF0000';
-      ctx.textAlign   = 'center';
-
-      ctx.shadowColor = '#a855f7';
-      ctx.shadowBlur  = 10;
-
-      ctx.fillText('CLICK THE BUG TO CATCH IT!', W / 2, H / 1.5);
-
-      ctx.restore();
-    }
       ctx.save();
       ctx.globalAlpha = canvasAlpha;
 
@@ -350,24 +364,11 @@ document.addEventListener('DOMContentLoaded', function () {
       trails = trails.filter(p => p.life > 0);
       ctx.globalAlpha = canvasAlpha;
 
-      // Net
-      //if (netAlpha > 0) drawNet(netX, netY, 36, netAlpha * canvasAlpha);
-      // Net ONLY when user successfully caught the bug
-      if (userCaught && netAlpha > 0) {
-      drawNet(netX, netY, 36, netAlpha * canvasAlpha);
-      }
+      if (userCaught && netAlpha > 0) drawNet(netX, netY, 36, netAlpha * canvasAlpha);
 
-      // Bug
-      ctx.save();
-      ctx.translate(bugX, bugY);
-      ctx.rotate(angle * Math.PI / 180);
-      ctx.shadowColor = getColor(raw);
-      ctx.shadowBlur  = caught ? 3 : 6 + Math.sin(raw * Math.PI * 10) * 4;
-      ctx.globalAlpha = canvasAlpha;
-      ctx.drawImage(bugIcon, -rect.width / 2, -rect.height / 2, rect.width, rect.height);
-      ctx.restore();
+      // Bug with warning-light halo
+      drawBug(bugX, bugY, angle, raw, caught, canvasAlpha);
 
-      // Label
       if (labelAlpha > 0) {
         ctx.save();
         ctx.globalAlpha = labelAlpha;
@@ -380,7 +381,6 @@ document.addEventListener('DOMContentLoaded', function () {
         ctx.restore();
       }
 
-      // Miss flashes
       missFlashes.forEach(function (f) {
         ctx.save();
         ctx.globalAlpha = f.life * 0.9;
@@ -397,13 +397,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       ctx.restore();
 
-      // Animation ended without user catching
       if (!userCaught && raw >= 1) {
-        done = true;
-        cleanup();
+        done = true; cleanup();
         ctx.clearRect(0, 0, W, H);
-        onDone(false); // escaped — break page
-        return;
+        onDone(false); return;
       }
 
       requestAnimationFrame(tick);
@@ -416,7 +413,6 @@ document.addEventListener('DOMContentLoaded', function () {
   function breakPage() {
     document.body.classList.add('body-bug-shaking');
     setTimeout(() => document.body.classList.remove('body-bug-shaking'), 600);
-
     const ov = document.createElement('div');
     ov.id = 'bug-escape-overlay';
     ov.innerHTML = `
@@ -428,12 +424,11 @@ document.addEventListener('DOMContentLoaded', function () {
           ✗ UnhandledBugException: null ref at runtime<br>
           ✗ TypeError: cannot read properties of undefined<br>
           ✗ FATAL: system stability compromised<br>
-          ✗ STATUS 500 — internal server meltdown
+          ✗ STATUS 500 — Internal Server Error
         </div>
         <div class="bfx-hint">click anywhere to restore… maybe.</div>
       </div>`;
     document.body.appendChild(ov);
-
     function dismiss() {
       ov.style.opacity = '0';
       setTimeout(() => ov.remove(), 420);

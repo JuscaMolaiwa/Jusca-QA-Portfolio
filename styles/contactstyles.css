@@ -1,15 +1,15 @@
 /* contactstyles.css */
 
 #contact {
-  text-align:     center;
-  display:        flex; flex-direction: column; align-items: center;
-  transition:     transform 0.5s ease;
+  text-align:  center;
+  display:     flex; flex-direction: column; align-items: center;
+  transition:  transform 0.5s ease;
 }
 #contact:hover { transform: translateY(-2px); }
 
 #contact h2 {
-  font-style:  italic; color: var(--accent); display: block;
-  transition:  color var(--transition);
+  font-style: italic; color: var(--accent); display: block;
+  transition: color var(--transition);
 }
 #contact h2:hover { color: #fff; }
 
@@ -20,36 +20,50 @@
 
 /* ── Icon badges ── */
 .contact-icons {
-  display:         flex; justify-content: center;
-  flex-wrap:       wrap; margin-top: 20px; gap: 8px;
+  display:     flex; justify-content: center;
+  flex-wrap:   wrap; margin-top: 20px; gap: 8px;
 }
 
 .contact-icons p {
-  margin:          6px; padding: 0; border-radius: 15px;
-  width:           130px; height: 52px;
-  display:         flex; justify-content: center; align-items: center;
-  background:      var(--bg3); border: 1px solid var(--border);
-  overflow:        hidden;
-  transition:      background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  margin:        6px; padding: 0; border-radius: 15px;
+  width:         130px; height: 52px;
+  display:       flex; justify-content: center; align-items: center;
+  overflow:      hidden;
+  /* White background so original icon colours show correctly on any screen */
+  background:    #ffffff;
+  border:        1px solid rgba(255,255,255,0.25);
+  box-shadow:    0 2px 8px rgba(0,0,0,0.25);
+  transition:    background-color 0.3s ease, box-shadow 0.3s ease,
+                 border-color 0.3s ease, transform 0.2s ease;
 }
 .contact-icons p:hover {
   background-color: #007acc;
   border-color:     #007acc;
-  box-shadow:       0 4px 12px rgba(0,122,204,0.35);
+  box-shadow:       0 4px 14px rgba(0,122,204,0.5);
+  transform:        translateY(-2px);
 }
 
 .contact-icons img {
-  display:      block; width: 80px; height: 28px;
-  object-fit:   contain;
-  filter:       brightness(0) invert(1);
-  transition:   filter 0.3s ease;
+  display:    block; width: 80px; height: 28px;
+  object-fit: contain;
+  /* Original colours — no filter */
+  transition: filter 0.3s ease, opacity 0.3s ease;
 }
-.contact-icons p:hover img { filter: brightness(0) invert(1); }
+.contact-icons p:hover img {
+  /* On blue hover invert to original so icons stay visible */
+  filter: brightness(-1) invert(1);
+}
 
 /* ── Mobile ── */
 @media (max-width: 768px) {
-  #contact          { padding: 20px; }
-  .contact-icons    { padding: 10px; margin-top: 10px; }
-  .contact-icons p  { width: 100px; height: 44px; }
+  #contact           { padding: 20px; }
+  .contact-icons     { padding: 10px; margin-top: 10px; }
+  .contact-icons p   { width: 100px; height: 44px; }
   .contact-icons img { width: 64px; height: 22px; }
+}
+
+/* ── TAU badge — larger img to match logo visibility ── */
+.contact-icons p.tau-badge img {
+  width:  85px;
+  height: 300px;
 }
