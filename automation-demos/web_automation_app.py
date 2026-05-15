@@ -23,6 +23,18 @@ log = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
+# Disable caching for all responses in development
+# Change max_age to a higher value once stable in production
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
+@app.after_request
+def add_cache_headers(response):
+    # Force browser to always revalidate - never serve stale cache
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma']        = 'no-cache'
+    response.headers['Expires']       = '0'
+    return response
+
 # ── CORS ──────────────────────────────────────────────────────────────────────
 CORS(app, resources={
     r"/run-login-test":  {"origins": ["https://jusca.pythonanywhere.com", "https://juscamolaiwa.github.io"]},
