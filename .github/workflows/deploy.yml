@@ -8,19 +8,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host:        ${{ secrets.PA_HOST }}
-          username:    ${{ secrets.PA_USER }}
-          key:         ${{ secrets.PA_SSH_PRIVATE_KEY }}
-          script: |
-            cd ~/JUSCA-QA-PORTFOLIO
-            echo "Pulling latest changes from GitHub"
-            git pull origin main
-            echo "Done pulling latest changes from GitHub"
+      - name: Pull latest code
+        run: |
+          curl -s -X POST \
+            -H "X-Deploy-Token: ${{ secrets.DEPLOY_SECRET }}" \
+            https://jusca.pythonanywhere.com/deploy
 
-            echo "Restarting the web app"
-            touch /var/www/jusca_pythonanywhere_com_wsgi.py
-            echo "Web app restarted"
-            echo "Deployed at $(date)"
+      - name: Reload web app
+        run: |
+          curl -s -X POST \
+            -H "Authorization: Token ${{ secrets.PA_API_TOKEN }}" \
+            https://www.pythonanywhere.com/api/v0/user/Jusca/webapps/jusca.pythonanywhere.com/reload/

@@ -2,6 +2,7 @@ import os
 import time
 import traceback
 import logging
+import subprocess
 
 from flask_mysqldb import MySQL
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required
@@ -23,10 +24,24 @@ log = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
-# Disable caching for all responses in development
-# Change max_age to a higher value once stable in production
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
+@app.route('/deploy', methods=['POST'])
+def deploy():
+    token = request.headers.get('X-Deploy-Token')
+    if token != os.environ.get('DEPLOY_SECRET'):
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    result = subprocess.run(
+        ['git', 'pull', 'origin', 'main'],
+        cwd=os.path.expanduser('~/JUSCA-QA-PORTFOLIO'),
+        capture_output=True,
+        text=True
+    )
+    return jsonify({'output': result.stdout, 'error': result.stderr})
+
+# Disable caching for all responses in development
+# Change max_age to a higher value once stable in production
 @app.after_request
 def add_cache_headers(response):
     if response.content_type and "text/html" in response.content_type:
