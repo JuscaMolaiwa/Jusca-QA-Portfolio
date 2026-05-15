@@ -1,0 +1,21 @@
+name: Deploy to PythonAnywhere
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host:        ${{ secrets.PA_HOST }}
+          username:    ${{ secrets.PA_USER }}
+          key:         ${{ secrets.PA_SSH_PRIVATE_KEY }}
+          script: |
+            cd ~/JUSCA-QA-PORTFOLIO
+            git pull origin main
+            touch /var/www/jusca_pythonanywhere_com_wsgi.py
+            echo "Deployed at $(date)"
