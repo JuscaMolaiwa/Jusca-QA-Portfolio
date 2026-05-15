@@ -29,10 +29,10 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 @app.after_request
 def add_cache_headers(response):
-    # Force browser to always revalidate - never serve stale cache
-    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-    response.headers['Pragma']        = 'no-cache'
-    response.headers['Expires']       = '0'
+    if response.content_type and "text/html" in response.content_type:
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Expires'] = '0'
     return response
 
 # ── CORS ──────────────────────────────────────────────────────────────────────
