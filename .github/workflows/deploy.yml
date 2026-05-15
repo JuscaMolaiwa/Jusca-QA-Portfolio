@@ -7,15 +7,16 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Pull latest code
         run: |
-          curl -s -X POST \
+          curl -X POST \
             -H "X-Deploy-Token: ${{ secrets.DEPLOY_SECRET }}" \
             https://jusca.pythonanywhere.com/deploy
 
       - name: Reload web app
         run: |
-          curl -s -X POST \
+          curl -X POST \
             -H "Authorization: Token ${{ secrets.PA_API_TOKEN }}" \
-            https://www.pythonanywhere.com/api/v0/user/Jusca/webapps/jusca.pythonanywhere.com/reload/
+            https://www.pythonanywhere.com/api/v0/user/jusca/webapps/jusca.pythonanywhere.com/reload/
