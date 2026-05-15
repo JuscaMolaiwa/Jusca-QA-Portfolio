@@ -16,6 +16,7 @@ from page_objects.place_order import OrderPage
 
 # ── Logging setup ─────────────────────────────────────────────────────────────
 # Logs appear in PythonAnywhere's error log tab
+#Test
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s [%(levelname)s] %(message)s'
