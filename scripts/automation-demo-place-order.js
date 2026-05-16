@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const btn            = document.getElementById('placeOrderButton');
   const statusMessage  = document.getElementById('orderStatusMessage');
   const result         = document.getElementById('orderResult');
+  const skeleton       = document.getElementById('orderSkeleton');
   const screenshotLink = document.getElementById('orderScreenshotLink');
   const videoLink      = document.getElementById('orderVideoLink');
   const reportLink     = document.getElementById('orderReportLink');
@@ -12,6 +13,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const reportSection  = document.getElementById('orderReportSection');
 
   if (!btn) return;
+
+  function showSkeleton() {
+    if (skeleton) skeleton.style.display = 'flex';
+  }
+  function hideSkeleton() {
+    if (skeleton) skeleton.style.display = 'none';
+  }
 
   btn.addEventListener('click', function () {
     // Reset
@@ -23,9 +31,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     if (reportSection) reportSection.style.display = 'none';
 
-    btn.disabled = true;
-    statusMessage.textContent = 'Placing order… Please wait…';
-    statusMessage.className   = 'demo-status running';
+    // Show skeleton while test runs
+    showSkeleton();
+
+    btn.disabled                = true;
+    statusMessage.textContent   = 'Placing order… Please wait…';
+    statusMessage.className     = 'demo-status running';
+    statusMessage.style.display = 'flex';
 
     fetch('https://jusca.pythonanywhere.com/place-order', { method: 'POST' })
       .then(function (response) {
@@ -33,17 +45,17 @@ document.addEventListener('DOMContentLoaded', function () {
         return response.json();
       })
       .then(function (data) {
-        statusMessage.textContent = '';
-        statusMessage.className   = 'demo-status';
+        hideSkeleton();
+        statusMessage.textContent    = '';
+        statusMessage.className      = 'demo-status';
+        statusMessage.style.display  = 'none';
 
-        // Show result inline — no alert()
         result.innerText     = data.result;
         result.style.display = 'inline-block';
         result.classList.remove('success', 'failure');
         result.classList.add(data.result.includes('successful') ? 'success' : 'failure');
 
         var hasLinks = false;
-
         if (data.screenshot && screenshotLink) {
           screenshotLink.href          = 'https://jusca.pythonanywhere.com' + data.screenshot;
           screenshotLink.style.display = 'inline-flex';
@@ -64,18 +76,19 @@ document.addEventListener('DOMContentLoaded', function () {
           reportLink.style.display = 'inline-flex';
           hasLinks = true;
         }
-
         if (reportSection) reportSection.style.display = hasLinks ? 'flex' : 'none';
 
         btn.disabled = false;
       })
       .catch(function (error) {
-        statusMessage.textContent = '';
-        statusMessage.className   = 'demo-status error';
-        result.innerText          = 'An error occurred while running the test: ' + error;
+        hideSkeleton();
+        statusMessage.textContent    = '';
+        statusMessage.className      = 'demo-status error';
+        statusMessage.style.display  = 'flex';
+        result.innerText             = 'An error occurred while running the test: ' + error;
         result.classList.add('failure');
-        result.style.display = 'inline-block';
-        btn.disabled         = false;
+        result.style.display         = 'inline-block';
+        btn.disabled                 = false;
       });
   });
 });

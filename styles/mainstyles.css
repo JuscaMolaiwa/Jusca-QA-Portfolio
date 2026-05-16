@@ -20,6 +20,49 @@
   --transition:   0.25s cubic-bezier(0.4,0,0.2,1);
 }
 
+
+/* ── Light theme overrides ── */
+[data-theme="light"] {
+  --bg:       #f5f7fa;
+  --bg2:      #edf0f4;
+  --bg3:      #e2e6ec;
+  --accent:   #00966a;
+  --accent2:  #007a56;
+  --text:     #0d1117;
+  --muted:    #4b5563;
+  --border:   rgba(0,0,0,0.10);
+  --card-bg:  #ffffff;
+}
+
+/* Light mode specific overrides */
+[data-theme="light"] a:hover                        { color: #000; }
+[data-theme="light"] .sticky-nav                    { background: rgba(245,247,250,0.92); }
+[data-theme="light"] .nav-list a                    { color: var(--muted); }
+[data-theme="light"] .nav-list a:hover,
+[data-theme="light"] .nav-list a.active             { color: var(--accent); background: rgba(0,0,0,0.04); }
+[data-theme="light"] .nav-drawer                    { background: #f5f7fa; }
+[data-theme="light"] .burger-menu span              { background: var(--text); }
+[data-theme="light"] .back-to-top                   { background: #fff; color: var(--muted); }
+[data-theme="light"] .pill:hover                    { background: rgba(0,150,106,0.1); }
+[data-theme="light"] .highlight-card:hover          { border-color: rgba(0,150,106,0.3); }
+[data-theme="light"] .project-card::before          { background: var(--accent); }
+[data-theme="light"] footer                         { background: var(--bg2); color: var(--muted); }
+[data-theme="light"] .contact-icons p               { box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+[data-theme="light"] #certsList li:hover            { border-color: rgba(0,150,106,0.3); }
+[data-theme="light"] .view-more-toggle              { border-color: rgba(0,150,106,0.4); color: var(--accent); }
+[data-theme="light"] .demo-btn                      { background: rgba(0,150,106,0.1); color: var(--accent); border-color: rgba(0,150,106,0.3); }
+[data-theme="light"] .demo-btn:hover                { background: var(--accent); color: #fff; }
+[data-theme="light"] .feedback-form input,
+[data-theme="light"] .feedback-form textarea        { background: #fff; color: var(--text); border-color: rgba(0,0,0,0.15); }
+[data-theme="light"] .feedback-form input:focus,
+[data-theme="light"] .feedback-form textarea:focus  { border-color: var(--accent); }
+[data-theme="light"] .source-link                   { color: var(--muted); }
+[data-theme="light"] #Home::before {
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 30%, rgba(0,150,106,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 10% 80%, rgba(0,122,86,0.05)  0%, transparent 60%);
+}
+
 html { scroll-behavior: smooth; }
 
 body {

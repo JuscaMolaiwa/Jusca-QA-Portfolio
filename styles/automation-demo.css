@@ -68,3 +68,66 @@
 }
 .source-link:hover { color: var(--accent); border-color: rgba(0,229,160,0.3); }
 .source-link img   { width: 18px; height: 18px; filter: invert(0.6); }
+
+/* ── Skeleton loader ── */
+.demo-skeleton {
+  margin-top: 16px;
+  display:    flex;
+  flex-direction: column;
+  gap:        10px;
+}
+
+/* Shimmer animation */
+@keyframes skeletonShimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+
+.skeleton-line {
+  height:        12px;
+  border-radius: 6px;
+  background:    linear-gradient(
+    90deg,
+    var(--bg3)       25%,
+    var(--bg2)       50%,
+    var(--bg3)       75%
+  );
+  background-size: 400px 100%;
+  animation: skeletonShimmer 1.4s ease infinite;
+}
+.skeleton-line--full          { width: 100%; }
+.skeleton-line--three-quarters { width: 75%; }
+.skeleton-line--half          { width: 50%; }
+
+.skeleton-links {
+  display: flex;
+  gap:     8px;
+  margin-top: 4px;
+}
+.skeleton-badge {
+  height:        28px;
+  width:         90px;
+  border-radius: 6px;
+  background:    linear-gradient(
+    90deg,
+    var(--bg3) 25%,
+    var(--bg2) 50%,
+    var(--bg3) 75%
+  );
+  background-size: 400px 100%;
+  animation: skeletonShimmer 1.4s ease infinite;
+}
+.skeleton-badge:nth-child(2) { animation-delay: 0.15s; }
+.skeleton-badge:nth-child(3) { animation-delay: 0.30s; }
+
+/* Light mode skeleton — lighter shimmer */
+[data-theme="light"] .skeleton-line,
+[data-theme="light"] .skeleton-badge {
+  background: linear-gradient(
+    90deg,
+    #e2e6ec 25%,
+    #edf0f4 50%,
+    #e2e6ec 75%
+  );
+  background-size: 400px 100%;
+}

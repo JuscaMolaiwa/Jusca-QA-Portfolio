@@ -16,19 +16,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles/mainstyles.css?v=20260515131446">
-  <link rel="stylesheet" href="styles/navigationstyles.css?v=20260515131446">
-  <link rel="stylesheet" href="styles/burgermenustyles.css?v=20260515131446">
-  <link rel="stylesheet" href="styles/bugstyles.css?v=20260515131446">
-  <link rel="stylesheet" href="styles/herostyles.css?v=20260515131446">
-  <link rel="stylesheet" href="styles/aboutstyles.css?v=20260515131446">
-  <link rel="stylesheet" href="styles/resumestyles.css?v=20260515131446">
-  <link rel="stylesheet" href="styles/projectstyles.css?v=20260515131446">
-  <link rel="stylesheet" href="styles/skillstyles.css?v=20260515131446">
-  <link rel="stylesheet" href="styles/automation-demo.css?v=20260515131446">
-  <link rel="stylesheet" href="styles/feedbackform.css?v=20260515131446">
-  <link rel="stylesheet" href="styles/educationstyles.css?v=20260515131446">
-  <link rel="stylesheet" href="styles/contactstyles.css?v=20260515131446">
+  <link rel="stylesheet" href="styles/mainstyles.css">
+  <link rel="stylesheet" href="styles/preloaderstyles.css">
+  <link rel="stylesheet" href="styles/navigationstyles.css">
+  <link rel="stylesheet" href="styles/burgermenustyles.css">
+  <link rel="stylesheet" href="styles/bugstyles.css">
+  <link rel="stylesheet" href="styles/herostyles.css">
+  <link rel="stylesheet" href="styles/aboutstyles.css">
+  <link rel="stylesheet" href="styles/resumestyles.css">
+  <link rel="stylesheet" href="styles/projectstyles.css">
+  <link rel="stylesheet" href="styles/skillstyles.css">
+  <link rel="stylesheet" href="styles/automation-demo.css">
+  <link rel="stylesheet" href="styles/feedbackform.css">
+  <link rel="stylesheet" href="styles/educationstyles.css">
+  <link rel="stylesheet" href="styles/contactstyles.css">
 
   <!-- SEO / Social -->
   <meta property="og:title" content="Jusca Molaiwa — QA Engineer Portfolio">
@@ -47,6 +48,19 @@
   </script>
 </head>
 <body>
+
+<!-- ── Preloader ── -->
+<div id="preloader" aria-hidden="true" role="presentation">
+  <canvas id="preloader-canvas"></canvas>
+  <div class="preloader-content">
+    <div class="preloader-logo">
+      <img src="images/bug.svg" alt="" id="preloader-bug" class="preloader-bug-img">
+    </div>
+    <div class="preloader-title" data-text="BugHunter">BugHunter</div>
+    <div class="preloader-sub">Initialising QA environment…</div>
+    <div class="preloader-bar-wrap"><div class="preloader-bar" id="preloaderBar"></div></div>
+  </div>
+</div>
 
 <a class="skip-link" href="#Home">Skip to main content</a>
 
@@ -85,9 +99,14 @@
       <li><a href="#education" class="nav-link">Education</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
-    <button class="burger-menu" id="burgerBtn" aria-label="Open navigation menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+      <button class="burger-menu" id="burgerBtn" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -97,7 +116,7 @@
   <section id="Home" aria-label="Introduction">
     <div class="hero-grid container">
       <div>
-        <p class="hero-eyebrow" aria-hidden="true">SR. QA Engineer · Johannesburg, ZA</p>
+        <p class="hero-eyebrow" aria-hidden="true">QA Engineer · Johannesburg, ZA</p>
         <h1 class="hero-title">
           Ensuring Software<br>
           Quality with <span>Precision</span><br>
@@ -117,7 +136,7 @@
             <div class="stat-label">Years Experience</div>
           </div>
           <div>
-            <div class="stat-val">5</div>
+            <div class="stat-val">3</div>
             <div class="stat-label">Major Projects</div>
           </div>
           <div>
@@ -188,10 +207,10 @@
           <p>Software Quality Assurance Engineer with 5+ years of experience in manual and automation testing. Download or view the full CV below.</p>
         </div>
         <div class="resume-actions">
-          <a href="projects/assets/JUSCA MOLAIWA CV.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <a href="projects/assets/JUSCA MOLAIWA 2025 LATEST CV.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
             <i class="fas fa-eye"></i> View CV
           </a>
-          <a href="projects/assets/JUSCA MOLAIWA CV.pdf" download class="btn btn-outline">
+          <a href="projects/assets/JUSCA MOLAIWA 2025 LATEST CV.pdf" download class="btn btn-outline">
             <i class="fas fa-download"></i> Download
           </a>
         </div>
@@ -312,6 +331,17 @@
           <p>Runs an automated login test against saucedemo.com using Selenium.</p>
           <button class="demo-btn" id="runLoginTestButton"><i class="fas fa-play"></i> Run Login Test</button>
           <div class="demo-status" id="loginStatusMessage" style="display:none;"></div>
+          <!-- Skeleton loader -->
+          <div class="demo-skeleton" id="loginSkeleton" style="display:none;">
+            <div class="skeleton-line skeleton-line--full"></div>
+            <div class="skeleton-line skeleton-line--three-quarters"></div>
+            <div class="skeleton-line skeleton-line--half"></div>
+            <div class="skeleton-links">
+              <div class="skeleton-badge"></div>
+              <div class="skeleton-badge"></div>
+              <div class="skeleton-badge"></div>
+            </div>
+          </div>
           <div id="loginResult"></div>
           <div class="demo-links" id="loginReportSection">
             <a id="loginScreenshotLink" href="#" target="_blank" style="display:none;"><i class="fas fa-image"></i> Screenshot</a>
@@ -327,6 +357,17 @@
           <p>Runs an automated place-order flow test against saucedemo.com.</p>
           <button class="demo-btn" id="placeOrderButton"><i class="fas fa-play"></i> Run Place Order Test</button>
           <div class="demo-status" id="orderStatusMessage" style="display:none;"></div>
+          <!-- Skeleton loader -->
+          <div class="demo-skeleton" id="orderSkeleton" style="display:none;">
+            <div class="skeleton-line skeleton-line--full"></div>
+            <div class="skeleton-line skeleton-line--three-quarters"></div>
+            <div class="skeleton-line skeleton-line--half"></div>
+            <div class="skeleton-links">
+              <div class="skeleton-badge"></div>
+              <div class="skeleton-badge"></div>
+              <div class="skeleton-badge"></div>
+            </div>
+          </div>
           <div id="orderResult"></div>
           <div class="demo-links" id="orderReportSection">
             <a id="orderScreenshotLink" href="#" target="_blank" style="display:none;"><i class="fas fa-image"></i> Screenshot</a>
@@ -479,12 +520,14 @@
 </noscript>
 
 <!-- Scripts -->
-<script src="scripts/bug.js?v=20260515131446"></script>
-<script src="scripts/burgermenu.js?v=20260515131446"></script>
-<script src="scripts/main.js?v=20260515131446"></script>
-<script src="scripts/automation-demos.js?v=20260515131446"></script>
-<script src="scripts/automation-demo-place-order.js?v=20260515131446"></script>
-<script src="scripts/form.js?v=20260515131446"></script>
+<script src="scripts/theme.js"></script>
+<script src="scripts/bug.js"></script>
+<script src="scripts/burgermenu.js"></script>
+<script src="scripts/main.js"></script>
+<script src="scripts/automation-demos.js"></script>
+<script src="scripts/automation-demo-place-order.js"></script>
+<script src="scripts/form.js"></script>
+<script src="scripts/preloader.js"></script>
 
 </body>
 </html>
