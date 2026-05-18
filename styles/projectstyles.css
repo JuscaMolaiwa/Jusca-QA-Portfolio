@@ -36,3 +36,12 @@
 
 .project-card ul   { color: var(--muted); padding-left: 18px; margin-top: 12px; }
 .project-card ul li { margin-bottom: 6px; font-size: 0.9rem; }
+
+/* ── View more / less ── */
+.project-card--hidden { display: none; }
+
+.projects-toggle-wrap {
+  display:    flex;
+  justify-content: center;
+  margin-top: 24px;
+}

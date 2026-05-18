@@ -1,0 +1,227 @@
+/* timelinestyles.css */
+
+#timeline { background: var(--bg); }
+
+/* ── Vertical spine ── */
+.timeline {
+  position:    relative;
+  padding-left: 32px;
+  max-width:   700px;
+}
+.timeline::before {
+  content:    '';
+  position:   absolute;
+  left:       10px;
+  top:        8px;
+  bottom:     8px;
+  width:      2px;
+  background: linear-gradient(
+    to bottom,
+    var(--accent)          0%,
+    rgba(0,229,160,0.4)   50%,
+    rgba(0,229,160,0.1)  100%
+  );
+  border-radius: 2px;
+}
+
+/* ── Item ── */
+.timeline-item {
+  position:      relative;
+  margin-bottom: 40px;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+
+/* ── Marker dot ── */
+.timeline-marker {
+  position:        absolute;
+  left:            -28px;
+  top:             4px;
+  width:           22px;
+  height:          22px;
+  border-radius:   50%;
+  background:      var(--bg3);
+  border:          2px solid rgba(0,229,160,0.35);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       0.62rem;
+  color:           var(--muted);
+  z-index:         1;
+  transition:      border-color var(--transition), background var(--transition);
+}
+.timeline-marker--current {
+  background:   rgba(0,229,160,0.15);
+  border-color: var(--accent);
+  color:        var(--accent);
+  box-shadow:   0 0 0 4px rgba(0,229,160,0.08);
+}
+.timeline-marker--early {
+  border-color: rgba(255,255,255,0.15);
+  color:        var(--muted);
+}
+.timeline-item:hover .timeline-marker {
+  border-color: var(--accent);
+  color:        var(--accent);
+}
+
+/* ── Content card ── */
+.timeline-content {
+  background:    var(--card-bg);
+  border:        1px solid var(--border);
+  border-radius: var(--radius);
+  padding:       20px 24px;
+  transition:    border-color var(--transition), transform var(--transition);
+}
+.timeline-item:hover .timeline-content {
+  border-color: rgba(0,229,160,0.2);
+  transform:    translateX(4px);
+}
+
+/* ── Header row ── */
+.timeline-header {
+  display:     flex;
+  align-items: center;
+  gap:         10px;
+  margin-bottom: 6px;
+  flex-wrap:   wrap;
+}
+.timeline-date {
+  font-size:      0.78rem;
+  color:          var(--muted);
+  letter-spacing: 0.04em;
+}
+.timeline-badge {
+  font-size:      0.7rem;
+  font-weight:    600;
+  padding:        2px 10px;
+  border-radius:  999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.timeline-badge--current {
+  background:  rgba(0,229,160,0.15);
+  color:       var(--accent);
+  border:      1px solid rgba(0,229,160,0.3);
+}
+
+/* ── Role & company ── */
+.timeline-role {
+  font-family:   var(--font-display);
+  font-size:     1.05rem;
+  font-weight:   700;
+  color:         var(--text);
+  margin-bottom: 4px;
+}
+.timeline-company {
+  font-size:     0.85rem;
+  color:         var(--muted);
+  margin-bottom: 10px;
+  display:       flex;
+  align-items:   center;
+  gap:           6px;
+}
+.timeline-company i { color: var(--accent); font-size: 0.75rem; }
+
+/* ── Description ── */
+.timeline-desc {
+  font-size:     0.88rem;
+  color:         var(--muted);
+  line-height:   1.7;
+  margin-bottom: 14px;
+}
+
+/* ── Skill tags ── */
+.timeline-tags {
+  display:  flex;
+  flex-wrap: wrap;
+  gap:      6px;
+}
+.timeline-tags span {
+  font-size:     0.72rem;
+  padding:       3px 10px;
+  border-radius: 20px;
+  background:    rgba(255,255,255,0.05);
+  color:         var(--muted);
+  border:        1px solid var(--border);
+  transition:    all var(--transition);
+}
+.timeline-item:hover .timeline-tags span {
+  border-color: rgba(0,229,160,0.2);
+  color:        var(--text);
+}
+
+/* ── Light mode ── */
+[data-theme="light"] .timeline::before {
+  background: linear-gradient(
+    to bottom,
+    var(--accent)          0%,
+    rgba(0,150,106,0.35)  50%,
+    rgba(0,150,106,0.1)  100%
+  );
+}
+[data-theme="light"] .timeline-marker         { background: #fff; }
+[data-theme="light"] .timeline-marker--current { background: rgba(0,150,106,0.1); }
+[data-theme="light"] .timeline-item:hover .timeline-content { border-color: rgba(0,150,106,0.25); }
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .timeline        { padding-left: 24px; }
+  .timeline-marker { left: -22px; width: 18px; height: 18px; font-size: 0.55rem; }
+}
+
+/* ── Project sub-sections within a timeline card ── */
+.timeline-project {
+  margin-bottom:  16px;
+  padding-bottom: 16px;
+  border-bottom:  1px solid var(--border);
+}
+.timeline-project:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 12px;
+}
+
+.timeline-project-name {
+  font-size:     0.85rem;
+  font-weight:   600;
+  color:         var(--text);
+  margin-bottom: 8px;
+  display:       flex;
+  align-items:   baseline;
+  gap:           6px;
+  flex-wrap:     wrap;
+}
+.timeline-project-name i {
+  color:     var(--accent);
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+.timeline-project-date {
+  font-size:   0.75rem;
+  font-weight: 400;
+  color:       var(--muted);
+  margin-left: auto;
+}
+
+.timeline-project-list {
+  list-style:  none;
+  padding:     0;
+  margin:      0;
+  display:     grid;
+  gap:         6px;
+}
+.timeline-project-list li {
+  font-size:   0.85rem;
+  color:       var(--muted);
+  line-height: 1.6;
+  padding-left: 14px;
+  position:    relative;
+}
+.timeline-project-list li::before {
+  content:     '·';
+  position:    absolute;
+  left:        2px;
+  color:       var(--accent);
+  font-size:   1rem;
+  line-height: 1.4;
+}

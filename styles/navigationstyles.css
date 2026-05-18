@@ -150,3 +150,74 @@ body * {
     color            0.3s ease,
     transform        var(--transition);
 }
+
+/* ── Scroll progress bar ── */
+.scroll-progress-bar {
+  position:      absolute;
+  bottom:        -1px;
+  left:          0;
+  width:         0%;
+  height:        2px;
+  background:    linear-gradient(90deg, var(--accent), #00b37e);
+  border-radius: 0 2px 2px 0;
+  box-shadow:    0 0 8px rgba(0,229,160,0.5);
+  transition:    width 0.1s linear;
+  z-index:       101;
+}
+[data-theme="light"] .scroll-progress-bar {
+  background:  linear-gradient(90deg, var(--accent), var(--accent2));
+  box-shadow:  0 0 8px rgba(0,150,106,0.4);
+}
+
+/* ── Prevent nav overflow on smaller desktops ── */
+.nav-list { flex-wrap: nowrap; }
+.nav-list a { font-size: 0.78rem; padding: 6px 10px; }
+
+@media (max-width: 900px) {
+  .nav-list a { font-size: 0.72rem; padding: 5px 7px; }
+}
+
+/* ── Drawer close button ── */
+.nav-drawer-close {
+  position:   absolute;
+  top:        16px;
+  right:      16px;
+  width:      36px;
+  height:     36px;
+  border-radius: 50%;
+  border:     1px solid var(--border);
+  background: transparent;
+  color:      var(--muted);
+  font-size:  1rem;
+  display:    flex;
+  align-items:     center;
+  justify-content: center;
+  cursor:     pointer;
+  transition: all var(--transition);
+  z-index:    10;
+}
+.nav-drawer-close:hover {
+  background:   rgba(248,81,73,0.12);
+  border-color: #f85149;
+  color:        #f85149;
+  transform:    rotate(90deg);
+}
+
+/* ── Drawer theme toggle (static, not JS-injected) ── */
+.drawer-theme-toggle {
+  display:       flex;
+  align-items:   center;
+  gap:           8px;
+  width:         100%;
+  padding:       10px 0;
+  border:        none;
+  border-bottom: 1px solid var(--border);
+  background:    transparent;
+  color:         var(--muted);
+  font-family:   var(--font-display);
+  font-size:     1.1rem;
+  cursor:        pointer;
+  text-align:    left;
+  transition:    color var(--transition);
+}
+.drawer-theme-toggle:hover { color: var(--accent); }

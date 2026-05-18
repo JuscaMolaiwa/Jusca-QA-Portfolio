@@ -44,6 +44,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (navOverlay) navOverlay.addEventListener('click', closeDrawer);
 
+  // Close button inside drawer
+  var closeBtn = document.getElementById('navDrawerClose');
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+
   navDrawer.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', closeDrawer);
   });

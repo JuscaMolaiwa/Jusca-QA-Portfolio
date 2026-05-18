@@ -3,91 +3,70 @@
   'use strict';
 
   var STORAGE_KEY = 'jm-theme';
-  var icons = []; // track all icon elements
+  var toggleBtn   = null;
+  var icon        = null;
 
-  function storageGet(key) {
-    try { return localStorage.getItem(key); } catch (e) { return null; }
-  }
-  function storageSet(key, val) {
-    try { localStorage.setItem(key, val); } catch (e) {}
-  }
-
+  // ── Determine initial theme ───────────────────────────────
+  // Priority: 1. localStorage  2. OS preference  3. dark (default)
   function getPreferredTheme() {
-    var saved = storageGet(STORAGE_KEY);
+    var saved = localStorage.getItem(STORAGE_KEY);
     if (saved === 'light' || saved === 'dark') return saved;
-    return 'dark';
+    return 'dark'; // always dark unless user explicitly toggles to light
   }
 
-  function currentTheme() {
-    return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-  }
-
-  function syncIcons(theme) {
-    icons.forEach(function (el) {
-      if (el) el.textContent = theme === 'light' ? '☀️' : '🌙';
-    });
-  }
-
+  // ── Apply theme to <html> ─────────────────────────────────
   function applyTheme(theme) {
     if (theme === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
     } else {
       document.documentElement.removeAttribute('data-theme');
     }
-    storageSet(STORAGE_KEY, theme);
-    syncIcons(theme);
+    if (icon) icon.textContent = theme === 'light' ? '☀️' : '🌙';
+    localStorage.setItem(STORAGE_KEY, theme);
+  }
+
+  function currentTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
   }
 
   function toggle() {
     applyTheme(currentTheme() === 'dark' ? 'light' : 'dark');
   }
 
-  // Apply immediately to avoid flash
+  // ── Apply immediately to avoid flash of wrong theme ───────
+  // This runs before DOMContentLoaded so the icon updates after
   applyTheme(getPreferredTheme());
 
-  // ── Guard against already-parsed DOM (defer/async scripts) ──
-  function domReady(fn) {
-    if (document.readyState !== 'loading') {
-      fn();
-    } else {
-      document.addEventListener('DOMContentLoaded', fn);
-    }
-  }
+  // ── Wire up button after DOM ready ────────────────────────
+  document.addEventListener('DOMContentLoaded', function () {
+    toggleBtn = document.getElementById('themeToggle');
+    icon      = toggleBtn ? toggleBtn.querySelector('.theme-icon') : null;
 
-  domReady(function () {
-    var toggleBtn = document.getElementById('themeToggle');
-    var mainIcon  = toggleBtn ? toggleBtn.querySelector('.theme-icon') : null;
-
-    if (mainIcon) icons.push(mainIcon);
-    syncIcons(currentTheme()); // sync after icons array is populated
+    // Sync icon with already-applied theme
+    if (icon) icon.textContent = currentTheme() === 'light' ? '☀️' : '🌙';
 
     if (toggleBtn) {
       toggleBtn.addEventListener('click', toggle);
-    } else {
-      console.warn('[theme] #themeToggle not found');
     }
 
-    var drawer = document.getElementById('navDrawer');
-    if (drawer) {
-      var drawerToggle = document.createElement('button');
-      drawerToggle.className = 'theme-toggle drawer-theme-toggle';
-      drawerToggle.setAttribute('aria-label', 'Toggle light/dark mode');
-      var drawerIcon = document.createElement('span');
-      drawerIcon.className = 'theme-icon';
-      icons.push(drawerIcon);
-      drawerToggle.appendChild(drawerIcon);
-      drawerToggle.appendChild(document.createTextNode(' Toggle theme'));
-      drawerToggle.style.cssText = [
-        'display:flex', 'align-items:center', 'gap:8px',
-        'width:100%', 'padding:10px 0',
-        'border:none', 'border-bottom:1px solid var(--border)',
-        'background:transparent', 'color:var(--muted)',
-        'font-family:var(--font-display)', 'font-size:1.1rem',
-        'cursor:pointer', 'border-radius:0'
-      ].join(';');
-      drawerToggle.addEventListener('click', toggle);
-      drawer.insertBefore(drawerToggle, drawer.firstChild);
-      syncIcons(currentTheme());
+    // Wire up static drawer theme toggle
+    var drawerToggle     = document.getElementById('drawerThemeToggle');
+    var drawerToggleIcon = drawerToggle ? drawerToggle.querySelector('.theme-icon') : null;
+
+    // Sync drawer icon with current theme
+    if (drawerToggleIcon) drawerToggleIcon.textContent = currentTheme() === 'light' ? '☀️' : '🌙';
+
+    if (drawerToggle) {
+      drawerToggle.addEventListener('click', function () {
+        toggle();
+        var newTheme = currentTheme();
+        if (icon)             icon.textContent             = newTheme === 'light' ? '☀️' : '🌙';
+        if (drawerToggleIcon) drawerToggleIcon.textContent = newTheme === 'light' ? '☀️' : '🌙';
+      });
     }
+
+    // OS theme changes are intentionally ignored —
+    // dark mode is always the default unless the user explicitly toggles.
   });
+
 })();

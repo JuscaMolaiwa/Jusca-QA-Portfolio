@@ -51,7 +51,20 @@
 
     updateActiveNavLink();
 
+
+    // ── Scroll progress bar ──────────────────────────────────────
+    const progressBar = document.getElementById('scrollProgressBar');
+    function updateProgressBar() {
+      if (!progressBar) return;
+      const scrollTop  = window.scrollY || document.documentElement.scrollTop;
+      const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+      const pct        = docHeight > 0 ? Math.round((scrollTop / docHeight) * 100) : 0;
+      progressBar.style.width = pct + '%';
+      progressBar.setAttribute('aria-valuenow', pct);
+    }
+
     window.addEventListener('scroll', function () {
+      updateProgressBar();
       updateActiveNavLink();
       if (backToTopBtn) {
         backToTopBtn.classList.toggle('visible',
@@ -106,6 +119,31 @@
         const collapsed = certsList.classList.toggle('collapsed');
         certsToggle.setAttribute('aria-expanded', String(!collapsed));
         certsText.textContent = collapsed ? 'View more' : 'View less';
+      });
+    }
+
+
+    // ── Projects view more / less ─────────────────────────────────
+    const projectsToggle    = document.getElementById('projectsToggle');
+    const projectsToggleTxt = document.getElementById('projectsToggleText');
+    const hiddenProjects    = document.querySelectorAll('.project-card--hidden');
+
+    if (projectsToggle) {
+      projectsToggle.addEventListener('click', function () {
+        const expanded = projectsToggle.getAttribute('aria-expanded') === 'true';
+        projectsToggle.setAttribute('aria-expanded', String(!expanded));
+        projectsToggleTxt.textContent = expanded ? 'View 2 more' : 'View less';
+        hiddenProjects.forEach(function (card) {
+          if (!expanded) {
+            // Remove the CSS class so the card becomes visible
+            card.classList.remove('project-card--hidden');
+            setTimeout(function () { card.classList.add('visible'); }, 50);
+          } else {
+            // Re-add the CSS class to hide again
+            card.classList.add('project-card--hidden');
+            card.classList.remove('visible');
+          }
+        });
       });
     }
 

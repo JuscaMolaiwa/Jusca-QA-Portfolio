@@ -17,11 +17,13 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles/mainstyles.css">
+  <link rel="stylesheet" href="styles/preloaderstyles.css">
   <link rel="stylesheet" href="styles/navigationstyles.css">
   <link rel="stylesheet" href="styles/burgermenustyles.css">
   <link rel="stylesheet" href="styles/bugstyles.css">
   <link rel="stylesheet" href="styles/herostyles.css">
   <link rel="stylesheet" href="styles/aboutstyles.css">
+  <link rel="stylesheet" href="styles/timelinestyles.css">
   <link rel="stylesheet" href="styles/resumestyles.css">
   <link rel="stylesheet" href="styles/projectstyles.css">
   <link rel="stylesheet" href="styles/skillstyles.css">
@@ -49,6 +51,19 @@
 </head>
 <body>
 
+<!--&lt;!&ndash; ── Preloader ── &ndash;&gt;-->
+<!--<div id="preloader" aria-hidden="true" role="presentation">-->
+<!--  <canvas id="preloader-canvas"></canvas>-->
+<!--  <div class="preloader-content">-->
+<!--    <div class="preloader-logo">-->
+<!--      <img src="images/bug.svg" alt="" id="preloader-bug" class="preloader-bug-img">-->
+<!--    </div>-->
+<!--    <div class="preloader-title" data-text="BugHunter">BugHunter</div>-->
+<!--    <div class="preloader-sub">Initialising QA environment…</div>-->
+<!--    <div class="preloader-bar-wrap"><div class="preloader-bar" id="preloaderBar"></div></div>-->
+<!--  </div>-->
+<!--</div>-->
+
 <a class="skip-link" href="#Home">Skip to main content</a>
 
 <!-- Nav overlay -->
@@ -56,11 +71,20 @@
 
 <!-- Mobile drawer -->
 <nav class="nav-drawer" id="navDrawer" aria-label="Mobile navigation">
-  <a href="#BugHunter" id="hiddenBugHunterLink">
+  <!-- Close button -->
+  <button class="nav-drawer-close" id="navDrawerClose" aria-label="Close navigation menu">
+    <i class="fas fa-times"></i>
+  </button>
+  <!-- Theme toggle -->
+  <button class="drawer-theme-toggle" id="drawerThemeToggle" aria-label="Toggle light/dark mode">
+    <span class="theme-icon">🌙</span> Toggle theme
+  </button>
+  <a href="#BugHunter" id="hiddenBugHunterLink" style="display:none;" aria-hidden="true" tabindex="-1">
     <img src="images/bug.svg" alt="Bug icon" class="bug-icon" id="hiddenBugIcon"> BugHunter
   </a>
   <a href="#Home">Home</a>
   <a href="#about">About Me</a>
+  <a href="#timeline">Timeline</a>
   <a href="#resume">Resume</a>
   <a href="#projects">Projects</a>
   <a href="#skills">Skills</a>
@@ -72,6 +96,7 @@
 
 <!-- Sticky nav -->
 <header class="sticky-nav" role="banner">
+  <div class="scroll-progress-bar" id="scrollProgressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Page scroll progress"></div>
   <div class="nav-inner">
     <a href="#BugHunter" class="nav-logo" id="stickyBugHunterLink" aria-label="BugHunter — Home">
       <img src="images/bug.svg" alt="Bug icon" class="bug-icon" id="stickyBugIcon">
@@ -80,11 +105,9 @@
     <ul class="nav-list" role="list">
       <li><a href="#Home" class="nav-link">Home</a></li>
       <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="#resume" class="nav-link">Resume</a></li>
+      <li><a href="#timeline" class="nav-link">Timeline</a></li>
       <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#skills" class="nav-link">Skills</a></li>
       <li><a href="#automation-demo" class="nav-link">Demos</a></li>
-      <li><a href="#education" class="nav-link">Education</a></li>
       <li><a href="#blog" class="nav-link">Blog</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
@@ -185,6 +208,123 @@
     </div>
   </section>
 
+
+  <!-- ── WORK TIMELINE ── -->
+  <section id="timeline" aria-labelledby="timeline-heading">
+    <div class="container">
+      <p class="section-label">Career Journey</p>
+      <h2 id="timeline-heading">Work Timeline</h2>
+      <div class="timeline">
+
+        <!-- Entelect — current employer -->
+        <div class="timeline-item fade-up">
+          <div class="timeline-marker timeline-marker--current">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="timeline-date">Oct 2022 — Present</span>
+              <span class="timeline-badge timeline-badge--current">Current</span>
+            </div>
+            <h3 class="timeline-role">Senior Software QA Engineer</h3>
+            <p class="timeline-company"><i class="fas fa-building"></i> Entelect</p>
+
+            <!-- Standard Bank -->
+            <div class="timeline-project">
+              <p class="timeline-project-name"><i class="fas fa-chevron-right"></i> Standard Bank — RPP (Rapid Payments Platform) <span class="timeline-project-date">Nov 2025 – Present</span></p>
+              <ul class="timeline-project-list">
+                <li>Implemented quality gates and established a robust QA framework, embedding quality practices throughout the SDLC.</li>
+                <li>Led automation migration from Cypress to Playwright, enhancing test reliability, performance, and regression coverage.</li>
+                <li>Designed and optimised end-to-end, integration, and regression tests aligned with CI/CD processes.</li>
+                <li>Collaborated with developers and stakeholders to drive early defect detection and faster delivery.</li>
+              </ul>
+            </div>
+
+            <!-- VodaSure -->
+            <div class="timeline-project">
+              <p class="timeline-project-name"><i class="fas fa-chevron-right"></i> VodaSure — SQA Automation Engineer <span class="timeline-project-date">Jan 2025 – Present</span></p>
+              <ul class="timeline-project-list">
+                <li>Designed and developed automated test framework for Frontend, Backend, and Integration testing.</li>
+                <li>Implemented mocks for third-party services, managed test data, and developed AWS CI/CD pipelines.</li>
+              </ul>
+            </div>
+
+            <!-- Sasol -->
+            <div class="timeline-project">
+              <p class="timeline-project-name"><i class="fas fa-chevron-right"></i> Sasol Rewards App — SQA Engineer <span class="timeline-project-date">Nov 2024 – Dec 2024</span></p>
+              <ul class="timeline-project-list">
+                <li>Comprehensive manual and automated testing using Appium, Selenium, and API automation.</li>
+                <li>Managed defects via Azure DevOps and implemented Azure CI/CD pipelines for streamlined releases.</li>
+              </ul>
+            </div>
+
+            <div class="timeline-tags">
+              <span>Playwright</span><span>Selenium</span><span>Appium</span>
+              <span>Cypress</span><span>Azure DevOps</span><span>AWS CI/CD</span>
+              <span>API Testing</span><span>Mocking</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Zulzi -->
+        <div class="timeline-item fade-up">
+          <div class="timeline-marker">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="timeline-date">Oct 2020 — Sep 2022</span>
+            </div>
+            <h3 class="timeline-role">Software QA Engineer</h3>
+            <p class="timeline-company"><i class="fas fa-building"></i> Zulzi On-Demand Pty Ltd</p>
+
+            <!-- Zulzi Internal -->
+            <div class="timeline-project">
+              <p class="timeline-project-name"><i class="fas fa-chevron-right"></i> Zulzi Internal SQA</p>
+              <ul class="timeline-project-list">
+                <li>Prioritised and executed test cases, performing automated regression tests after each software update.</li>
+                <li>Developed and maintained automated test scripts, ensuring efficient and thorough testing processes.</li>
+              </ul>
+            </div>
+
+            <!-- Checkers Sixty60 -->
+            <div class="timeline-project">
+              <p class="timeline-project-name"><i class="fas fa-chevron-right"></i> Checkers Sixty60 App</p>
+              <ul class="timeline-project-list">
+                <li>Manual and automated testing ensuring seamless performance of the Checkers Sixty60 mobile app.</li>
+                <li>Built automated tests using Appium (mobile) and Selenium (web), complemented by API testing.</li>
+              </ul>
+            </div>
+
+            <div class="timeline-tags">
+              <span>Selenium</span><span>Appium</span><span>Manual Testing</span>
+              <span>Regression Testing</span><span>API Testing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lab Analyst -->
+        <div class="timeline-item fade-up">
+          <div class="timeline-marker timeline-marker--early">
+            <i class="fas fa-flask"></i>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="timeline-date">2017 — 2020</span>
+            </div>
+            <h3 class="timeline-role">Lab Analyst Intern</h3>
+            <p class="timeline-company"><i class="fas fa-building"></i> Analytical Chemistry Lab</p>
+            <p class="timeline-desc">Developed meticulous attention to detail and methodical problem-solving — core skills that transferred directly into QA engineering.</p>
+            <div class="timeline-tags">
+              <span>Analytical Chemistry</span><span>Detail Oriented</span><span>Process Driven</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ── RESUME ── -->
   <section id="resume" aria-labelledby="resume-heading">
     <div class="container">
@@ -212,46 +352,77 @@
     <div class="container">
       <p class="section-label">Work</p>
       <h2 id="projects-heading">Projects</h2>
-      <div class="projects-grid">
+      <div class="projects-grid" id="projectsGrid">
+
+        <article class="project-card fade-up">
+          <h3>Standard Bank — RPP (Rapid Payments Platform)</h3>
+          <div class="project-meta">
+            <span class="badge">Entelect</span>
+            <span class="badge secondary">Nov 2025 – Present</span>
+          </div>
+          <ul>
+            <li>Implemented quality gates and established a robust QA framework, embedding quality practices throughout the SDLC.</li>
+            <li>Led automation migration from Cypress to Playwright, enhancing test reliability, performance, and regression coverage.</li>
+            <li>Designed and optimised end-to-end, integration, and regression tests aligned with CI/CD processes.</li>
+            <li>Collaborated with developers and stakeholders to drive early defect detection and faster delivery.</li>
+          </ul>
+        </article>
+
+        <article class="project-card fade-up">
+          <h3>VodaSure — Automation Framework</h3>
+          <div class="project-meta">
+            <span class="badge">Entelect</span>
+            <span class="badge secondary">Jan 2025 – Present</span>
+          </div>
+          <ul>
+            <li>Designed and developed an automated test framework for Frontend, Backend, and Integration testing.</li>
+            <li>Implemented mocks for third-party services and managed test data across multiple environments.</li>
+            <li>Developed AWS CI/CD pipelines to support continuous integration and delivery.</li>
+          </ul>
+        </article>
 
         <article class="project-card fade-up">
           <h3>Sasol Rewards App</h3>
           <div class="project-meta">
             <span class="badge">Entelect</span>
-            <span class="badge secondary">Oct 2022 – Present</span>
+            <span class="badge secondary">Nov 2024 – Dec 2024</span>
           </div>
           <ul>
             <li>Comprehensive manual and automated testing using Appium, Selenium, and API automation.</li>
-            <li>Managed defects and facilitated timely resolutions with developers via Azure DevOps.</li>
-            <li>Implemented CI/CD pipelines to streamline testing and deployment of new feature releases.</li>
+            <li>Managed defects via Azure DevOps and implemented Azure CI/CD pipelines for streamlined releases.</li>
           </ul>
         </article>
 
-        <article class="project-card fade-up">
-          <h3>Internal QA — Zulzi</h3>
-          <div class="project-meta">
-            <span class="badge">Zulzi On-Demand Pty Ltd</span>
-            <span class="badge secondary">Oct 2020 – Sep 2022</span>
-          </div>
-          <ul>
-            <li>Conducted comprehensive manual and automated testing, detecting and reporting bugs.</li>
-            <li>Prioritised and executed test cases, running automated regression tests after each release.</li>
-            <li>Developed and maintained automated test scripts ensuring efficient testing processes.</li>
-          </ul>
-        </article>
-
-        <article class="project-card fade-up">
+        <article class="project-card fade-up project-card--hidden">
           <h3>Checkers Sixty60 App</h3>
           <div class="project-meta">
             <span class="badge">Zulzi On-Demand Pty Ltd</span>
             <span class="badge secondary">Oct 2020 – Sep 2022</span>
           </div>
           <ul>
-            <li>Ensured seamless performance of the Checkers Sixty60 mobile app through manual and automated testing.</li>
-            <li>Built automated tests using Appium (mobile) and Selenium (web) with API integration testing.</li>
+            <li>Manual and automated testing ensuring seamless performance of the Checkers Sixty60 mobile app.</li>
+            <li>Built automated tests using Appium (mobile) and Selenium (web), complemented by API testing.</li>
           </ul>
         </article>
 
+        <article class="project-card fade-up project-card--hidden">
+          <h3>Zulzi Internal SQA</h3>
+          <div class="project-meta">
+            <span class="badge">Zulzi On-Demand Pty Ltd</span>
+            <span class="badge secondary">Oct 2020 – Sep 2022</span>
+          </div>
+          <ul>
+            <li>Prioritised and executed test cases, performing automated regression tests after each software update.</li>
+            <li>Developed and maintained automated test scripts ensuring efficient and thorough testing processes.</li>
+          </ul>
+        </article>
+
+      </div>
+      <div class="projects-toggle-wrap">
+        <button class="view-more-toggle" id="projectsToggle" aria-expanded="false" aria-controls="projectsGrid">
+          <span id="projectsToggleText">View 2 more</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
       </div>
     </div>
   </section>
@@ -639,6 +810,7 @@
 <script src="scripts/automation-demo-place-order.js"></script>
 <script src="scripts/form.js"></script>
 <script src="scripts/blog.js"></script>
+<script src="scripts/preloader.js"></script>
 
 </body>
 </html>
