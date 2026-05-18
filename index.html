@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="styles/automation-demo.css">
   <link rel="stylesheet" href="styles/feedbackform.css">
   <link rel="stylesheet" href="styles/educationstyles.css">
+  <link rel="stylesheet" href="styles/blogstyles.css">
   <link rel="stylesheet" href="styles/contactstyles.css">
 
   <!-- SEO / Social -->
@@ -65,6 +66,7 @@
   <a href="#skills">Skills</a>
   <a href="#automation-demo">Automation Demos</a>
   <a href="#education">Education</a>
+  <a href="#blog">Blog</a>
   <a href="#contact">Contact</a>
 </nav>
 
@@ -83,6 +85,7 @@
       <li><a href="#skills" class="nav-link">Skills</a></li>
       <li><a href="#automation-demo" class="nav-link">Demos</a></li>
       <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#blog" class="nav-link">Blog</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
     <div class="nav-right">
@@ -465,6 +468,128 @@
     </div>
   </section>
 
+  <!-- ── BLOG / QA DOCUMENTS ── -->
+  <section id="blog" aria-labelledby="blog-heading">
+    <div class="container">
+      <p class="section-label">Knowledge Base</p>
+      <h2 id="blog-heading">QA Documents &amp; Articles</h2>
+      <p class="blog-intro">A collection of test plans, bug reports, and QA strategies from real projects and personal research.</p>
+
+      <div class="blog-filters">
+        <button class="blog-filter active" data-filter="all">All</button>
+        <button class="blog-filter" data-filter="test-plan">Test Plans</button>
+        <button class="blog-filter" data-filter="bug-report">Bug Reports</button>
+        <button class="blog-filter" data-filter="strategy">Strategies</button>
+      </div>
+
+      <div class="blog-grid" id="blogGrid">
+
+        <!-- Card 1 -->
+        <article class="blog-card fade-up" data-category="test-plan">
+          <div class="blog-card-header">
+            <span class="blog-tag blog-tag--test-plan">Test Plan</span>
+            <span class="blog-date">Coming soon</span>
+          </div>
+          <h3 class="blog-card-title">Sasol Rewards App — Test Plan</h3>
+          <p class="blog-card-desc">End-to-end test plan covering scope, objectives, test approach, entry/exit criteria, and resource allocation for the Sasol Rewards mobile app.</p>
+          <div class="blog-card-meta">
+            <span><i class="fas fa-tag"></i> Appium · Selenium · Azure DevOps</span>
+          </div>
+          <div class="blog-card-footer">
+            <span class="blog-placeholder-badge"><i class="fas fa-clock"></i> Document coming soon</span>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="blog-card fade-up" data-category="bug-report">
+          <div class="blog-card-header">
+            <span class="blog-tag blog-tag--bug-report">Bug Report</span>
+            <span class="blog-date">Coming soon</span>
+          </div>
+          <h3 class="blog-card-title">Critical Checkout Bug — Saucedemo</h3>
+          <p class="blog-card-desc">Detailed bug report documenting a checkout flow regression, including steps to reproduce, expected vs actual behaviour, severity classification, and screenshots.</p>
+          <div class="blog-card-meta">
+            <span><i class="fas fa-tag"></i> Selenium · Chrome · Regression</span>
+          </div>
+          <div class="blog-card-footer">
+            <span class="blog-placeholder-badge"><i class="fas fa-clock"></i> Document coming soon</span>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="blog-card fade-up" data-category="strategy">
+          <div class="blog-card-header">
+            <span class="blog-tag blog-tag--strategy">Strategy</span>
+            <span class="blog-date">Coming soon</span>
+          </div>
+          <h3 class="blog-card-title">Automation Testing Strategy — Mobile Apps</h3>
+          <p class="blog-card-desc">A practical QA strategy for mobile automation covering framework selection, device coverage, CI/CD integration, and maintenance best practices for Android and iOS.</p>
+          <div class="blog-card-meta">
+            <span><i class="fas fa-tag"></i> Appium · AWS · CI/CD</span>
+          </div>
+          <div class="blog-card-footer">
+            <span class="blog-placeholder-badge"><i class="fas fa-clock"></i> Document coming soon</span>
+          </div>
+        </article>
+
+        <!-- Hidden cards (revealed by View more) -->
+        <article class="blog-card fade-up blog-card--hidden" data-category="test-plan">
+          <div class="blog-card-header">
+            <span class="blog-tag blog-tag--test-plan">Test Plan</span>
+            <span class="blog-date">Coming soon</span>
+          </div>
+          <h3 class="blog-card-title">Checkers Sixty60 — Regression Test Plan</h3>
+          <p class="blog-card-desc">Regression test plan for the Checkers Sixty60 delivery app, outlining test cycles, automation coverage targets, and risk-based prioritisation.</p>
+          <div class="blog-card-meta">
+            <span><i class="fas fa-tag"></i> Appium · Postman · Mobile</span>
+          </div>
+          <div class="blog-card-footer">
+            <span class="blog-placeholder-badge"><i class="fas fa-clock"></i> Document coming soon</span>
+          </div>
+        </article>
+
+        <article class="blog-card fade-up blog-card--hidden" data-category="bug-report">
+          <div class="blog-card-header">
+            <span class="blog-tag blog-tag--bug-report">Bug Report</span>
+            <span class="blog-date">Coming soon</span>
+          </div>
+          <h3 class="blog-card-title">API Response Mismatch — Zulzi Platform</h3>
+          <p class="blog-card-desc">Bug report for a REST API response schema mismatch causing silent failures in the Zulzi on-demand platform, with Postman collection evidence.</p>
+          <div class="blog-card-meta">
+            <span><i class="fas fa-tag"></i> Postman · REST API · JSON</span>
+          </div>
+          <div class="blog-card-footer">
+            <span class="blog-placeholder-badge"><i class="fas fa-clock"></i> Document coming soon</span>
+          </div>
+        </article>
+
+        <article class="blog-card fade-up blog-card--hidden" data-category="strategy">
+          <div class="blog-card-header">
+            <span class="blog-tag blog-tag--strategy">Strategy</span>
+            <span class="blog-date">Coming soon</span>
+          </div>
+          <h3 class="blog-card-title">Shift-Left Testing in Agile Teams</h3>
+          <p class="blog-card-desc">A strategic guide to embedding QA earlier in the SDLC — covering requirements review, developer collaboration, and early automation in sprint cycles.</p>
+          <div class="blog-card-meta">
+            <span><i class="fas fa-tag"></i> Agile · Scrum · SDLC</span>
+          </div>
+          <div class="blog-card-footer">
+            <span class="blog-placeholder-badge"><i class="fas fa-clock"></i> Document coming soon</span>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="blog-toggle-wrap">
+        <button class="view-more-toggle" id="blogToggle" aria-expanded="false" aria-controls="blogGrid">
+          <span id="blogToggleText">View 3 more</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── CONTACT ── -->
   <section id="contact" aria-labelledby="contact-heading">
     <div class="container">
@@ -513,6 +638,7 @@
 <script src="scripts/automation-demos.js"></script>
 <script src="scripts/automation-demo-place-order.js"></script>
 <script src="scripts/form.js"></script>
+<script src="scripts/blog.js"></script>
 
 </body>
 </html>
