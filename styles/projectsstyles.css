@@ -184,6 +184,71 @@
   margin-right: 4px;
 }
 
+/* ── Footer actions ────────────────────────────────────────────────────────── */
+
+.project-footer-actions {
+  display:  flex;
+  gap:      8px;
+  flex-wrap: nowrap;
+}
+
+.btn-demo,
+.btn-github {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             6px;
+  font-size:       0.78rem;
+  font-weight:     500;
+  padding:         6px 14px;
+  border-radius:   8px;
+  border:          1px solid transparent;
+  text-decoration: none;
+  white-space:     nowrap;
+  line-height:     1;
+  transition:      background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn-demo {
+  background:   rgba(88, 166, 255, 0.08);
+  border-color: rgba(88, 166, 255, 0.25);
+  color:        var(--accent, #58a6ff);
+}
+.btn-demo:hover {
+  background:   rgba(88, 166, 255, 0.15);
+  border-color: var(--accent, #58a6ff);
+}
+
+.btn-github {
+  background:   rgba(255, 255, 255, 0.05);
+  border-color: var(--border, #30363d);
+  color:        var(--muted, #7d8590);
+}
+.btn-github:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color:        var(--text, #e6edf3);
+}
+
+/* ── Mobile footer fix ─────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .project-card-footer {
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            10px;
+  }
+
+  .project-footer-actions {
+    width: 100%;
+  }
+
+  .btn-demo,
+  .btn-github {
+    flex:            1;
+    justify-content: center;
+    padding:         8px 12px;
+  }
+}
+
 /* ── Responsive ────────────────────────────────────────────────────────────── */
 
 @media (max-width: 600px) {
