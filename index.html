@@ -20,20 +20,21 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles/mainstyles.css?v=20260519184248">
-    <link rel="stylesheet" href="styles/navigationstyles.css?v=20260519184248">
-    <link rel="stylesheet" href="styles/burgermenustyles.css?v=20260519184248">
-    <link rel="stylesheet" href="styles/bugstyles.css?v=20260519184248">
-    <link rel="stylesheet" href="styles/herostyles.css?v=20260519184248">
-    <link rel="stylesheet" href="styles/aboutstyles.css?v=20260519184248">
-    <link rel="stylesheet" href="styles/timelinestyles.css?v=20260519184248">
-    <link rel="stylesheet" href="styles/resumestyles.css?v=20260519184248">
-    <link rel="stylesheet" href="styles/skillstyles.css?v=20260519184248">
-    <link rel="stylesheet" href="styles/automation-demo.css?v=20260519184248">
-    <link rel="stylesheet" href="styles/feedbackform.css?v=20260519184248">
-    <link rel="stylesheet" href="styles/educationstyles.css?v=20260519184248">
-    <link rel="stylesheet" href="styles/blogstyles.css?v=20260519184248">
-    <link rel="stylesheet" href="styles/contactstyles.css?v=20260519184248">
+    <link rel="stylesheet" href="styles/mainstyles.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/navigationstyles.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/burgermenustyles.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/bugstyles.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/herostyles.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/aboutstyles.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/timelinestyles.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/resumestyles.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/skillstyles.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/automation-demo.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/feedbackform.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/educationstyles.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/blogstyles.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/contactstyles.css?v=20260519190120">
+    <link rel="stylesheet" href="styles/projectsstyles.css?v=20260519190120">
 
     <!-- SEO / Social -->
     <meta property="og:title" content="Jusca Molaiwa — QA Engineer Portfolio">
@@ -80,6 +81,7 @@
       <a href="#timeline">Timeline</a>
       <a href="#skills">Skills</a>
       <a href="#automation-demo">Automation Demos</a>
+      <a href="#projects">Projects</a>
       <a href="#education">Education</a>
       <a href="#blog">Blog</a>
       <a href="#contact">Contact</a>
@@ -103,6 +105,7 @@
           <li><a href="#timeline" class="nav-link">Timeline</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
           <li><a href="#automation-demo" class="nav-link">Demos</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
           <li><a href="#blog" class="nav-link">Blog</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -150,7 +153,7 @@
                 <div class="stat-label">Years Experience</div>
               </div>
               <div>
-                <div class="stat-val">4</div>
+                <div class="stat-val">5+</div>
                 <div class="stat-label">Major Projects</div>
               </div>
               <div>
@@ -583,6 +586,106 @@
         </div>
       </section>
 
+      <!-- PROJECTS -->
+      <section id="projects" aria-labelledby="projects-heading">
+        <div class="container">
+          <p class="section-label">Personal Builds</p>
+          <h2 id="projects-heading">Projects</h2>
+          <p class="blog-intro">End-to-end tools and platforms built to sharpen
+            engineering depth beyond day-to-day QA work.</p>
+
+          <div class="projects-grid">
+
+            <!-- Appium Device Farm -->
+            <article class="project-card fade-up">
+              <div class="project-card-top">
+                <div class="project-meta">
+                  <span class="project-number">01</span>
+                  <span class="project-status project-status--active">
+                    <span class="project-status-dot"></span>In Progress
+                  </span>
+                </div>
+                <h3 class="project-title">Appium Device Farm</h3>
+                <p class="project-subtitle">Mobile test orchestration platform</p>
+                <p class="project-desc">
+                  A full-stack mobile test orchestration platform for Appium-based
+                  device execution across local and Docker-containerised Android
+                  environments. Manages real device pools, queues test sessions,
+                  stores a reusable test script library, and surfaces live results
+                  through a WebSocket-powered dashboard.
+                </p>
+              </div>
+
+              <div class="project-pipeline">
+                <div class="pipeline-step pipeline-step--active">
+                  <i class="fas fa-mobile-alt"></i>
+                  <span>Devices</span>
+                </div>
+                <div class="pipeline-step pipeline-step--active">
+                  <i class="fas fa-list-ul"></i>
+                  <span>Queue</span>
+                </div>
+                <div class="pipeline-step pipeline-step--active">
+                  <i class="fas fa-play"></i>
+                  <span>Execute</span>
+                </div>
+                <div class="pipeline-step">
+                  <i class="fas fa-chart-bar"></i>
+                  <span>Report</span>
+                </div>
+                <div class="pipeline-step">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                  <span>Cloud</span>
+                </div>
+              </div>
+
+              <div class="project-highlights">
+                <div class="project-highlight">
+                  <i class="fas fa-broadcast-tower"></i>
+                  Real-time WebSocket device status dashboard
+                </div>
+                <div class="project-highlight">
+                  <i class="fas fa-book-open"></i>
+                  Reusable test script library with disk auto-sync
+                </div>
+                <div class="project-highlight">
+                  <i class="fas fa-random"></i>
+                  Concurrent session scheduling &amp; queuing
+                </div>
+                <div class="project-highlight">
+                  <i class="fab fa-docker"></i>
+                  Fully containerised — Android emulator in Docker
+                </div>
+              </div>
+
+              <div class="project-tech">
+                <span class="pill">Python</span>
+                <span class="pill">Flask</span>
+                <span class="pill">Appium</span>
+                <span class="pill">React</span>
+                <span class="pill">WebSocket</span>
+                <span class="pill">ADB</span>
+                <span class="pill">Docker</span>
+                <span class="pill">pytest</span>
+              </div>
+
+              <div class="project-card-footer">
+                <div class="project-footer-meta">
+                  <span><i class="fas fa-code-branch"></i> main</span>
+                  <span><i class="fas fa-file-code"></i> 14 modules</span>
+                </div>
+                <a href="https://github.com/JuscaMolaiwa/QA-Forge-Platform"
+                  target="_blank" rel="noopener noreferrer"
+                  class="btn btn-primary" style="font-size:0.82rem;padding:7px 16px;">
+                  <i class="fab fa-github"></i> View on GitHub
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
       <!-- EDUCATION -->
       <section id="education" aria-labelledby="education-heading">
         <div class="container">
@@ -853,14 +956,14 @@
     </noscript>
 
     <!-- Scripts -->
-    <script src="scripts/theme.js?v=20260519184248"></script>
-    <script src="scripts/bug.js?v=20260519184248"></script>
-    <script src="scripts/burgermenu.js?v=20260519184248"></script>
-    <script src="scripts/main.js?v=20260519184248"></script>
-    <script src="scripts/automation-demos.js?v=20260519184248"></script>
-    <script src="scripts/automation-demo-place-order.js?v=20260519184248"></script>
-    <script src="scripts/form.js?v=20260519184248"></script>
-    <script src="scripts/blog.js?v=20260519184248"></script>
+    <script src="scripts/theme.js?v=20260519190120"></script>
+    <script src="scripts/bug.js?v=20260519190120"></script>
+    <script src="scripts/burgermenu.js?v=20260519190120"></script>
+    <script src="scripts/main.js?v=20260519190120"></script>
+    <script src="scripts/automation-demos.js?v=20260519190120"></script>
+    <script src="scripts/automation-demo-place-order.js?v=20260519190120"></script>
+    <script src="scripts/form.js?v=20260519190120"></script>
+    <script src="scripts/blog.js?v=20260519190120"></script>
 
   </body>
 </html>
