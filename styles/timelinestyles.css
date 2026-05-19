@@ -150,18 +150,6 @@
   color:        var(--text);
 }
 
-/* ── Light mode ── */
-[data-theme="light"] .timeline::before {
-  background: linear-gradient(
-    to bottom,
-    var(--accent)          0%,
-    rgba(0,150,106,0.35)  50%,
-    rgba(0,150,106,0.1)  100%
-  );
-}
-[data-theme="light"] .timeline-marker         { background: #fff; }
-[data-theme="light"] .timeline-marker--current { background: rgba(0,150,106,0.1); }
-[data-theme="light"] .timeline-item:hover .timeline-content { border-color: rgba(0,150,106,0.25); }
 
 /* ── Responsive ── */
 @media (max-width: 480px) {
@@ -224,4 +212,19 @@
   color:       var(--accent);
   font-size:   1rem;
   line-height: 1.4;
+}
+
+/* ── View more / less ── */
+.timeline-item--hidden { display: none; }
+
+.timeline-toggle-wrap {
+  display:    flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+/* Only apply on mobile — desktop shows all */
+@media (min-width: 769px) {
+  .timeline-item--hidden { display: block !important; }
+  .timeline-toggle-wrap  { display: none; }
 }

@@ -3,7 +3,7 @@
 #education { background: var(--bg2); }
 
 /* ── Section containers ── */
-.edu-section { margin-bottom: 48px; }
+.edu-section { margin-bottom: 24px; }
 .edu-section > h3 {
   font-size:      1rem; font-weight: 600; text-transform: uppercase;
   letter-spacing: 0.08em; color: var(--muted); margin-bottom: 24px;

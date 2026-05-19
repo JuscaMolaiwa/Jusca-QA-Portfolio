@@ -123,25 +123,24 @@
     }
 
 
-    // ── Projects view more / less ─────────────────────────────────
-    const projectsToggle    = document.getElementById('projectsToggle');
-    const projectsToggleTxt = document.getElementById('projectsToggleText');
-    const hiddenProjects    = document.querySelectorAll('.project-card--hidden');
+    
+    // ── Timeline view more / less (mobile only) ───────────────────
+    const timelineToggle    = document.getElementById('timelineToggle');
+    const timelineToggleTxt = document.getElementById('timelineToggleText');
+    const hiddenItems       = document.querySelectorAll('.timeline-item--hidden');
 
-    if (projectsToggle) {
-      projectsToggle.addEventListener('click', function () {
-        const expanded = projectsToggle.getAttribute('aria-expanded') === 'true';
-        projectsToggle.setAttribute('aria-expanded', String(!expanded));
-        projectsToggleTxt.textContent = expanded ? 'View 2 more' : 'View less';
-        hiddenProjects.forEach(function (card) {
+    if (timelineToggle) {
+      timelineToggle.addEventListener('click', function () {
+        const expanded = timelineToggle.getAttribute('aria-expanded') === 'true';
+        timelineToggle.setAttribute('aria-expanded', String(!expanded));
+        timelineToggleTxt.textContent = expanded ? 'View 2 more' : 'View less';
+        hiddenItems.forEach(function (item) {
           if (!expanded) {
-            // Remove the CSS class so the card becomes visible
-            card.classList.remove('project-card--hidden');
-            setTimeout(function () { card.classList.add('visible'); }, 50);
+            item.classList.remove('timeline-item--hidden');
+            setTimeout(function () { item.classList.add('visible'); }, 50);
           } else {
-            // Re-add the CSS class to hide again
-            card.classList.add('project-card--hidden');
-            card.classList.remove('visible');
+            item.classList.add('timeline-item--hidden');
+            item.classList.remove('visible');
           }
         });
       });
