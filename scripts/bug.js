@@ -469,30 +469,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  document.querySelectorAll('a[href="#Home"]').forEach(function (link) {
-    if (link === stickyBugHunterLink || link === hiddenBugHunterLink) return;
-    link.addEventListener('click', function () {
-      const icon = getVisibleBugIcon();
-      if (icon) icon.style.opacity = '';
-      animateBugIcon(icon);
-    });
-  });
-
+  // Only fire once on initial page load
   triggerIfHome();
-  window.addEventListener('hashchange', triggerIfHome);
-
-  const homeSection = document.getElementById('Home');
-  if (homeSection && 'IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          const icon = getVisibleBugIcon();
-          if (icon) icon.style.opacity = '';
-          animateBugIcon(icon);
-        }
-      });
-    }, { threshold: 0.4 });
-    observer.observe(homeSection);
-  }
 
 });
